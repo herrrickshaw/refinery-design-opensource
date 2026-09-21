@@ -1,0 +1,403 @@
+{
+ "_note": "Hand-transcribed from CHT and PPAC public pages (see scripts/build_india_data.py).",
+ "cht": {
+  "url": "https://cht.gov.in/refinery-complexity-index",
+  "basis": "OGJ WW Refining & Complexity survey 2025",
+  "page_last_updated": "10-04-2026",
+  "refineries": [
+   {
+    "company": "IOCL",
+    "refinery": "Digboi",
+    "commissioned": 1901,
+    "nci": 7.0,
+    "capacity_mmtpa": 0.65
+   },
+   {
+    "company": "IOCL",
+    "refinery": "Guwahati",
+    "commissioned": 1962,
+    "nci": 7.3,
+    "capacity_mmtpa": 1.2
+   },
+   {
+    "company": "IOCL",
+    "refinery": "Barauni",
+    "commissioned": 1964,
+    "nci": 6.0,
+    "capacity_mmtpa": 6.0
+   },
+   {
+    "company": "IOCL",
+    "refinery": "Koyali",
+    "commissioned": 1965,
+    "nci": 9.7,
+    "capacity_mmtpa": 13.7
+   },
+   {
+    "company": "IOCL",
+    "refinery": "Bongaigaon",
+    "commissioned": 1979,
+    "nci": 9.0,
+    "capacity_mmtpa": 2.7
+   },
+   {
+    "company": "IOCL",
+    "refinery": "Haldia",
+    "commissioned": 1975,
+    "nci": 11.8,
+    "capacity_mmtpa": 8.0
+   },
+   {
+    "company": "IOCL",
+    "refinery": "Mathura",
+    "commissioned": 1982,
+    "nci": 7.1,
+    "capacity_mmtpa": 8.0
+   },
+   {
+    "company": "IOCL",
+    "refinery": "Panipat",
+    "commissioned": 1998,
+    "nci": 10.5,
+    "capacity_mmtpa": 15.0
+   },
+   {
+    "company": "IOCL",
+    "refinery": "Paradip",
+    "commissioned": 2016,
+    "nci": 10.6,
+    "capacity_mmtpa": 15.0
+   },
+   {
+    "company": "CPCL",
+    "refinery": "Manali",
+    "commissioned": 1965,
+    "nci": 10.8,
+    "capacity_mmtpa": 10.5
+   },
+   {
+    "company": "CPCL",
+    "refinery": "Nagapattinam",
+    "commissioned": 1993,
+    "nci": null,
+    "capacity_mmtpa": 0.0
+   },
+   {
+    "company": "HPCL",
+    "refinery": "Mumbai",
+    "commissioned": 1954,
+    "nci": 9.3,
+    "capacity_mmtpa": 9.5
+   },
+   {
+    "company": "HPCL",
+    "refinery": "Visakhapatnam",
+    "commissioned": 1957,
+    "nci": 8.4,
+    "capacity_mmtpa": 15.0
+   },
+   {
+    "company": "BPCL",
+    "refinery": "Mumbai",
+    "commissioned": 1955,
+    "nci": 9.8,
+    "capacity_mmtpa": 12.0
+   },
+   {
+    "company": "BPCL",
+    "refinery": "Kochi",
+    "commissioned": 1963,
+    "nci": 11.2,
+    "capacity_mmtpa": 15.5
+   },
+   {
+    "company": "BPCL",
+    "refinery": "Bina",
+    "commissioned": 2011,
+    "nci": 11.8,
+    "capacity_mmtpa": 7.8
+   },
+   {
+    "company": "NRL",
+    "refinery": "Numaligarh",
+    "commissioned": 2000,
+    "nci": 8.4,
+    "capacity_mmtpa": 3.0
+   },
+   {
+    "company": "MRPL",
+    "refinery": "Mangalore",
+    "commissioned": 1996,
+    "nci": 9.46,
+    "capacity_mmtpa": 15.0
+   },
+   {
+    "company": "ONGC",
+    "refinery": "Tatipaka",
+    "commissioned": 2001,
+    "nci": null,
+    "capacity_mmtpa": 0.066
+   }
+  ]
+ },
+ "ppac": {
+  "url": "https://ppac.gov.in/uploads/rep_studies/1689760261_PPAC_READY%20RECKONER-FY2022-23_web_compressed-compressed-min_compressed.pdf",
+  "edition": "Ready Reckoner FY2022-23 (FY2022-23 provisional)",
+  "grm_years": [
+   "2017-18",
+   "2018-19",
+   "2019-20",
+   "2020-21",
+   "2021-22",
+   "2022-23"
+  ],
+  "grm_usd_bbl": {
+   "IOCL": [
+    8.49,
+    5.41,
+    0.08,
+    5.64,
+    11.25,
+    19.52
+   ],
+   "BPCL": [
+    6.85,
+    4.58,
+    2.5,
+    4.06,
+    9.09,
+    20.24
+   ],
+   "HPCL": [
+    7.4,
+    5.01,
+    1.02,
+    3.86,
+    7.19,
+    12.09
+   ],
+   "CPCL": [
+    6.42,
+    3.7,
+    -1.18,
+    7.14,
+    8.85,
+    12.48
+   ],
+   "MRPL": [
+    7.54,
+    4.06,
+    -0.23,
+    3.71,
+    8.72,
+    9.88
+   ],
+   "NRL": [
+    31.92,
+    28.11,
+    24.55,
+    37.23,
+    43.46,
+    35.82
+   ],
+   "BORL": [
+    11.7,
+    9.8,
+    5.6,
+    6.2,
+    11.0,
+    null
+   ],
+   "RIL": [
+    11.6,
+    9.2,
+    8.9,
+    null,
+    null,
+    null
+   ],
+   "NEL": [
+    8.95,
+    6.97,
+    5.88,
+    null,
+    null,
+    null
+   ],
+   "Singapore": [
+    7.23,
+    4.88,
+    3.25,
+    0.53,
+    4.99,
+    10.76
+   ]
+  },
+  "distillate_years": [
+   "2018-19",
+   "2019-20",
+   "2020-21",
+   "2021-22",
+   "2022-23"
+  ],
+  "distillate_pct": {
+   "Barauni": [
+    87.9,
+    86.9,
+    87.1,
+    85.9,
+    83.8
+   ],
+   "Koyali": [
+    81.0,
+    79.5,
+    72.1,
+    76.7,
+    74.0
+   ],
+   "Haldia": [
+    69.9,
+    69.0,
+    72.2,
+    72.2,
+    74.8
+   ],
+   "Mathura": [
+    76.1,
+    75.6,
+    72.3,
+    74.9,
+    71.8
+   ],
+   "Panipat": [
+    82.8,
+    84.8,
+    80.2,
+    83.9,
+    78.9
+   ],
+   "Guwahati": [
+    81.0,
+    83.5,
+    82.1,
+    86.4,
+    81.5
+   ],
+   "Digboi": [
+    75.8,
+    72.5,
+    67.9,
+    79.2,
+    72.8
+   ],
+   "Bongaigaon": [
+    84.8,
+    80.8,
+    84.8,
+    81.3,
+    80.0
+   ],
+   "Paradip": [
+    80.8,
+    80.7,
+    79.2,
+    79.6,
+    79.5
+   ],
+   "Manali": [
+    75.3,
+    77.6,
+    78.4,
+    74.9,
+    78.3
+   ],
+   "HPCL Mumbai": [
+    77.6,
+    77.0,
+    76.2,
+    70.4,
+    75.9
+   ],
+   "Visakh": [
+    74.5,
+    72.1,
+    74.4,
+    70.7,
+    67.9
+   ],
+   "BPCL Mumbai": [
+    82.2,
+    84.9,
+    83.7,
+    84.4,
+    85.5
+   ],
+   "Kochi": [
+    82.5,
+    84.2,
+    83.8,
+    85.4,
+    83.9
+   ],
+   "Bina": [
+    null,
+    null,
+    null,
+    84.3,
+    85.3
+   ],
+   "Numaligarh": [
+    87.1,
+    83.0,
+    86.4,
+    85.7,
+    89.9
+   ],
+   "Mangalore": [
+    76.8,
+    76.7,
+    78.1,
+    78.8,
+    77.9
+   ],
+   "PSU average": [
+    79.6,
+    80.0,
+    78.6,
+    79.6,
+    78.7
+   ]
+  },
+  "fuel_loss": {
+   "Paradip_pct": [
+    10.9,
+    9.8,
+    9.6,
+    11.0,
+    11.0,
+    10.0
+   ],
+   "PSU_total_2022_23": {
+    "throughput_mmt": 291.0,
+    "fuel_loss_mmt": 26.0
+   }
+  },
+  "paradip_crude_processing_mmt": {
+   "2018-19": 14.6,
+   "2019-20": 15.8,
+   "2020-21": 12.5,
+   "2021-22": 13.2,
+   "2022-23": 13.6
+  },
+  "hs_crude_share_pct_2022_23": 77.5,
+  "indian_basket_avg_usd_bbl": {
+   "2021-22": 79.18,
+   "2022-23": 93.15
+  },
+  "indian_basket_formula": "75.62% sour grades (average of Oman & Dubai) + 24.38% sweet grade (Brent Dated), from 2020-21 (PPAC Table 8.1 note)",
+  "fx_inr_per_usd": {
+   "2017-18": 64.45,
+   "2018-19": 69.89
+  }
+ }
+}

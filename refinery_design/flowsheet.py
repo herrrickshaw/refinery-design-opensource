@@ -11,6 +11,7 @@ little hydrogen and removes H2S, reported separately):
 * ``petcoke``             delayed-coker coke
 * ``fcc_coke_burned``     coke burned in the FCC regenerator (leaves as flue gas)
 * ``slurry``              FCC slurry oil (black oil)
+* ``vgo_unconverted``     VGO sold as heavy fuel/feed when there is no FCC (black oil)
 * ``vacuum_residue``      only if there is no coker
 
 The FCC is sized for *all* the VGO; if the heat balance cannot close the
@@ -77,7 +78,7 @@ class RefineryResult:
     @property
     def black_oil_yield_wt_pct(self) -> float:
         p = self.pools_wt_pct()
-        return p["slurry"] + p["vacuum_residue"]
+        return p["slurry"] + p["vacuum_residue"] + p["vgo_unconverted"]
 
     def complexity(self, factors: str = "1998") -> float:
         """Nelson index of this configuration (feed masses; CDU = crude mass)."""
@@ -99,7 +100,8 @@ def refine(feed: Crude | Slate, throughput_bpd: float, cfg: RefineryConfig = Ref
     warnings: list[str] = []
     pools = {"lpg": S["lpg"].mass_kg_h, "gasoline_range": S["naphtha"].mass_kg_h,
              "middle_distillate": S["kerosene"].mass_kg_h + S["diesel"].mass_kg_h,
-             "fuel_gas": 0.0, "petcoke": 0.0, "fcc_coke_burned": 0.0, "slurry": 0.0, "vacuum_residue": 0.0}
+             "fuel_gas": 0.0, "petcoke": 0.0, "fcc_coke_burned": 0.0, "slurry": 0.0, "vacuum_residue": 0.0,
+             "vgo_unconverted": 0.0}
 
     fcc_res = None
     vgo_ht = None
@@ -124,7 +126,7 @@ def refine(feed: Crude | Slate, throughput_bpd: float, cfg: RefineryConfig = Ref
         pools["slurry"] += vgo_kg_h * y["slurry"] / 100.0
         pools["fcc_coke_burned"] += vgo_kg_h * y["coke"] / 100.0
     else:
-        pools["middle_distillate"] += vgo_kg_h  # unconverted VGO goes to the heavy-distillate pool
+        pools["vgo_unconverted"] += vgo_kg_h   # heavy fuel-grade stream, not diesel
 
     coker_res = None
     vr = S["vacuum_residue"]

@@ -62,25 +62,41 @@ not fitted to; all in `tests/test_fcc.py`):
 * a resid feed (CCR 20 wt%) *cannot* close the balance without a catalyst
   cooler and is refused with an actionable message.
 
-## 3. Real refinery: IndianOil Paradip (15 mtpa, Nelson 12.2)
+## 3. Real refinery: IndianOil Paradip (15 mtpa)
 
-Capacities from Oil & Gas Journal (`DATA_SOURCES.md`).
+Capacities from Oil & Gas Journal; complexity from the Centre for High
+Technology; yields and margins from PPAC (`DATA_SOURCES.md`).
+
+**A correction made along the way.** An earlier version of this repo benchmarked
+against a Nelson index of 12.2 - the figure IndianOil quoted at commissioning
+(OGJ, 2016). CHT's page (https://cht.gov.in/refinery-complexity-index, "NCI
+based on OGJ WW Refining & Complexity survey 2025") gives Paradip **10.6**. The
+benchmark now uses the CHT/OGJ-survey value; the older number is kept only as
+`IOC_COMMISSIONING_NCI`.
 
 **Nelson complexity from the published unit list** (`examples/paradip_check.py`):
 
-| Factor set | VDU/CDU | Units counted | NCI | vs 12.2 |
+| Factor set | VDU/CDU | Units counted | NCI | vs CHT 10.6 |
 |---|---|---|---|---|
-| 1998 | 0.6 | unambiguous only | 7.55 | -38% |
-| 1998 | 1.0 | unambiguous only | 8.35 | -32% |
-| 1998 | 0.6 | + ambiguous-unit readings | 10.51 | -14% |
-| 1998 | 1.0 | + ambiguous-unit readings | 11.31 | **-7%** |
-| older | 1.0 | + ambiguous-unit readings | 11.92 | **-2%** |
+| 1998 | 0.6 | unambiguous only | 7.55 | -29% |
+| 1998 | 1.0 | unambiguous only | 8.35 | -21% |
+| 1998 | 0.6 | + ambiguous-unit readings | 10.51 | **-1%** |
+| 1998 | 1.0 | + ambiguous-unit readings | 11.31 | **+7%** |
+| older | 0.6 | + ambiguous-unit readings | 11.12 | +5% |
+| older | 1.0 | + ambiguous-unit readings | 11.92 | +12% |
 
 The published unit list is partial and three entries have units that do not
-scale as printed, so the honest result is a range: it lands 2-7% below the
-reported index when every listed unit is counted and the ambiguous ones are
-read as b/d and kt/yr. It does not include the hydrogen plant, sulfur plants or
-polypropylene unit.
+scale as printed, so the honest result is a range: counting every listed unit
+gives 10.5-11.9, which **brackets** CHT's 10.6; counting only the unambiguous
+ones falls 15-29% short (both factor sets). The list omits the hydrogen plant, sulfur plants and
+polypropylene unit (the last has no Nelson factor in any case).
+
+**Distillate yield (PPAC Table 4.8).** PPAC reports Paradip at 80.8 / 80.7 / 79.2
+/ 79.6 / 79.5% for FY2018-19 to FY2022-23 (mean 80.0%; PSU average 78.7-80.0%).
+The flowsheet on the fitted basket gives 79.3% (raw VGO) to 79.8% (hydrotreated
+VGO) LPG + gasoline-range + middle distillate. PPAC does not define
+"distillate", so this is agreement in magnitude, not a reproduction. (Note the
+earlier-quoted 81.1% from IndianOil's material is also consistent.)
 
 **Which crude basket loads the published units?** Paradip's coker is 4.1 mtpa
 and FCC 4.2 mtpa against a 15 mtpa CDU (27.3% and 28.0%). Fitting ONE
@@ -106,10 +122,8 @@ than hiding it.
 
 **Yields (plausibility only).** The same run gives 79-80 wt% of crude as LPG +
 gasoline-range + middle distillate and only 2.7-3.4 wt% black oil (FCC slurry),
-with the residue going to the coker. IndianOil's summary describes an 81.1%
-"distillate yield" with no black oil; their definition of "distillate" is not
-stated and that figure comes from a search summary, so it is consistent in
-magnitude, not a reproduction.
+with the residue going to the coker - the 'no black oil' character IndianOil
+claims for Paradip.
 
 ## 4. Things found along the way
 
@@ -142,3 +156,49 @@ the crude-unit furnace duty (140-170 MW at 200 kbpd - plausible, no public
 reference found); the hydrotreater reference operating points and pretreat
 severities; the coker naphtha/gas-oil split; regenerator residence time and bed
 density. All are exposed as parameters. No licensor or vendor data was used.
+
+
+## 6. Margins and complexity in the Indian data (PPAC + CHT)
+
+`refinery_design/india.py` joins CHT's NCI (capacity-weighted by company) with
+PPAC's company GRM (Ready Reckoner Table 4.7). Across IOCL, BPCL, HPCL, CPCL and
+MRPL:
+
+| Year | slope ($/bbl per NCI point) | r | n |
+|---|---|---|---|
+| mean of FY2017-18 to FY2022-23 | +0.41 | 0.31 | 5 |
+| FY2021-22 | +0.44 | 0.28 | 5 |
+| FY2022-23 (provisional) | +2.09 | 0.41 | 5 |
+
+Higher complexity goes with higher GRM in every cut, but weakly. Five companies
+cannot support more, GRM is company-level (PPAC does not publish refinery-wise
+GRM), the North-East refineries' figures include an excise-duty benefit, and
+crude slate and year dominate. An academic panel study (Driscoll-Kraay
+estimator; found by search, abstract only) reports a significant positive
+complexity effect on Indian GRM - not reproduced or checked here.
+
+`tests/test_grm.py` shows the mechanism and its condition: on a heavy slate a
+coker adds margin only when the residue discount and distillate cracks are wide
+(default deck), and *destroys* margin when they are thin. That is consistent
+with complexity being a capability, not a guarantee.
+
+**GRM calibration.** Product prices are inputs, not data. `calibrate_deck`
+scales the light-product cracks so the Paradip-basket flowsheet reproduces a
+PPAC-reported GRM. For IOCL, FY2021-22 ($11.25/bbl at an Indian basket of
+$79.18) needs gasoline/diesel cracks of ~$17/$29 per bbl; FY2022-23 ($19.52 at
+$93.15) needs ~$26/$43. These are the cracks *this simplified flowsheet* needs;
+they absorb everything not modelled (bitumen/lubes/petchem premiums, inventory
+effects, product-mix quality) and must not be read as market cracks. The
+calibration is exact by construction - it is not a validation of the deck.
+
+## 7. Accounting mistakes found and fixed while building the GRM layer
+
+* Unconverted VGO (no FCC) was being routed into the **middle-distillate pool**,
+  valuing it as diesel and making a hydroskimmer look better than a
+  full-conversion refinery. It now has its own black-oil pool.
+* Charging a *fixed total* fuel-and-loss (PPAC's 8.9-10%) made low-complexity
+  configurations pay for fuel they never burn. PPAC's Paradip 10.0% minus the
+  flowsheet's own 5.6% leaves a 4.4% configuration-independent overhead
+  (`UNMODELLED_FUEL_LOSS_PCT`).
+* LPG priced with a $/bbl crack came out richer per tonne than diesel (11.4 vs
+  7.4 bbl/t); LPG and residue are now priced as fractions of crude value.

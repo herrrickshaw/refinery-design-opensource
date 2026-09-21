@@ -37,7 +37,7 @@ treated as approximate to ~10% between sources.
 
 Oil & Gas Journal, "Indian Oil commissions Paradip refinery":
 <https://www.ogj.com/refining-processing/refining/operations/article/17246528/indian-oil-commissions-paradip-refinery>
-- "15 million-tonne/year, full-conversion refinery", Nelson complexity 12.2,
+- "15 million-tonne/year, full-conversion refinery", Nelson complexity 12.2 (as of commissioning; superseded by CHT's 10.6 below),
 FCC 4.2 mtpa, delayed coker 4.1 mtpa, CCR reformer 2.9 mtpa, naphtha
 hydrotreating 3.9 mtpa, diesel hydrotreater 120,000 b/d, and further units.
 Three entries carry units that do not scale against a 15 mtpa plant as printed
@@ -48,6 +48,47 @@ IndianOil's own pages redirected (HTTP 307) and could not be fetched directly;
 the "81.1% distillate yield, no black oil" figure comes from a search-result
 summary of IndianOil's material, not a fetched page, and its definition of
 "distillate" is unstated - it is used for plausibility only.
+
+## CHT - Nelson complexity of Indian refineries - verified
+
+Centre for High Technology, MoPNG, "Refinery complexity Index":
+<https://cht.gov.in/refinery-complexity-index> (page last updated 10-04-2026).
+A table of 19 refineries with commissioning year, nameplate capacity and NCI
+"based on OGJ WW Refining & Complexity survey 2025" (Paradip 10.6, Panipat 10.5,
+Kochi 11.2, Haldia 11.8, Bina 11.8, Barauni 6.0 ...; PSU total 158.6 MMTPA). The
+page gives no formula or factor table. Hand-transcribed into
+`refinery_design/data/india_refineries.json` by `scripts/build_india_data.py`;
+capacities are checked against the page's own totals in `tests/test_india.py`.
+
+## PPAC - refinery margins, yields, fuel & loss - verified
+
+Petroleum Planning & Analysis Cell, *Ready Reckoner FY2022-23*
+(<https://ppac.gov.in>; the PDF URL is in `scripts/build_india_data.py`): Table 4.1
+capacity and throughput, 4.7 GRM by company FY2017-18 to FY2022-23 (FY2022-23
+provisional; GRM defined per EIA as product revenue minus raw-material cost;
+North-East refineries include an excise benefit), 4.8 distillate yield by PSU
+refinery, 4.9 fuel & loss, 4.12 exchange rates, 8.1 the Indian-basket formula
+(75.62% mean of Oman and Dubai + 24.38% Brent Dated; FY2022-23 average $93.15/bbl,
+FY2021-22 $79.18). PPAC publishes GRM by company, not by refinery, and does not
+define "distillate". Newer editions of the Ready Reckoner may exist; this repo
+uses FY2022-23.
+
+## Petrochemical economics - partial
+
+* **Verified (search summaries of the OGJ / IndianOil material):** Paradip's
+  680 kt/y polypropylene plant cost Rs 3,150 crore, uses Spheripol technology and
+  is integrated with the refinery's INDMAX (light-olefin FCC) unit. Converted at
+  PPAC's FY2018-19 Rs 69.89/$ = $451 M.
+* **Verified (search summaries of FCC literature):** conventional FCC propylene
+  ~6 wt% of feed; >9 wt% with ZSM-5 additive at 10-20 wt% loading; each 5 wt%
+  additive dilutes catalyst activity 1-2 wt%; propylene-mode units above 20 wt%.
+* **Not available:** propylene, polypropylene, naphtha, LPG and petcoke prices.
+  The OilPriceAPI feed tried here carries crude (Brent, Dubai, Oman, WTI, Urals)
+  and US gasoline/diesel/jet only. Two industry articles on refining-petrochemical
+  integration were read and contain no usable price or margin figures. Hence the
+  break-even framing.
+* **Assumptions, unsourced:** PP conversion opex, hurdle rate, plant life,
+  the split of propylene-mode propylene between forgone gasoline and LCO.
 
 ## Delayed-coker correlations - partially verified
 

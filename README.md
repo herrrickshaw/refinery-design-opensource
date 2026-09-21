@@ -29,10 +29,11 @@ was and was not verified.
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
-pytest -q                                          # 126 tests
+pytest -q                                          # 153 tests
 python examples/full_refinery_worked_example.py    # 8 crudes through one refinery
 python examples/fcc_worked_example.py              # FCC heat balance, riser, regenerator
 python examples/paradip_check.py                   # validation against a real refinery
+python examples/petrochemical_evaluation.py        # PPAC/CHT data + propylene/PP break-evens
 streamlit run streamlit_app.py                     # interactive app
 ```
 
@@ -68,6 +69,9 @@ and volume close exactly), and crudes blend by volume into a `Slate`.
 | `refinery_design/coker.py` | Gary & Handwerk carbon-residue correlations | Coke/gas/liquid yields, coke-drum volume |
 | `refinery_design/complexity.py` | Nelson complexity index (two published factor vintages) | NCI |
 | `refinery_design/flowsheet.py` | Chains everything on one basis | Whole-refinery pools, light/middle-distillate/black-oil yields, mass closure |
+| `refinery_design/india.py` | CHT complexity (NCI) + PPAC GRM, distillate yield, fuel & loss, Indian basket formula | Indian refinery reference data, GRM-vs-NCI fit |
+| `refinery_design/grm.py` | PPAC/EIA GRM definition; price deck of cracks; calibration to a reported GRM | GRM ($/bbl), calibrated decks |
+| `refinery_design/petrochemical.py` | FCC propylene -> polypropylene: three routes, six-tenths capex scaling, capital charge | Break-even PP price, GRM uplift, affordable FCC capex |
 | `refinery_design/benchmarks.py` | Paradip published data | Validation |
 
 ## What crude type does to an FCC (real assays, same unit)
@@ -91,23 +95,42 @@ be needed.
 * **Real assays** - TBP-derived cut densities agree with each assay's own
   reported cut densities to a max of 0.9% over 72 cuts; sulfur balances
   close exactly.
-* **Real refinery (IndianOil Paradip, 15 mtpa)** - Nelson index from the
-  published unit list lands 2-7% below the reported 12.2 (the list is
-  partly ambiguous; a range is reported). A single fitted blend parameter
-  that matches Paradip's coker/CDU ratio (27.3%) *independently predicts*
-  its FCC/CDU ratio (28.1% vs published 28.0%). Run through the flowsheet,
-  that heavy-sour basket's VGO cannot run raw in an FCC (regenerator 816 &deg;C)
-  - and Paradip's unit list includes the VGO hydrotreater that fixes it.
+* **Real refinery (IndianOil Paradip, 15 mtpa)** - Nelson index from the published
+  unit list brackets CHT's 10.6 (10.5-11.9 counting every listed unit; an earlier
+  benchmark used IndianOil's commissioning-time 12.2, now corrected). PPAC's
+  reported distillate yield (79.2-80.8%) vs the model's 79.3-79.8%. A single fitted
+  blend parameter that matches Paradip's coker/CDU ratio (27.3%) *independently
+  predicts* its FCC/CDU ratio (28.1% vs published 28.0%). That heavy-sour basket's
+  VGO cannot run raw in an FCC (regenerator 816 &deg;C) - and Paradip's unit list
+  includes the VGO hydrotreater that fixes it.
 * **FCC kinetics are calibrated, not fitted to plant data** - constants
   reproduce typical published yield ranges at a reference feed; the
   structure (over-cracking maximum, ROT trade-off, heat-balance-driven coke)
   is the literature-grounded part. Feed-quality effects are directional
   heuristics with illustrative magnitudes. See `docs/VALIDATION.md`.
 
+## Complexity, margins and petrochemicals (PPAC + CHT)
+
+The repo links the two Government of India sources for refinery complexity and
+margins: the Centre for High Technology's
+[refinery complexity index](https://cht.gov.in/refinery-complexity-index) (NCI per
+refinery, OGJ 2025 survey) and [PPAC](https://ppac.gov.in)'s Ready Reckoner
+(GRM by company, distillate yield, fuel & loss, Indian basket).
+
+* GRM tracks complexity across the five PSU companies - but weakly (r = 0.28-0.41,
+  n = 5), and a coker only earns margin when the residue discount and distillate
+  cracks are wide.
+* **Petrochemical addition** (`docs/PETROCHEMICAL_EVALUATION.md`): propylene -> PP
+  via conventional recovery, ZSM-5 or a propylene-mode FCC, anchored on Paradip's
+  680 kt/y PP plant (Rs 3,150 crore). No propylene/PP price is available to this
+  repo, so it reports the **break-even PP price** ($906-1,164/t across routes and
+  two PPAC-calibrated margin regimes) and the FCC capex the option can afford. The
+  Nelson index does not change - it has no polymer factor.
+
 ## Not covered (roadmap)
 
 Catalytic reforming, hydrocracking, alkylation, sulfur recovery, hydrogen
-plant, crude-column tray hydraulics, preheat-train pinch design, ZSM-5 /
+plant, steam-cracker/aromatics/PDH petrochemical routes, market propylene/PP price data, crude-column tray hydraulics, preheat-train pinch design, ZSM-5 /
 propylene maximisation, equilibrium-catalyst metals (Ecat) model, crude
 compatibility/asphaltene stability, price-driven crude selection.
 

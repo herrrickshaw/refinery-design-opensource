@@ -1,15 +1,15 @@
-"""Validation against a real refinery: IndianOil's Paradip (15 mtpa, Nelson 12.2).
+"""Validation against a real refinery: IndianOil's Paradip (15 mtpa; CHT/OGJ-2025 Nelson index 10.6).
 
 (1) Nelson complexity from the published unit list, and (2) which crude
 basket loads the published coker and FCC capacities.  Sources: Oil & Gas
-Journal, "Indian Oil commissions Paradip refinery" (see docs/VALIDATION.md).
+Journal, "Indian Oil commissions Paradip refinery" and CHT (https://cht.gov.in/refinery-complexity-index); see docs/VALIDATION.md.
 
 Run: python examples/paradip_check.py
 """
 from refinery_design.benchmarks import CDU_MTPA, REPORTED_NCI, paradip_blend_fit, paradip_nci
 
-print("NELSON COMPLEXITY, Paradip published unit list (reported: %.1f)" % REPORTED_NCI)
-print(f"{'factor set':10s} {'VDU/CDU':>8s} {'units counted':>28s} {'NCI':>6s} {'vs 12.2':>8s}")
+print("NELSON COMPLEXITY, Paradip published unit list (CHT, OGJ 2025 survey: %.1f)" % REPORTED_NCI)
+print(f"{'factor set':10s} {'VDU/CDU':>8s} {'units counted':>28s} {'NCI':>6s} {'vs CHT':>8s}")
 for f in ("1998", "older"):
     for v, amb, label in ((0.6, False, "unambiguous only"), (1.0, False, "unambiguous only"),
                           (0.6, True, "+ ambiguous-unit readings"), (1.0, True, "+ ambiguous-unit readings")):

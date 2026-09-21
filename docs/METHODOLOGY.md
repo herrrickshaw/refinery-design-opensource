@@ -127,3 +127,37 @@ CDU/VDU, then FCC on the whole VGO cut and a delayed coker on the vacuum
 residue, into product pools; mass closure is asserted to 1e-9 in the tests.
 Hydrotreating is sized per stream but not fed back into the balance (its
 H2 uptake is small; H2S removal is reported separately).
+
+
+## Indian reference data (`india.py`)
+
+CHT's NCI table (capacity-weighted by company) and PPAC's GRM, distillate yield
+and fuel & loss, hand-transcribed with provenance (`scripts/build_india_data.py`).
+`indian_basket_usd_bbl` applies PPAC's own basket formula. `grm_nci_fit` is an
+ordinary least-squares line over five companies - descriptive only.
+
+## Gross refining margin (`grm.py`)
+
+GRM per barrel of crude = value of saleable pools - crude cost - fuel & loss, as
+PPAC (citing EIA) defines it. Pools are valued with a `PriceDeck`: gasoline-range
+and middle-distillate at crude plus a crack ($/bbl); LPG, slurry, vacuum residue
+and unconverted VGO at a fraction of crude value per barrel; petcoke at a fraction
+of crude $/t. Fuel gas and FCC coke are consumed; a 4.4% configuration-independent
+overhead stands in for fuel/loss the flowsheet does not model (PPAC Paradip 10.0%
+minus the 5.6% modelled). `calibrate_deck` scales the light cracks so a reference
+flowsheet reproduces a reported GRM exactly (GRM is linear in the scale). **The
+default cracks are illustrative and unsourced.**
+
+## Petrochemical addition (`petrochemical.py`)
+
+Three routes from FCC propylene to polypropylene: conventional recovery (~34% of
+the FCC LPG, i.e. 6 wt% of feed at the reference LPG yield of 17.8 wt%), ZSM-5
+(1.5x that, 9 wt%), and propylene-mode (16.2 wt% of feed, implied by Paradip's
+680 kt/y PP plant over its 4.2 Mt/y FCC). Each displaces fuel-pool product
+(LPG; plus gasoline for the extra ZSM-5 propylene; plus gasoline/LCO 70/30 for
+propylene-mode). PP-plant capex = Paradip's $451 M scaled by the six-tenths rule
+(Peters & Timmerhaus); capital charge from a capital-recovery factor (12%, 20 y).
+`evaluate` returns margin, GRM uplift and the **break-even PP price**;
+`affordable_fcc_capex_usd` returns the most a propylene-mode revamp can cost.
+No propylene or PP price is used anywhere. The Nelson index is unchanged by
+construction (no polymer factor).

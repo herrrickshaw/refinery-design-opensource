@@ -16,7 +16,10 @@ from refinery_design.assay import INF, Slate, available_crudes, load_crude
 from refinery_design.coker import delayed_coker
 from refinery_design.distillation import distill
 from refinery_design.fcc import FccFeed, FccKinetics, FccOperation, cooler_duty_for_regen_temperature, fcc_operate, riser_kinetics, rot_sweep
+from refinery_design import india
 from refinery_design.flowsheet import RefineryConfig, refine
+from refinery_design.grm import PriceDeck, calibrate_deck, gross_refining_margin
+from refinery_design.petrochemical import PetchemAssumptions, affordable_fcc_capex_usd, build_option, evaluate
 from refinery_design.hydrotreater import SERVICES, hydrotreat
 
 st.set_page_config(page_title="Refinery Conceptual Sizing", layout="wide")
@@ -30,8 +33,9 @@ st.caption(
 KEYS = available_crudes()
 NAMES = {k: load_crude(k).name for k in KEYS}
 
-tab_types, tab_slate, tab_cdu, tab_fcc, tab_ht, tab_ref = st.tabs(
-    ["Crude types", "Slate & blending", "Crude / vacuum unit", "FCC", "Hydrotreater & coker", "Whole refinery"]
+tab_types, tab_slate, tab_cdu, tab_fcc, tab_ht, tab_ref, tab_india, tab_grm = st.tabs(
+    ["Crude types", "Slate & blending", "Crude / vacuum unit", "FCC", "Hydrotreater & coker", "Whole refinery",
+     "India: CHT & PPAC", "GRM & petrochemicals"]
 )
 
 
@@ -217,6 +221,57 @@ with tab_ref:
             st.write(f"VGO hydrotreater: LHSV {h.lhsv_1_h:.2f} 1/h, reactor {h.reactor_volume_m3:,.0f} m3, catalyst {h.catalyst_t:,.0f} t, "
                      f"H2 make-up {h.h2_makeup_kg_h*24/1000:,.0f} t/day")
         st.caption(f"Mass closure {res.mass_closure:.6f}")
+    except ValueError as e:
+        st.error(str(e))
+
+# ---------------------------------------------------------------------
+with tab_india:
+    st.header("Indian refineries: complexity (CHT) and margins (PPAC)")
+    st.caption("NCI: Centre for High Technology, https://cht.gov.in/refinery-complexity-index (OGJ 2025 survey). "
+               "GRM, yields: PPAC Ready Reckoner FY2022-23, https://ppac.gov.in.")
+    rows = [{"Refinery": r["refinery"], "Company": r["company"], "NCI": r["nci"], "MMTPA": r["capacity_mmtpa"]}
+            for r in india.refineries() if r["nci"] is not None]
+    st.dataframe(pd.DataFrame(rows), hide_index=True)
+    w = india.company_nci()
+    st.dataframe(pd.DataFrame([{"Company": c, "NCI (cap-weighted)": round(w[c], 2),
+                                "GRM FY21-22 $/bbl": india.grm_usd_bbl(c, "2021-22"),
+                                "GRM FY22-23 $/bbl": india.grm_usd_bbl(c, "2022-23")} for c in ("IOCL", "BPCL", "HPCL", "CPCL", "MRPL")]),
+                 hide_index=True)
+    fits = {yr or "mean of years": india.grm_nci_fit(yr) for yr in (None, "2021-22", "2022-23")}
+    st.dataframe(pd.DataFrame(fits).T.round(2))
+    st.caption("GRM rises with NCI but weakly (r 0.28-0.41, n = 5): do not lean on complexity as a margin guarantee.")
+
+# ---------------------------------------------------------------------
+with tab_grm:
+    st.header("GRM and a petrochemical (propylene -> polypropylene) addition")
+    st.caption("Product prices are INPUTS. Calibrate the cracks to a PPAC-reported GRM; petchem is judged by break-even PP price "
+               "because no propylene/PP price is available. See docs/PETROCHEMICAL_EVALUATION.md.")
+    slate = slate_from_widgets("grm", ["upper_zakum", "cold_lake_blend"])
+    g1, g2, g3, g4 = st.columns(4)
+    bpd = g1.number_input("Crude charge (bpd)  ", 50_000, 600_000, 290_000, step=10_000)
+    crude_px = g2.number_input("Crude price ($/bbl)", 40.0, 150.0, 79.18)
+    target = g3.number_input("Target GRM to calibrate ($/bbl)", 1.0, 40.0, 11.25)
+    pp_px = g4.number_input("PP price ($/t)", 700.0, 2000.0, 1100.0, step=50.0)
+    try:
+        res = refine(slate, bpd, RefineryConfig(vgo_hydrotreat=True))
+        deck = calibrate_deck(res, PriceDeck(crude_px), target)
+        g = gross_refining_margin(res, deck)
+        c1, c2, c3 = st.columns(3)
+        c1.metric("GRM (calibrated)", f"{g.grm_usd_bbl:.2f} $/bbl")
+        c2.metric("Implied middle-distillate crack", f"{deck.cracks_usd_bbl['middle_distillate']:.1f} $/bbl")
+        c3.metric("Nelson (modelled units)", f"{res.complexity():.2f}")
+        a = PetchemAssumptions()
+        out = []
+        for mode in ("conventional", "zsm5", "propylene_mode"):
+            o = build_option(res, deck, mode, a)
+            e = evaluate(o, pp_px, a)
+            out.append({"Route": mode, "Propylene wt% of FCC feed": round(o.propylene_wt_pct_of_fcc_feed, 1), "PP kt/y": round(o.pp_t_y / 1e3),
+                        "PP capex $M": round(o.capex_usd / 1e6), "Break-even PP $/t": round(e.breakeven_pp_price_usd_t),
+                        "Net $M/y at PP price": round(e.net_usd_y / 1e6, 1), "GRM uplift $/bbl": round(e.grm_uplift_usd_bbl, 2),
+                        "Max FCC-side capex $M": round(affordable_fcc_capex_usd(o, pp_px, a) / 1e6) if mode == "propylene_mode" else None})
+        st.dataframe(pd.DataFrame(out), hide_index=True)
+        st.caption("PP capex scaled from Paradip (680 kt/y, Rs 3,150 crore) by the six-tenths rule. Opex $100/t, 12% hurdle, 20 y are assumptions. "
+                   "Nelson index change: 0.0.")
     except ValueError as e:
         st.error(str(e))
 

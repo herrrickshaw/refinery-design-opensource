@@ -1,8 +1,9 @@
 """Published data for a real refinery, used as a validation benchmark.
 
 IndianOil Paradip (Odisha): capacities as reported by Oil & Gas Journal,
-"Indian Oil commissions Paradip refinery" (Nelson complexity 12.2,
-"15 million-tonne/year, full-conversion refinery").  Three entries in that
+"Indian Oil commissions Paradip refinery" (reported Nelson complexity: 10.6 by
+CHT/OGJ 2025, 12.2 by IndianOil at commissioning; "15 million-tonne/year,
+full-conversion refinery").  Three entries in that
 report carry units that do not scale against a 15 mtpa refinery as printed
 ("105,000-tpy" VGO hydrotreater, "650-tpy" alkylation, "300-tpy"
 isomerisation); they are read here as b/d, kt/yr and kt/yr respectively and
@@ -13,7 +14,10 @@ from __future__ import annotations
 from .complexity import nelson_complexity
 
 CDU_MTPA = 15.0
-REPORTED_NCI = 12.2
+# CHT (MoPNG), citing the OGJ WW Refining & Complexity survey 2025 - the reference used for validation
+REPORTED_NCI = 10.6
+# IndianOil's own figure at commissioning (OGJ 2016) - superseded by the survey value above
+IOC_COMMISSIONING_NCI = 12.2
 _BPD_TO_MTPA = 0.159 * 0.84 * 365 / 1e6  # barrel/day of ~0.84 t/m3 gas oil -> Mt/yr
 
 # published unambiguously (Mt/yr)
@@ -71,3 +75,21 @@ def paradip_blend_fit(medium_sour: str = "upper_zakum", heavy_sour: str = "cold_
     return {"heavy_fraction_vol": x, "api": s.api, "sulfur_wt": s.sulfur_wt,
             "vr_wt_frac": s.cut(550, INF).wt_frac, "vgo_wt_frac": s.cut(370, 550).wt_frac,
             "coker_to_cdu": COKER_TO_CDU, "fcc_to_cdu": FCC_TO_CDU}
+
+
+# --------------------------------------------------------------------
+# PPAC-reported distillate yield of Paradip (Ready Reckoner Table 4.8), % - definition not stated
+# --------------------------------------------------------------------
+PARADIP_PPAC_DISTILLATE_PCT = {"2018-19": 80.8, "2019-20": 80.7, "2020-21": 79.2, "2021-22": 79.6, "2022-23": 79.5}
+
+
+def paradip_model_refinery(vgo_hydrotreat: bool = True):
+    """The fitted Paradip crude basket run through the flowsheet at 15 mtpa."""
+    from .assay import Slate, load_crude
+    from .flowsheet import RefineryConfig, refine
+
+    fit = paradip_blend_fit()
+    x = fit["heavy_fraction_vol"]
+    slate = Slate([(load_crude("upper_zakum"), 1 - x), (load_crude("cold_lake_blend"), x)])
+    bpd = CDU_MTPA * 1e9 / 8760.0 / slate.density_kg_m3 / 0.158987294928 * 24.0
+    return refine(slate, bpd, RefineryConfig(vgo_hydrotreat=vgo_hydrotreat))
