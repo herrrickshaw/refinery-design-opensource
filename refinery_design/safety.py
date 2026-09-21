@@ -187,6 +187,17 @@ def cracker_flags(option) -> list[SafetyFlag]:
     return out
 
 
+def dual_feed_flags(option) -> list[SafetyFlag]:
+    """Flags for a dual-feed (naphtha + LPG) cracker: adds propane/butane feed storage and handling to the cracker flags."""
+    out = cracker_flags(option)
+    if option.lpg_t_y > 0:
+        out += storage_flags(option.lpg_t_y)
+        out.append(_flag("LPG-fed furnaces", "watch", f"{option.lpg_t_y/1e3:,.0f} kt/y propane/butane feed: refrigerated or pressurised feed storage, "
+                         "vaporisers and feed-gas piping to furnaces; a leak is a vapour-cloud source - fixed gas detection and automatic water spray on LPG vessels "
+                         "(OISD-STD-116 2025 summary), layout separation (118)", "steam_cracker", "OISD list (verified); details: summaries, medium/low confidence"))
+    return out
+
+
 def storage_flags(lpg_t_y: float, propylene_t_y: float = 0.0) -> list[SafetyFlag]:
     msg = f"LPG-range product {lpg_t_y/1e3:,.0f} kt/y" + (f", of which propylene {propylene_t_y/1e3:,.0f} kt/y" if propylene_t_y else "") + \
           ": LPG installation, mounded/refrigerated storage and automatic water spray on LPG/C4 vessels; propylene applicability to the LPG standards not verified"

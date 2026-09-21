@@ -209,3 +209,12 @@ reproducing any proprietary design basis.
 * **Safety** - OISD's standards list (verified, 105 entries); OISD-STD-116 (2025) details from iFluids (medium); OISD-STD-118 distances from a blog
   (low); FCC and corrosion literature via search summaries; the standards themselves were not read. OISD-STD-141/144/154/175/192/201/214/216/226
   show "Aug, 2026" editions on the list.
+
+* **Propane cracking yields (dual-feed cracker)** - US patent 5,990,370, BP Chemicals, *Steam cracking of ethane-rich and propane-rich streams*:
+  Table 1 (dedicated propane cracking, 84-92% conversion), Table 2 (ethane, 50-65%), operating conditions (coil outlet 823-832 C, steam/
+  hydrocarbon 0.30 for propane and up to 0.40 for butanes, inlet 2-3 barg, ~1 s). The patent PDF is image-only; the tables were read from the page
+  images and transcribed into `dual_feed_cracker.py`, and each column sums to 100 +/- 0.6 (rounding and unlisted trace species). **Butane yields
+  were not found**: search summaries conflict (46% ethylene + 20% propylene vs 32-40% ethylene, 53-57% total olefins) and the model's butane slate is
+  an assumption. Dual-feed facts: IOCL 1.5 Mt/y "dual-feed naphtha cracker" at Paradip, Rs 61,077 crore (Hydrocarbon Processing, fetched - no feed split
+  given); BPCL Bina 1.2 Mt/y ethylene (OGJ); a search-result summary of industry sources says a seasonal LPG cost advantage made it the lowest-cost ethylene feed
+  (unattributed, low confidence - the model derives the LPG/naphtha comparison from its own price deck instead).

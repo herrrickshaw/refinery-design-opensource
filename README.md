@@ -29,7 +29,7 @@ was and was not verified.
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
-pytest -q                                          # 228 tests
+pytest -q                                          # 244 tests
 python examples/full_refinery_worked_example.py    # 8 crudes through one refinery
 python examples/fcc_worked_example.py              # FCC heat balance, riser, regenerator
 python examples/paradip_check.py                   # validation against a real refinery
@@ -39,6 +39,7 @@ python examples/fcc_rundown.py                     # FCC rundown streams, cut po
 python examples/petrol_displacement.py             # ethanol-displaced petrol: PPAC data, FCC secondary mode, routes
 python examples/crude_sourcing_study.py            # crude basket, 2026 shock, local-currency settlement, Russian crude
 python examples/safety_review.py                   # OISD standards map + model safety flags
+python examples/dual_feed_cracker.py               # naphtha + LPG dual-feed cracker: sweep, refinery supply, LPG-import catch
 streamlit run streamlit_app.py                     # interactive app
 ```
 
@@ -83,6 +84,7 @@ and volume close exactly), and crudes blend by volume into a `Slate`.
 | `refinery_design/ethanol.py` | Ethanol mass share, refinery petrol needed, E-step displacement, tender arithmetic | Petrol displaced by blending |
 | `refinery_design/fcc_modes.py` | FCC gasoline-lean modes + wet-gas load from the PCS paper's figures | Mode yields, gasoline removed, gas-plant fix |
 | `refinery_design/steam_cracker.py` | Naphtha steam cracker -> PE + PP; cited yield points, Bina-checked capex | Ethylene/propylene volumes, break-evens |
+| `refinery_design/dual_feed_cracker.py` | Naphtha + LPG cracker: propane yields from a real patent table (recycled to extinction), butane assumed, LPG-share sweep, refinery LPG supply | Ethylene/propylene, break-even LPG and PE prices |
 | `refinery_design/routes.py` | Petrol-switch options screen on one price deck | Gasoline removed, margin, net of capital |
 | `refinery_design/crude_sourcing.py` | Realised import price vs Indian basket, 2026 shock, local-currency arithmetic, assay-based crude value | Sourcing study |
 | `refinery_design/safety.py` | OISD standards map (105-entry official list) + screening flags | Which standards apply; model flags |
@@ -161,6 +163,9 @@ figures show the gas plant is the constraint (+5.1% wet-gas flow per wt% propyle
   FY2024-25 - reported, not hidden. **NRL's GRM is not comparable** (excise benefit + domestic Assam crude) and is excluded from fits.
 * **Steam cracker (naphtha -> ethylene) does not pay** on these assumptions at September 2026 or January 2026 prices, at 3-4 Mt/y of
   naphtha, in every stress case after capital (`docs/PETROCHEMICAL_EVALUATION.md`).
+* **Dual-feed cracker (naphtha + LPG)**: propane cracks to ~43% ethylene (real BP patent table, recycled to extinction) vs 27% for naphtha, and the cash margin
+  turns positive at ~75% LPG (+$31 M/y; 100%: +$148 M/y at 4 Mt/y) - but it still does not pay after capital, the refinery can supply only ~820 kt/y of LPG, and
+  every tonne cracked is a tonne of cooking gas India would import (64% of LPG is already imported). Butane yields are assumed.
 * **Crude sourcing** (`docs/CRUDE_SOURCING_AND_LOCAL_CURRENCY.md`): India paid below the Indian basket in 7 of 8 years (FY23-24: $8.4 bn);
   the 2026 Hormuz shock cost ~$21 bn in four months; one basis point on the crude bill is $12.3 M/yr. **No measured saving from
   local-currency settlement was found** - MoPNG reported suppliers passing conversion costs to IOC - and only the UAE can plausibly recycle

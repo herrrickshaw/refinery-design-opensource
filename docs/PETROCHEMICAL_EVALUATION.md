@@ -185,3 +185,44 @@ and the propylene-mode FCC could cost up to ~$2.3 bn at list price (~$3.6 bn at 
 this document ($1,182-1,320 break-even, $290-430 headroom) used GRM-calibrated cracks (gasoline +$17-26, diesel +$29-43) that were wider
 than what FY25-26 trade actually shows (gasoline +$12, diesel +$25), so they priced the displaced fuel higher. **Prefer the
 observed-price numbers**; the difference is the deck, not the method. See `PETROL_DISPLACEMENT.md` for the mode-by-mode screen.
+
+
+## Dual-feed cracker: naphtha + LPG (added)
+
+`dual_feed_cracker.py` models the configuration India is actually building (IOCL Paradip 1.5 Mt/y, BPCL Bina 1.2 Mt/y ethylene are both
+described as dual-feed; no feed-split percentages were found anywhere, so the LPG share is a variable, not a fact).
+
+**Yields.** Propane comes from a real industrial table: US patent 5,990,370 (BP Chemicals, Kinneil cracker) Table 1, per-pass yields at
+84-92% propane conversion, coil outlet 823-832 C, steam/hydrocarbon 0.30, ~1 s. With unconverted propane recycled to extinction and
+ethane recycled with the patent's own Table 2 selectivity (0.80 ethylene per t converted), the overall slate is **~43% ethylene and 15-19%
+propylene** (1.6x the ethylene per tonne of a naphtha cracker at 850 C), with far less pygas (6% vs 17%) and pyrolysis fuel oil (1.2% vs 4%).
+**Butane is not verified**: two sources conflict (46% ethylene + 20% propylene vs 32-40% ethylene) and the model takes the conservative
+midpoint (36% ethylene) with the rest assumed; the default feed is a 50/50 propane/butane mix, also an assumption.
+
+**Result, 4 Mt/y total feed, Sept-2026 prices (naphtha $855/t, LPG $783/t import parity, PE $1,480, PP $1,612):**
+
+| LPG share | ethylene Mt/y | cash margin before capital | net after capital | break-even PE |
+|---|---|---|---|---|
+| 0% (naphtha only) | 1.08 | -$320 M | -$1,123 M | $2,484/t |
+| 25% | 1.21 | -$203 M | -$1,006 M | $2,286 |
+| 50% | 1.33 | -$86 M | -$889 M | $2,125 |
+| **75%** | 1.46 | **+$31 M** | -$772 M | $1,992 |
+| **100%** | 1.58 | **+$148 M** | -$655 M | $1,880 |
+
+* **LPG is the lever, not the naphtha**: each 25 points of LPG adds ~$117 M/y of cash margin, and the cash margin turns positive at ~75% LPG.
+* **It still does not pay after capital** at list PE ($1,480): the capital charge (~$0.8 bn/y on ~$6 bn at $1,500/tpa) exceeds the operating margin at
+  every mix, and even at $800/tpa of feed the 25/75 case nets -$397 M/y ($1,000/tpa: -$504 M). At 25/75 the LPG price would have to fall to about
+  **$526/t** (vs $783) for the net to reach zero - close to PPAC's observed FY2025-26 LPG import value ($531/t), but that was at a $69/bbl basket,
+  when PE and PP were also far cheaper, so it is not evidence that the cracker paid then.
+* **The refinery can supply only part of the LPG.** Its LPG pool is 981 kt/y; keeping the FCC propylene for PP (161 kt/y) leaves **820 kt/y** of
+  saturated LPG. With its 1,545 kt/y of straight-run naphtha that is a 0.74 Mt/y-ethylene, sub-scale dual-feed cracker: cash margin -$93 M/y, net
+  -$679 M/y. Per tonne of feed it is better than the naphtha-only cracker (-$287 vs -$374/t), but the larger plant carries a larger capital charge.
+* **The LPG import catch.** A world-scale cracker needs far more LPG than the refinery makes; at a 50% LPG share the refinery must import 725 kt/y
+  more, at 75% about 3.8 Mt/y (18% of India's FY2025-26 LPG imports of 21.3 Mt, 64% of consumption). Each tonne cracked is a tonne of cooking-gas
+  supply that has to be replaced by another import, so the "LPG cost advantage over naphtha" reported for India is a national-security trade-off as
+  much as a price one.
+
+**What this changes:** a dual-feed cracker is much closer to paying than a naphtha-only one, and the reason Indian projects are dual-feed is visible
+in the cash margin. But on these assumptions it still needs support (a lower LPG price, a higher PE price, cheaper capex, fiscal incentives) to earn a
+return, and it competes with the FCC-propylene -> PP route, which pays on the same prices without a new cracker. Yield and price caveats stand: butane
+is assumed, the by-products are valued conservatively (no butadiene or benzene premium), and the capex is the six-tenths-scaled upper bound.

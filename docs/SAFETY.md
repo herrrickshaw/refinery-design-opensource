@@ -75,6 +75,13 @@ ethylene fall under the LPG standards (144/150/236) or need their own basis.
 * **Steam cracker and polymers:** 0.81 Mt/y ethylene and 0.45 Mt/y propylene from 3 Mt/y naphtha: new ethylene/propylene storage and
   refrigeration, a hydrogen-rich stream, furnace water curtain and polymer-building sprinklers under the 2025 fire standard.
 
+## Dual-feed (LPG) crackers
+
+`safety.dual_feed_flags` adds propane/butane feed handling to the cracker flags: refrigerated or pressurised feed storage, vaporisers and feed-gas
+piping to the furnaces (a leak is a vapour-cloud source), fixed gas detection, and automatic water spray on LPG vessels (OISD-STD-116, 2025, per the
+secondary summary) with layout separation under OISD-STD-118. The LPG installation standards are OISD-STD-144 (edition Aug 2026), 150 (mounded) and
+236 (refrigerated); whether they govern a cracker's feed storage was not verified.
+
 ## Limits
 
 No consequence modelling, no relief or flare load calculation, no SIL determination and no layout were done. The 760 C and 15%

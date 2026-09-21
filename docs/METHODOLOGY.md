@@ -192,3 +192,7 @@ LCO/slurry sulfur split (slurry 2x LCO) and the heavy-naphtha density (780 kg/m3
 * `crude_sourcing.py` - realised vs basket, shock bill, value of a basis point and grid, partner self-financing ratio, assay-based relative
   crude value, Russian-crude news accessors.
 * `safety.py` - OISD list, design-element map, screening flags with a basis string each.
+
+* `dual_feed_cracker.py` - propane slate from the BP patent table (interpolated on conversion), propane and ethane recycled to extinction (ethane
+  selectivity from the patent's Table 2), butane assumed; naphtha slate from `steam_cracker.py`; capex on total feed by the six-tenths rule; LPG priced at
+  the deck's import-parity value; refinery LPG supply = LPG pool minus the FCC propylene kept for PP; LPG above that is flagged as imported.

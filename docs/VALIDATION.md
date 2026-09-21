@@ -289,3 +289,12 @@ $1,000/tpa (`docs/PETROCHEMICAL_EVALUATION.md`).
   agree with PPAC's printed ones.
 * Break-evens for the PP routes fell from $1,182-1,320 to $1,058-1,126 when the calibrated (wider) cracks were replaced by observed ones.
 * OISD-STD-154 is training, not fired heaters (see `SAFETY.md`).
+
+
+## 13. Dual-feed cracker: propane slate vs a real table
+
+The propane slate is the patent's own table, so its per-pass numbers are reproduced exactly at the 84/86/88/90/92% columns (tests). The derived
+overall yield (recycle to extinction, ~43% ethylene from propane) is *not* fitted: it lands on the commonly quoted ~42% for propane, an independent
+plausibility check. Not validated: the butane slate (assumed), the ethane-recycle remainder split, the by-product values, and any dual-feed *interaction*
+(shared separation train, furnace changeover) - the model simply adds two single-feed slates and scales capex on total feed. With no LPG it reduces to
+the naphtha cracker exactly (tested).
