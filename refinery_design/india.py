@@ -9,8 +9,22 @@
 
 PPAC's GRM is the EIA definition: revenue from product sales minus the cost of
 the raw materials used to make them, in $/bbl of crude.  It is a company-level
-number (refinery-wise GRM is not published); the North-East refineries' (IOCL's
-Guwahati/Digboi/Bongaigaon and NRL) figures include an excise-duty benefit.
+number (refinery-wise GRM is not published).
+
+**NRL caveat.**  Numaligarh (NRL) reports a GRM of $20-43/bbl (FY2020-21 to FY2025-26), two to four
+times the other PSUs, and it is not comparable with them.  Two things set it apart:
+
+* PPAC footnotes that the North-East refineries' GRM "include excise duty benefit" (verified, PPAC
+  Table 4.7) - a fiscal incentive that raises reported margin without any change in processing;
+* NRL runs mainly *domestic* Upper-Assam crude supplied by Oil India and ONGC (3,033 kt of domestic
+  crude out of 3,066 kt processed in FY2024-25, per a news report of NRL's results), not imported
+  benchmark crude, so its crude cost is not the import price the other refineries pay.
+
+That domestic-crude pricing arrangement is *not verified* here, so this repo does not attribute a size
+to it; it only refuses to mix NRL into any margin comparison.  NRL's expansion from 3 to 9 MMTPA with
+imported crude (reported as commissioned December 2025) will change the picture after FY2025-26.
+IOCL's own GRM also includes the excise benefit on its North-East refineries (a small share of its
+throughput).  :func:`grm_nci_fit` therefore excludes NRL by default.
 """
 from __future__ import annotations
 
@@ -61,8 +75,8 @@ def distillate_yield_pct(refinery: str, year: str) -> float | None:
 
 
 def paradip_fuel_loss_pct(year: str = "2022-23") -> float:
-    p = _raw()["ppac"]
-    return p["fuel_loss"]["Paradip_pct"][p["grm_years"].index(year)]
+    f = _raw()["ppac"]["fuel_loss"]
+    return f["Paradip_pct"][f["years"].index(year)]
 
 
 def psu_fuel_loss_pct() -> float:
@@ -73,6 +87,12 @@ def psu_fuel_loss_pct() -> float:
 def indian_basket_usd_bbl(oman: float, dubai: float, brent_dated: float) -> float:
     """PPAC's Indian basket (from 2020-21): 75.62% sour (mean of Oman and Dubai) + 24.38% Brent Dated."""
     return 0.7562 * 0.5 * (oman + dubai) + 0.2438 * brent_dated
+
+
+NRL_CAVEAT = ("NRL's GRM includes the North-East excise-duty benefit (PPAC Table 4.7 footnote) and reflects mostly domestic "
+              "Upper-Assam crude (OIL/ONGC) rather than imported crude; it is not comparable with other refiners' GRM. "
+              "The domestic-crude pricing mechanism is not verified here.")
+NON_COMPARABLE = ("NRL",)
 
 
 def grm_nci_fit(year: str | None = None, companies: tuple[str, ...] = ("IOCL", "BPCL", "HPCL", "CPCL", "MRPL")) -> dict:

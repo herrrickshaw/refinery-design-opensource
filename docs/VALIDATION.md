@@ -166,11 +166,17 @@ MRPL:
 
 | Year | slope ($/bbl per NCI point) | r | n |
 |---|---|---|---|
-| mean of FY2017-18 to FY2022-23 | +0.41 | 0.31 | 5 |
+| mean of FY2017-18 to FY2025-26 | +0.55 | 0.40 | 5 |
 | FY2021-22 | +0.44 | 0.28 | 5 |
-| FY2022-23 (provisional) | +2.09 | 0.41 | 5 |
+| FY2022-23 | +2.09 | 0.41 | 5 |
+| FY2023-24 | +0.91 | 0.37 | 5 |
+| FY2024-25 | +0.15 | 0.13 | 5 |
 
-Higher complexity goes with higher GRM in every cut, but weakly. Five companies
+(Companies: IOCL, BPCL, HPCL, CPCL, MRPL; **NRL is excluded** - see the caveat below. IOCL and MRPL stopped
+publishing GRM for FY2025-26, so that year is not fitted.)
+
+Higher complexity goes with higher GRM in every cut, but weakly (r 0.13-0.41; it fades to nearly nothing
+in FY2024-25). Five companies
 cannot support more, GRM is company-level (PPAC does not publish refinery-wise
 GRM), the North-East refineries' figures include an excise-duty benefit, and
 crude slate and year dominate. An academic panel study (Driscoll-Kraay
@@ -224,3 +230,38 @@ check. Heavier baskets sit far above the US-style pool shares (Paradip basket 49
 crude makes little straight-run naphtha and diesel - expected, not a discrepancy. The one modelled
 distillate-mode result (riser 11 &deg;C cooler plus the end-point cut) gives +6.3 wt% LCO and -3.6 wt%
 gasoline; no published figure was found for that combination.
+
+
+**NRL is not comparable.** Numaligarh reports $20-43/bbl (FY2025-26: $29.20), two to four times the other PSUs.
+PPAC footnotes that the North-East refineries' GRM include an excise-duty benefit (verified); NRL also runs
+mostly domestic Upper-Assam crude from Oil India and ONGC (3,033 kt of domestic crude of 3,066 kt processed in
+FY2024-25, per a news report of NRL's results) rather than imported benchmark crude. That pricing arrangement is
+*not verified* here, so no size is attributed to it; NRL is simply excluded from margin comparisons
+(`india.NON_COMPARABLE`, `india.NRL_CAVEAT`). Its 3 -> 9 MMTPA expansion on imported crude (reported as
+commissioned December 2025) will change the comparison after FY2025-26.
+
+## 9. Observed prices reproduce reported GRM (PPAC trade data, no calibration)
+
+`trade.TradeDeck` prices the flowsheet's product pools with PPAC's *observed* trade unit values (Table 4.11:
+value / quantity): LPG at the import value, petrol and diesel at export values, fuel oil and petcoke at import
+values. Run on the Paradip-basket flowsheet with **no calibration**:
+
+| FY | Indian-basket-like crude | Model GRM | PPAC-reported GRM |
+|---|---|---|---|
+| 2021-22 | $78.6/bbl | 6.46 | IOCL 11.25, BPCL 9.09, HPCL 7.19 |
+| 2022-23 | $93.6 | **19.37** | IOCL **19.52**, BPCL 20.24, HPCL 12.09 |
+| 2023-24 | $78.8 | 10.34 | IOCL 12.05, BPCL 14.14, HPCL 9.08 |
+| 2024-25 | $78.0 | **0.62** | IOCL 4.80, BPCL 6.82, HPCL 5.74 |
+| 2025-26 | $69.4 | 8.48 | BPCL 11.74, HPCL 8.79 |
+
+It lands inside the reported PSU range in three of five years (FY2022-23 within $0.15 of IOCL) and **misses in
+FY2024-25** ($4-6 low) and to a lesser degree FY2021-22. The flowsheet omits products with premiums (bitumen,
+lubes, petchem), uses one export/import unit value per product for a mix of grades, and PPAC's unit values are
+rounded and timing-lagged; treat it as a plausibility check, not a fit.
+
+The same data give an independent check on the GRM-calibrated cracks (section 6): trade-implied gasoline/diesel
+cracks are +$17.0/+$13.6 (FY2021-22) and +$23.0/+$43.4 (FY2022-23) against calibrated +$17.4/+$29.0 and
++$26.0/+$43.4. They agree on gasoline in both years and on diesel in FY2022-23, and **disagree on diesel in
+FY2021-22** (+$13.6 vs +$29.0) - diesel export realisations lagged the crude spike that year. LPG has traded at
+0.62-0.80 of crude value per barrel and fuel oil at 0.81-0.97 (defaults in `grm.py`: 0.70 and 0.75 - the fuel-oil
+default is on the low side of what India actually realises).

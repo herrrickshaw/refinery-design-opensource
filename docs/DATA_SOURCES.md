@@ -73,6 +73,35 @@ FY2021-22 $79.18). PPAC publishes GRM by company, not by refinery, and does not
 define "distillate". Newer editions of the Ready Reckoner may exist; this repo
 uses FY2022-23.
 
+## PPAC Ready Reckoner FY 2025-26 (newest edition) - verified
+
+`The PPAC Ready Reckoner FY 2025-26`
+(<https://ppac.gov.in/download.php?file=rep_studies%2F1784899305_The_PPAC_Ready_Reckoner_FY_2025%E2%80%9326_Final.pdf>)
+supersedes the FY2022-23 edition for: Table 4.5 production, 4.7 GRM (FY2023-24 to FY2025-26; IOCL and MRPL
+stopped publishing GRM for FY2025-26), 4.8 distillate yield, 4.11 import/export (FY2020-21 to FY2025-26), 6.1
+consumption (MS 35.0 -> 37.2 -> 40.0 -> 42.6 MMT FY2022-23 to FY2025-26) and 6.10 ethanol blending (ESY 2024-25:
+1,040.1 crore litres, 19.24%; ESY 2025-26 Nov-Mar: 423.4 crore litres, 19.99%). The trade table was parsed from the
+PDF text and agrees with PPAC's printed totals to +/-0.4 MMT (`tests/test_trade_ethanol.py`); the parser slices
+on newlines, not `splitlines()` (form-feed characters shift line numbers). PPAC Industry Consumption Report
+January 2026 (fetched): MS 3.51 MMT (+6.1%), Apr-Jan +6.4%; naphtha domestic consumption 9.77 MMT (-11.9%,
+94% petrochemicals). Figures inside charts and the ESY/feedstock column assignment of Table 6.10(A) were not
+machine-readable; the latter is flagged in the data file.
+
+## NRL - partly verified
+
+Numaligarh's domestic-crude sourcing (3,033 kt from OIL/ONGC of 3,066 kt processed, FY2024-25; expansion to
+9 MMTPA with imported crude via Paradip, commissioned Dec 2025) is from web-search summaries of NRL/Oil India
+reporting (medium-low confidence). The excise-duty footnote is PPAC's own (verified). How domestic crude is
+priced relative to imports was not found.
+
+## Ethanol tenders - news-sourced, medium/low confidence
+
+OMC ESY 2025-26 Cycle 1 tender (IAmRenew, fetched): requirement 1,050 crore litres, offers 1,776.49 (sugarcane
+471.63, grain 1,304.86), FCI-rice ethanol Rs 60,320/kl (Rs 58,500 the year before). Supreme Court allowed a further
+149 crore litres for Q-IV (Business Standard - page blocked, snippet only). ESY 2026-27 expected demand
+1,150-1,212 crore litres (ChiniMandi snippet; 60.6 bn litres of petrol x 20%). **No ESY 2026-27 tender
+allocation was found.** Capacity ~2,000 crore litres against ~1,000-1,050 demand.
+
 ## Petrochemical economics - partial
 
 * **Verified (search summaries of the OGJ / IndianOil material):** Paradip's
