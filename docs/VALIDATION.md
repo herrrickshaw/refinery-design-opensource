@@ -265,3 +265,27 @@ cracks are +$17.0/+$13.6 (FY2021-22) and +$23.0/+$43.4 (FY2022-23) against calib
 FY2021-22** (+$13.6 vs +$29.0) - diesel export realisations lagged the crude spike that year. LPG has traded at
 0.62-0.80 of crude value per barrel and fuel oil at 0.81-0.97 (defaults in `grm.py`: 0.70 and 0.75 - the fuel-oil
 default is on the low side of what India actually realises).
+
+
+## 10. FCC gas-plant proxy vs the PCS paper's figures
+
+`fcc_modes.py` takes its wet-gas slopes from the paper's own figures, so the tests check *reading* them, not fitting: Figure 8 gives +5.07%
+per wt% propylene (34,500 -> 44,300 ICFM over 5.6 wt%); Figure 10 gives 0.83%/F (130 -> 115 F); Figure 9 gives a pressure ratio of 0.813
+at 6.5 psig, and the code recovers 6.5 psig from a 44,300/36,000 ratio. Not validated: the dry-gas term in the wet-gas estimate, the
+mode yield shifts other than propylene, and any absolute compressor capacity (unit-specific). The propylene mode (x1.73) is outside the
+paper's 7.5-13.1 wt% range and is flagged so.
+
+## 11. Cracker capex vs BPCL Bina
+
+The default capex ($1,500/tpa of feed at 4 Mt, six-tenths rule) gives $5.7-6.4 bn for the 3.6-4.4 Mt of naphtha/LPG feed that 1.2 Mt/y of
+ethylene needs, against Bina's disclosed ~$6 bn - but Bina's figure *also* includes 1.15 Mt/y PE, 0.55 Mt/y PP, aromatics and a
+refinery expansion, so the model is likely to overstate a cracker-only cost. The cracker verdict (does not pay) survives capex of
+$1,000/tpa (`docs/PETROCHEMICAL_EVALUATION.md`).
+
+## 12. Corrections made while adding these modules
+
+* PPAC's newer edition (FY2025-26) superseded the FY2022-23 data; GRM-vs-NCI moved from r 0.28-0.41 to 0.13-0.41 with FY2024-25 near zero.
+* The trade-table parser first shifted lines because Python's `splitlines()` treats the PDF's form-feed characters as line breaks; totals now
+  agree with PPAC's printed ones.
+* Break-evens for the PP routes fell from $1,182-1,320 to $1,058-1,126 when the calibrated (wider) cracks were replaced by observed ones.
+* OISD-STD-154 is training, not fired heaters (see `SAFETY.md`).

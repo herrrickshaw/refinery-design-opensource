@@ -177,3 +177,18 @@ slurry, coke) with volumes, densities and sulfur; shifts heavy naphtha into LCO 
 slope (~0.18 vol% of feed per degC of gasoline end-point reduction); runs the FCC in distillate mode
 (cooler riser plus end-point cut); and computes the FCC's share of the gasoline and diesel pools.
 LCO/slurry sulfur split (slurry 2x LCO) and the heavy-naphtha density (780 kg/m3) are assumptions.
+
+
+## Trade, ethanol, FCC modes, cracker, routes, sourcing, safety (added)
+
+* `trade.py` - PPAC trade values / quantities give observed unit values; `TradeDeck` prices pools at LPG import, petrol/diesel export, fuel-oil
+  and petcoke import values; `RebasedTradeDeck` keeps a year's cracks and price fractions at a new crude price; `petrol_balance` exposes the
+  implied ethanol (consumption is blended petrol).
+* `ethanol.py` - volume blend to mass share via ethanol 789 and petrol 745 kg/m3; refinery petrol = MS x (1 - ethanol mass share).
+* `fcc_modes.py` - modes from the FCC model plus mass-conserving shifts; wet-gas load from the PCS paper's Figure 8 slope and Figures 9-10
+  for the mitigation; dry-gas term extrapolated.
+* `steam_cracker.py` - yield slate interpolated on coil-outlet temperature from cited points; conservative co-product values; capex six-tenths.
+* `routes.py` - per-route gasoline removed, fuel-only margin, petrochemical margin and capital charge on one deck.
+* `crude_sourcing.py` - realised vs basket, shock bill, value of a basis point and grid, partner self-financing ratio, assay-based relative
+  crude value, Russian-crude news accessors.
+* `safety.py` - OISD list, design-element map, screening flags with a basis string each.

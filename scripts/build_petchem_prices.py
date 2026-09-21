@@ -23,6 +23,12 @@ IOCL = {  # Rs/MT ex-works Thane, basic & cash, GST extra
     "bopp_1030FG": {"2026-01-01": 95202, "2026-03-01": 104702, "2026-09-11": 164202},
     "random_copolymer_2120MC": {"2026-01-01": 99182, "2026-03-01": 108532, "2026-09-11": 174532},
 }
+IOCL_PE = {  # same lists (HDPE/LLDPE tables), Rs/MT ex-works Thane, basic & cash, GST extra
+    "hdpe_raffia_010E52": {"2026-01-01": 99856, "2026-03-01": 108856, "2026-09-11": 141856},
+    "hdpe_injection_080M60": {"2026-01-01": 93846, "2026-03-01": 103846, "2026-09-11": 132846},
+    "hdpe_pipe_002DP48": {"2026-01-01": 96859, "2026-03-01": 105709, "2026-09-11": 133209},
+    "lldpe_film_010F18S": {"2026-01-01": 95209, "2026-03-01": 104709, "2026-09-11": 137709},
+}
 OTHER = {
     "usd_inr": {"value": 95.82, "date": "2026-09-17", "confidence": "medium",
                 "source": "web-search summary of USD/INR history (Investing.com / Wise / FRED results)"},
@@ -47,7 +53,8 @@ OTHER = {
 def main() -> None:
     out = {"_note": "Dated observations with sources; see scripts/build_petchem_prices.py",
            "iocl_pp_ex_works_inr_per_mt": {"basis": "basic & cash, GST additional, Thane; IOCL via Turakhia Polymers (Plastemart mirror)",
-                                            "url_pattern": LIST_URL, "grades": IOCL}, **OTHER}
+                                            "url_pattern": LIST_URL, "grades": IOCL},
+           "iocl_pe_ex_works_inr_per_mt": {"basis": "HDPE / LLDPE tables of the same lists", "grades": IOCL_PE}, **OTHER}
     dest = Path(__file__).resolve().parents[1] / "refinery_design" / "data" / "petchem_prices.json"
     dest.write_text(json.dumps(out, indent=1))
     print("wrote", dest)

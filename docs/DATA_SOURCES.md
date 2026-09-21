@@ -183,3 +183,29 @@ N2 within 2%) and IAPWS steam tables.
 No licensor (UOP/Honeywell, Axens, KBR, Technip, Shell Global Solutions) or
 catalyst-vendor data was used or verified; nothing here should be read as
 reproducing any proprietary design basis.
+
+
+## Additions: petrol displacement, cracker, sourcing, safety
+
+* **PCS paper** - Campbell, Barletta & Golden (Process Consulting Services), *Mitigating FCC gas plant impacts when increasing reactor LPG
+  yields*, PTQ Q2 2023 (Digital Refining, article 1002896; supplied as a PDF and read in full, including Figures 8-11). Verified.
+* **Digital Refining cracker/integration articles** - "World scale crude to olefins" (derivative intensities: 0.92-1.01 t ethylene per t PE,
+  0.6 per t MEG; 62% of ethylene to PE, 16% to EO/EG); "Refining/petrochemical integration - FCC gasoline to petrochemicals" (FCC propylene
+  3-5% conventional, 15-28% high-severity).
+* **Cracker yields** - *not a table*. Search summaries of a Chem. Eng. J. 2024 abstract (~22 wt% ethylene at 820 C, ~27 at 850 C) and a source
+  giving ranges (23-30 ethylene, 13-16 propylene, 6-7 butadiene); Wikipedia "Steam cracking" (severity direction, 1-1.6 t CO2/t ethylene).
+  The Intratec previews, ResearchGate table and Thunder Said Energy pages returned 403 or unreadable; the Thunder Said capex ($1,600/tpa of
+  naphtha) is a search-summary figure. BPCL Bina: OGJ (fetched): 1.2 Mt/y cracker, 1.15 Mt/y LLDPE/HDPE, 0.55 Mt/y PP, Rs 49,000 crore
+  ("nearly $6 billion"), completion 2028.
+* **News on Indian petrochemicals** (search summaries unless stated): nil import duty 2 Apr-30 Jun 2026 (Polymerupdate, fetched), extended to
+  15 Jul (CBIC via TaxGuru); PP 1.8x capacity vs 1.4x demand by FY30 and QCO rescinded Nov 2025 (Indian Chemical News, fetched); PE/PP
+  import volumes and new projects (ITP blog, ICIS, Hydrocarbon Processing, IndianInfrastructure). PPAC ICR Jan-2026 (fetched).
+* **Ethanol / petrol** - see the PPAC 2025-26 and tender sections above.
+* **Crude sourcing** - PPAC Tables 8.1 and 8.24 (verified); EcoNiti (fetched), Outlook Business (fetched), The Wire Aug-2026 bill (fetched; its
+  volume x price x 7.33 bbl/t reconciles to $12.6 bn vs the $11.7 bn reported - a 7% inconsistency inside the source), BusinessToday and
+  discoveryalert analyses (fetched), SEAIR/IBEF trade balances and tradeint crude shares (snippets, low). Russian-crude volumes, discounts
+  and waivers are low-medium confidence and the discount reports conflict (recorded as a range). **Not found:** the payment currency of
+  Russian crude; any measured local-currency saving; country-wise crude volumes for FY2025-26 in PPAC.
+* **Safety** - OISD's standards list (verified, 105 entries); OISD-STD-116 (2025) details from iFluids (medium); OISD-STD-118 distances from a blog
+  (low); FCC and corrosion literature via search summaries; the standards themselves were not read. OISD-STD-141/144/154/175/192/201/214/216/226
+  show "Aug, 2026" editions on the list.

@@ -129,3 +129,33 @@ class TradeDeck:
 
     def product_usd_t(self, pool: str) -> float:
         return self._usd_t[pool]
+
+
+class RebasedTradeDeck(TradeDeck):
+    """PPAC-observed cracks and price fractions (a fiscal year) re-based to a different crude price.
+
+    Gasoline, diesel and naphtha trade at crude plus the trade-implied crack; LPG and fuel oil at the
+    trade-implied fraction of crude; petcoke stays at its observed unit value.  Use it to ask "what would that
+    year's margin structure look like at today's crude?" - an assumption that cracks do not move with crude.
+    """
+
+    def __init__(self, year: str, crude_usd_bbl_new: float, crude_density_kg_m3: float = 870.0):
+        super().__init__(year, crude_density_kg_m3)
+        k = trade_implied_cracks(year)
+        per_t = lambda usd_bbl, rho: usd_bbl / (BBL_M3 * rho / 1000.0)
+        self.crude_usd_bbl = crude_usd_bbl_new
+        self.label = f"PPAC FY{year} cracks at crude ${crude_usd_bbl_new:.1f}/bbl"
+        c = crude_usd_bbl_new
+        self._usd_t.update({
+            "gasoline_range": per_t(c + k["gasoline_crack"], 745.0),
+            "middle_distillate": per_t(c + k["diesel_crack"], 850.0),
+            "naphtha": per_t(c + k["naphtha_crack"], 720.0),
+            "lpg": per_t(k["lpg_frac_of_crude"] * c, 550.0),
+            "slurry": per_t(k["fuel_oil_frac_of_crude"] * c, 980.0),
+            "vacuum_residue": per_t(k["fuel_oil_frac_of_crude"] * c, 980.0),
+            "vgo_unconverted": per_t(k["fuel_oil_frac_of_crude"] * c, 980.0),
+        })
+        self._crude_usd_t = per_t(c, crude_density_kg_m3)
+
+    def crude_usd_t(self) -> float:
+        return self._crude_usd_t

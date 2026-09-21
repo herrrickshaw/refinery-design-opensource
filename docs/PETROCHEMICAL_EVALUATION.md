@@ -133,3 +133,55 @@ FCC-side revamp, the actual propylene yield the FCC reaches on this feed (the
 (each 5 wt% additive costs 1-2 wt% activity, not modelled), and product-quality
 premia (polymer-grade vs refinery-grade propylene). Steam-cracker, aromatics
 (paraxylene) and PDH routes are not evaluated.
+
+
+## Steam cracker route: naphtha -> ethylene (added)
+
+`steam_cracker.py` sizes a naphtha cracker with PE (from ethylene) and PP (from propylene). **Cited:** ethylene ~22 wt% at 820 C and
+~27 wt% at 850 C coil outlet; whole naphtha 23-30 wt% ethylene, 13-16 propylene, 6-7 butadiene, < 5 pyrolysis fuel oil; 1-1.6 t CO2
+per t ethylene; 0.92-1.01 t ethylene per t PE. **Assumed** (no accessible source): other C4 4, pygas 17, pyrolysis fuel oil 4 wt%, the
+rest fuel gas; opex $100/t at each unit. **Capex anchors:** $1,600 per tpa of naphtha for a world-scale cracker (Thunder Said Energy,
+search summary) and BPCL Bina - Rs 49,000 crore (~$6 bn) for a 1.2 Mt/y dual-feed cracker + 1.15 Mt/y PE + 0.55 Mt/y PP +
+aromatics + a 7.8 -> 11 MMTPA refinery expansion - an upper bound on cracker plus derivatives; the model uses $1,500/tpa of feed at
+4 Mt scale (six-tenths rule) and reproduces Bina's order of magnitude ($5.7-6.4 bn for 3.6-4.4 Mt of feed).
+Co-products are valued conservatively (pygas at gasoline, C4s at LPG, fuel oil at fuel oil, fuel gas as furnace fuel); PE at IOCL's
+HDPE raffia list price ($1,480/t, +42% since January; LLDPE film $1,437/t, +45%), PP at $1,612/t, naphtha at $855/t (PPAC FY25-26 cracks
+at Brent $102.47).
+
+**Result: it does not pay on these assumptions.** 3 Mt/y of naphtha (0.81 Mt/y ethylene) earns **-$240 M/y before capital** and
+-$916 M/y after; the break-even PE price is ~$2,570/t against $1,480 list, or naphtha would have to fall to ~$550/t. Stress tests
+(cash margin before capital / net): world-scale 4 Mt naphtha -$320 M / -$1,123 M; severity 880 C -$150 M / -$953 M; plus $300/t on C4s
+(butadiene) and $200/t on pygas (benzene) -$64 M / -$867 M; all three plus capex $1,000/tpa **+$106 M / -$430 M**; January 2026 prices
+(Brent ~$63, naphtha $511/t, PE $1,042/t) -$210 M / -$1,013 M. **No case tested pays after capital.** Reliability: the ethylene yield
+is once-through and the by-product slate is partly assumed, so the sign is more trustworthy than the size; a dual-feed cracker with
+cheaper LPG/ethane feed, integrated by-product upgrading and fiscal support is what Indian projects actually build, which this
+single-feed naphtha model cannot represent. **Keep the FCC-propylene -> PP routes ahead of it.**
+
+## PPAC trade data and the latest news: which routes fit India's position
+
+* **Naphtha is long, LPG is short.** FY2025-26: naphtha production 18.4 Mt, consumption 11.7 Mt, **exports 6.0 Mt** ($3.4 bn), imports
+  1.1 Mt; domestic naphtha consumption fell 11.9% in Apr-Jan FY26 with 94% going to petrochemicals (PPAC). LPG: consumption 33.2 Mt,
+  production 13.1 Mt, **imports 21.3 Mt (64%, $11.3 bn)**. A naphtha cracker uses a feed India already exports; an LPG-fed cracker
+  would deepen an import dependence - which is why the new Indian crackers are dual-feed.
+* **PP is about to be over-built.** Reported: PP capacity to rise 1.8x between FY25-FY30 against demand growth of 1.4x, potentially
+  ending import dependence by FY30; India imported ~1.6 Mt PP and ~3.1 Mt PE in 2024 (search summaries; PE/PP imports ~a fifth of
+  consumption, PVC ~three-quarters). New capacity: IOC 200 kt PP at Barauni and 500 kt at Gujarat (by March 2026), BPCL Kochi PP
+  (Rs 5,514 crore, foundation stone 12 Mar 2026), BPCL Bina (1.2 Mt/y cracker, 1.15 Mt/y PE, 0.55 Mt/y PP, Rs 49,000 crore, 2028),
+  IOCL Paradip complex (1.5 MTPA dual-feed cracker, Rs 61,077 crore), HMEL HDPE 450 kt, GAIL Pata 60 kt PP. **The $1,612/t PP list
+  price is a 2026 peak** (+71% since January, during a Hormuz-driven supply shock and a temporary nil-duty window: nil basic customs duty
+  on PE/PP/PVC/MEG/PTA and ~40 products from 2 April to 30 June 2026, extended to 15 July; the status after that was not found; the
+  Quality Control Order on polymers was rescinded in November 2025). PP margins should be expected to compress as capacity arrives, so
+  **the PP-route headroom is a price-timing bet, not a structural margin.**
+* **PE has the larger import gap** (3.1 Mt vs 1.6 Mt PP), but the route to it - a cracker - is the one that does not pay here.
+* **What the trade data support:** (1) monetise the propylene the FCC already makes (PP, or sell propylene); (2) keep exporting surplus naphtha
+  and petrol unless a cracker can be built dual-feed at scale; (3) treat LPG mode as import substitution (each FCC LPG tonne replaces
+  an imported one at $531/t FY25-26) rather than as a fuel-price play.
+
+## Break-evens on observed prices (update)
+
+With PPAC-observed FY2025-26 trade cracks re-based to Sept-2026 crude, the PP break-evens are **$1,058 / 1,097 / 1,126 per t**
+(conventional / ZSM-5 / propylene mode; capital charge on the PP plant only) against the $1,612/t list - a headroom of $486-554/t -
+and the propylene-mode FCC could cost up to ~$2.3 bn at list price (~$3.6 bn at FY25-26 prices as observed). The earlier figures in
+this document ($1,182-1,320 break-even, $290-430 headroom) used GRM-calibrated cracks (gasoline +$17-26, diesel +$29-43) that were wider
+than what FY25-26 trade actually shows (gasoline +$12, diesel +$25), so they priced the displaced fuel higher. **Prefer the
+observed-price numbers**; the difference is the deck, not the method. See `PETROL_DISPLACEMENT.md` for the mode-by-mode screen.

@@ -38,6 +38,23 @@ def iocl_pp_change_pct(grade: str = "homopolymer_injection_1110MG", d0: str = "2
     return 100.0 * (iocl_pp_inr_per_mt(grade, d1) / iocl_pp_inr_per_mt(grade, d0) - 1.0)
 
 
+PE_GRADES = ("hdpe_raffia_010E52", "hdpe_injection_080M60", "hdpe_pipe_002DP48", "lldpe_film_010F18S")
+
+
+def iocl_pe_inr_per_mt(grade: str = "hdpe_raffia_010E52", date: str = "2026-09-11") -> float:
+    """IOCL ex-works HDPE/LLDPE price, Rs/MT (basic & cash, GST additional, Thane)."""
+    return float(_raw()["iocl_pe_ex_works_inr_per_mt"]["grades"][grade][date])
+
+
+def iocl_pe_change_pct(grade: str = "hdpe_raffia_010E52", d0: str = "2026-01-01", d1: str = "2026-09-11") -> float:
+    return 100.0 * (iocl_pe_inr_per_mt(grade, d1) / iocl_pe_inr_per_mt(grade, d0) - 1.0)
+
+
+def iocl_pe_usd_t(grade: str = "hdpe_raffia_010E52", date: str = "2026-09-11", fx: float | None = None, realisation: float = 1.0) -> float:
+    """PE list price in $/t at the recorded (or given) exchange rate, times ``realisation``."""
+    return iocl_pe_inr_per_mt(grade, date) / (usd_inr() if fx is None else fx) * realisation
+
+
 def usd_inr() -> float:
     return float(_raw()["usd_inr"]["value"])
 

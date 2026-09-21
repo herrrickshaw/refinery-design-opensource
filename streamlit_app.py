@@ -16,7 +16,9 @@ from refinery_design.assay import INF, Slate, available_crudes, load_crude
 from refinery_design.coker import delayed_coker
 from refinery_design.distillation import distill
 from refinery_design.fcc import FccFeed, FccKinetics, FccOperation, cooler_duty_for_regen_temperature, fcc_operate, riser_kinetics, rot_sweep
-from refinery_design import india, petchem_prices as pcp, rundown as rd
+from refinery_design import crude_sourcing as csrc, ethanol as eth, india, petchem_prices as pcp, rundown as rd, safety as sfty, trade as ptrade
+from refinery_design.fcc_modes import modes as fcc_modes_fn
+from refinery_design.routes import petrol_switch_options
 from refinery_design.flowsheet import RefineryConfig, refine
 from refinery_design.grm import PriceDeck, calibrate_deck, gross_refining_margin
 from refinery_design.petrochemical import PetchemAssumptions, affordable_fcc_capex_usd, build_option, evaluate
@@ -33,9 +35,9 @@ st.caption(
 KEYS = available_crudes()
 NAMES = {k: load_crude(k).name for k in KEYS}
 
-tab_types, tab_slate, tab_cdu, tab_fcc, tab_ht, tab_ref, tab_india, tab_grm = st.tabs(
+tab_types, tab_slate, tab_cdu, tab_fcc, tab_ht, tab_ref, tab_india, tab_grm, tab_petrol, tab_src, tab_safe = st.tabs(
     ["Crude types", "Slate & blending", "Crude / vacuum unit", "FCC", "Hydrotreater & coker", "Whole refinery",
-     "India: CHT & PPAC", "GRM & petrochemicals"]
+     "India: CHT & PPAC", "GRM & petrochemicals", "Petrol & routes", "Crude sourcing", "Safety"]
 )
 
 
@@ -285,6 +287,57 @@ with tab_grm:
                    "Nelson index change: 0.0.")
     except ValueError as e:
         st.error(str(e))
+
+# ---------------------------------------------------------------------
+with tab_petrol:
+    st.header("Petrol displaced by ethanol, the FCC secondary mode, and routes")
+    st.caption("PPAC Ready Reckoner FY2025-26; PCS paper (Digital Refining PTQ Q2 2023). See docs/PETROL_DISPLACEMENT.md.")
+    bal = pd.DataFrame([{"FY": y, **{k: round(v, 1) for k, v in ptrade.petrol_balance(y).items()}} for y in ("2022-23", "2023-24", "2024-25", "2025-26")])
+    st.dataframe(bal, hide_index=True)
+    st.dataframe(pd.DataFrame(eth.ms_scenarios(42.6)).round(1), hide_index=True)
+    from refinery_design.benchmarks import paradip_model_refinery
+    Rp = paradip_model_refinery(True)
+    st.write(f"Paradip-basket refinery: gasoline-range pool {Rp.pools_kg_h['gasoline_range']*8400/1e6:,.0f} kt/y; E12 to E20 displaces "
+             f"{__import__('refinery_design.routes', fromlist=['x']).displaced_by_blend_step(Rp, 42.6):,.0f} kt/y.")
+    st.subheader("FCC modes and the gas plant")
+    st.dataframe(pd.DataFrame([{"mode": m.name, "gasoline wt%": round(m.yields_wt_pct["gasoline"], 1), "LPG wt%": round(m.yields_wt_pct["lpg"], 1),
+                                "LCO wt%": round(m.yields_wt_pct["lco"], 1), "propylene wt%": round(m.propylene_wt_pct, 1),
+                                "gasoline change kt/y": round(m.gasoline_change_t_y / 1e3), "wet-gas load x": round(m.gas_plant.wgfr_ratio, 2),
+                                "within PCS paper range": m.gas_plant.within_paper_range} for m in fcc_modes_fn(Rp.fcc.feed, Rp.fcc.operation)]), hide_index=True)
+    rr = st.slider("PP realisation (% of IOCL list)", 60, 100, 100) / 100.0
+    deck2 = ptrade.RebasedTradeDeck("2025-26", pcp.crude_snapshot()["brent"])
+    rows = petrol_switch_options(Rp, deck2, __import__("dataclasses").replace(pcp.iocl_deck(), realisation=rr), pe_usd_t=pcp.iocl_pe_usd_t(realisation=rr))
+    st.dataframe(pd.DataFrame([{"route": r.name, "gasoline removed kt/y": round(r.gasoline_removed_kt_y), "fuel change $M/y": round(r.fuel_margin_usd_m_y),
+                                "petchem before capital $M/y": None if r.petchem_margin_usd_m_y is None else round(r.petchem_margin_usd_m_y),
+                                "net $M/y": None if r.net_usd_m_y is None else round(r.net_usd_m_y), "note": r.note} for r in rows]), hide_index=True)
+
+with tab_src:
+    st.header("Crude sourcing and local-currency settlement")
+    st.caption("PPAC Tables 8.1 and 8.24; news (confidence tagged). No measured saving from local-currency settlement was found. "
+               "See docs/CRUDE_SOURCING_AND_LOCAL_CURRENCY.md.")
+    st.dataframe(pd.DataFrame([{"FY": y, **{k: round(v, 2) for k, v in csrc.realised_vs_basket(y).items()}}
+                               for y in ("2018-19", "2019-20", "2020-21", "2021-22", "2022-23", "2023-24", "2024-25", "2025-26")]), hide_index=True)
+    st.write(f"2026 shock, Mar-Jun extra crude bill vs February basket: **${csrc.shock_extra_bill_usd_bn()['total_usd_bn']:.1f} bn**; "
+             f"one basis point on the FY25-26 bill = **${csrc.value_of_one_bp_usd_m():.1f} M/yr**.")
+    st.dataframe(pd.DataFrame(csrc.local_currency_grid()).pivot(index="share_switched", columns="bps_saved", values="usd_million_per_year").round(0))
+    st.dataframe(pd.DataFrame(csrc.partner_feasibility()).round(2), hide_index=True)
+    snap2 = pcp.crude_snapshot()
+    st.dataframe(pd.DataFrame(csrc.crude_relative_values(ptrade.RebasedTradeDeck("2025-26", snap2["brent"]), throughput_bpd=100_000))
+                 [["name", "api", "sulfur_wt", "tan", "net_realisation_usd_bbl", "value_vs_reference_usd_bbl"]].round(2), hide_index=True)
+    st.caption(f"Live spreads vs Brent: Dubai {snap2['dubai']-snap2['brent']:+.1f}, WTI {snap2['wti']-snap2['brent']:+.1f}, Urals {snap2['urals']-snap2['brent']:+.1f}. "
+               "Relative values exclude freight and corrosion/metallurgy cost.")
+
+with tab_safe:
+    st.header("Safety: OISD standards map and model flags")
+    st.caption("OISD list, titles and editions from oisd.gov.in (standards not read). Not a safety case. See docs/SAFETY.md.")
+    for element, d in sfty.DESIGN_MAP.items():
+        with st.expander(element):
+            st.write(d["check"])
+            st.dataframe(pd.DataFrame([{"standard": n, "title": sfty.standard(n)["title"], "edition": sfty.standard(n)["edition"]} for n in d["oisd"]]), hide_index=True)
+            st.caption("Basis: " + d["basis"])
+    st.subheader("Flags for the crude slate on the Whole refinery tab defaults")
+    for f in sfty.crude_corrosion_flags(load_crude("dalia").as_slate()):
+        st.warning(f"{f.topic} [{f.level}]: {f.message}")
 
 st.divider()
 st.caption(

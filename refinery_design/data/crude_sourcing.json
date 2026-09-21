@@ -1,0 +1,262 @@
+{
+ "basket_annual_usd_bbl": {
+  "2014-15": 84.16,
+  "2015-16": 46.17,
+  "2016-17": 47.56,
+  "2017-18": 56.43,
+  "2018-19": 69.88,
+  "2019-20": 60.47,
+  "2020-21": 44.82,
+  "2021-22": 79.18,
+  "2022-23": 93.15,
+  "2023-24": 82.58,
+  "2024-25": 78.56,
+  "2025-26": 70.99
+ },
+ "basket_2026_monthly_usd_bbl": {
+  "2026-01": 63.08,
+  "2026-02": 69.01,
+  "2026-03": 113.49,
+  "2026-04": 114.48,
+  "2026-05": 106.23,
+  "2026-06": 83.22
+ },
+ "basket_peak": {
+  "value": 135.0,
+  "when": "first week of April 2026",
+  "source": "PPAC Ready Reckoner FY2025-26 chapter highlights"
+ },
+ "crude_imports": {
+  "columns": [
+   "mmt",
+   "million_bbl",
+   "usd_million",
+   "rs_crore",
+   "usd_bbl_ppac"
+  ],
+  "rows": {
+   "2018-19": [
+    226.5,
+    1660.2,
+    111915,
+    783183,
+    67.41
+   ],
+   "2019-20": [
+    227.0,
+    1663.6,
+    101376,
+    717001,
+    60.94
+   ],
+   "2020-21": [
+    196.5,
+    1440.1,
+    62248,
+    459779,
+    43.23
+   ],
+   "2021-22": [
+    212.4,
+    1556.8,
+    120675,
+    901262,
+    77.52
+   ],
+   "2022-23": [
+    232.7,
+    1705.7,
+    157531,
+    1260372,
+    92.36
+   ],
+   "2023-24": [
+    234.3,
+    1717.1,
+    133366,
+    1105176,
+    77.67
+   ],
+   "2024-25": [
+    243.2,
+    1782.8,
+    137174,
+    1160618,
+    76.94
+   ],
+   "2025-26": [
+    245.8,
+    1801.5,
+    123379,
+    1092248,
+    68.49
+   ]
+  }
+ },
+ "rupee_settled": {
+  "fy_rs_crore": {
+   "2023-24": 99680,
+   "2024-25": 113000,
+   "2025-26": 172000
+  },
+  "dec25_feb26_rs_crore": 42506,
+  "dec25_feb26_share_of_imports_pct": 2.4,
+  "mar_may26_rs_crore": 138000,
+  "mar_may26_usd_bn": 14.6,
+  "mar_may26_share_of_imports_pct": 7.1,
+  "russian_crude_imports_usd_bn": {
+   "2026-02": 2.49,
+   "2026-03..05": 17.13
+  },
+  "russian_crude_mar_may_yoy_pct": 30,
+  "source": "EcoNiti Daily Brief, 25 Jul 2026",
+  "confidence": "medium"
+ },
+ "supplier_objections": {
+  "statement": "Suppliers cited repatriation of funds in the preferred currency and high transaction costs of conversion along with exchange-fluctuation risk; IOC incurred high transaction costs as suppliers passed the extra costs on.",
+  "fy2022_23_psu_rupee_settled_crude": 0,
+  "middle_east_share_of_crude_fy2022_23_pct": 58,
+  "source": "Outlook Business, 24 Dec 2023 (citing MoPNG)",
+  "confidence": "medium"
+ },
+ "bilateral_trade_usd_bn": {
+  "UAE": {
+   "exports": 37.36,
+   "imports": 63.89,
+   "fy": "2025-26"
+  },
+  "Russia": {
+   "exports": 4.49,
+   "imports": 55.37,
+   "fy": "2025-26"
+  },
+  "Iraq": {
+   "exports": 2.96,
+   "imports": 24.56,
+   "fy": "2025-26"
+  },
+  "Saudi Arabia": {
+   "exports": 11.76,
+   "imports": 30.12,
+   "fy": "2024-25"
+  },
+  "confidence": "low",
+  "source": "SEAIR / IBEF web-search snippets; imports are TOTAL imports (crude-dominant for Russia/Iraq/Saudi)"
+ },
+ "crude_share_q1_fy26_pct": {
+  "Iraq": 19.89,
+  "Russia": 17.92,
+  "Saudi Arabia": 16.03,
+  "UAE": 11.0,
+  "confidence": "low",
+  "source": "tradeint.com web-search snippet (Q1 FY2025-26, by value)"
+ },
+ "urals_vs_brent": [
+  {
+   "when": "2026-02 loadings",
+   "usd_bbl": -10.0
+  },
+  {
+   "when": "2026-03/04 loadings",
+   "usd_bbl": 4.5
+  },
+  {
+   "when": "2026-06/07",
+   "usd_bbl": -10.0
+  },
+  {
+   "when": "2026-09-21 live (Urals 106.45 vs Brent 102.47)",
+   "usd_bbl": 3.98
+  }
+ ],
+ "lcs_claim": {
+  "statement": "Indian traders pay ~2% average transaction cost when exporting to the UAE; the India-UAE Local Currency Settlement framework (RBI-CBUAE MoU, 2023) removes conversion through a third currency. Not quantified in basis points.",
+  "source": "Deccan Herald / DrishtiIAS (web-search snippet)",
+  "confidence": "low"
+ },
+ "russia_news_2026": {
+  "volumes_mbpd": {
+   "2026-07": 2.8,
+   "2026-08": 2.0,
+   "2026-09_first_14_days": 1.42
+  },
+  "share_of_india_crude_pct": {
+   "2026-07": 55.9,
+   "2026-08": 45.0
+  },
+  "august_fall_pct": 26.3,
+  "august_fall_reasons": [
+   "US tariff pressure",
+   "Ukrainian drone strikes (~40% of Russian export capacity removed by March 2026, per one analysis)",
+   "China outbidding (Russian imports ~1.7 mb/d in August vs ~1.4 in July)"
+  ],
+  "discount_to_brent_reports": [
+   {
+    "period": "post-2022 sanctions era",
+    "usd_bbl": -11.5,
+    "note": "$10 to over $13 below Brent"
+   },
+   {
+    "period": "pre-conflict (Bloomberg via analysis site)",
+    "usd_bbl": -3.0
+   },
+   {
+    "period": "2026-01 delivery",
+    "usd_bbl": -5.0
+   },
+   {
+    "period": "2026-02 loadings, delivered India",
+    "usd_bbl": -10.0
+   },
+   {
+    "period": "2026-03/04",
+    "usd_bbl": 4.5,
+    "note": "first-ever premium to Dated Brent"
+   },
+   {
+    "period": "2026-07",
+    "usd_bbl": -10.0,
+    "note": "one source: discounts widened to more than $10"
+   },
+   {
+    "period": "2026-08",
+    "usd_bbl": 0.0,
+    "note": "another source: approximate parity or slight premium - CONFLICTS with the July report"
+   }
+  ],
+  "freight_usd_bbl": {
+   "Novorossiysk to India west coast (Suezmax)": 20.0,
+   "Baltic ports": 13.0,
+   "note": "from one analysis; freight premium of ~$7/bbl constrains discount depth"
+  },
+  "refiners": {
+   "Reliance": "purchases fell to ~292,000 b/d (EU rules on products from Russian crude)",
+   "Nayara": "~400,000 b/d after maintenance; already under sanctions",
+   "state_refiners": "IOC, BPCL, HPCL increased purchases"
+  },
+  "us_waivers": "30-day US waiver for stranded Russian cargoes (March 2026), a second waiver, and reported expiry/lapse by May-June 2026; not a broad relaxation",
+  "august_2026_import_bill": {
+   "usd_bn": 11.7,
+   "vs_aug_2025_usd_bn": 9.9,
+   "volume_mmt": 19.0,
+   "avg_usd_bbl": 90.19,
+   "avg_usd_bbl_aug_2025": 69.11,
+   "avg_usd_bbl_jul_2026": 82.04,
+   "source": "The Wire (fetched)"
+  },
+  "indian_basket_14_sep_2026_usd_bbl": {
+   "value": 128.7,
+   "source": "BusinessToday 15 Sep 2026 (fetched); differs from the $112.97 obtained by applying PPAC's formula to the 21-Sep live feed (Dubai used for Oman)"
+  },
+  "payment_currency_for_russian_crude": "NOT found in any source; rupee-settled imports rose sharply in Mar-May 2026 (EcoNiti) alongside Russian purchases, which is circumstantial",
+  "sources": [
+   "EcoNiti 2026-09-03",
+   "BusinessToday 2026-09-15",
+   "The Wire (Aug-2026 import bill)",
+   "discoveryalert analyses",
+   "Euronews 2026-03-06 (waiver)",
+   "OilPrice.com (Nayara)"
+  ],
+  "confidence": "low-medium"
+ }
+}

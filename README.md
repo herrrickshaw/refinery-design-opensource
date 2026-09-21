@@ -29,13 +29,16 @@ was and was not verified.
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
-pytest -q                                          # 169 tests
+pytest -q                                          # 228 tests
 python examples/full_refinery_worked_example.py    # 8 crudes through one refinery
 python examples/fcc_worked_example.py              # FCC heat balance, riser, regenerator
 python examples/paradip_check.py                   # validation against a real refinery
 python examples/petrochemical_evaluation.py        # PPAC/CHT data + propylene/PP break-evens
 python examples/petchem_price_deck.py              # IOCL PP price deck (2026) and per-route verdicts
 python examples/fcc_rundown.py                     # FCC rundown streams, cut points, pool shares
+python examples/petrol_displacement.py             # ethanol-displaced petrol: PPAC data, FCC secondary mode, routes
+python examples/crude_sourcing_study.py            # crude basket, 2026 shock, local-currency settlement, Russian crude
+python examples/safety_review.py                   # OISD standards map + model safety flags
 streamlit run streamlit_app.py                     # interactive app
 ```
 
@@ -76,6 +79,13 @@ and volume close exactly), and crudes blend by volume into a `Slate`.
 | `refinery_design/petrochemical.py` | FCC propylene -> polypropylene: three routes, six-tenths capex scaling, capital charge | Break-even PP price, GRM uplift, affordable FCC capex |
 | `refinery_design/petchem_prices.py` | Dated PP (IOCL ex-works, 2026) and propylene price observations with sources and confidence; `PetchemPriceDeck` | PP price deck; propylene left unobserved |
 | `refinery_design/rundown.py` | FCC rundown streams, gasoline/LCO cut-point shift, distillate mode, pool shares (Digital Refining figures) | Rundown table, LCO gain, pool shares |
+| `refinery_design/trade.py` | PPAC trade / consumption / production; observed unit values; `TradeDeck`; petrol balance (implied ethanol) | Observed-price deck, import dependence |
+| `refinery_design/ethanol.py` | Ethanol mass share, refinery petrol needed, E-step displacement, tender arithmetic | Petrol displaced by blending |
+| `refinery_design/fcc_modes.py` | FCC gasoline-lean modes + wet-gas load from the PCS paper's figures | Mode yields, gasoline removed, gas-plant fix |
+| `refinery_design/steam_cracker.py` | Naphtha steam cracker -> PE + PP; cited yield points, Bina-checked capex | Ethylene/propylene volumes, break-evens |
+| `refinery_design/routes.py` | Petrol-switch options screen on one price deck | Gasoline removed, margin, net of capital |
+| `refinery_design/crude_sourcing.py` | Realised import price vs Indian basket, 2026 shock, local-currency arithmetic, assay-based crude value | Sourcing study |
+| `refinery_design/safety.py` | OISD standards map (105-entry official list) + screening flags | Which standards apply; model flags |
 | `refinery_design/benchmarks.py` | Paradip published data | Validation |
 
 ## What crude type does to an FCC (real assays, same unit)
@@ -138,10 +148,30 @@ refinery, OGJ 2025 survey) and [PPAC](https://ppac.gov.in)'s Ready Reckoner
   point (~5 vol% per 50 degF), distillate mode and pool shares - cross-checked against the
   published propylene (3-5% / 15-28%) and gasoline-sulfur (1,000-2,000 ppm) ranges.
 
+## Petrol displaced by ethanol, the FCC secondary mode, and the routes (PPAC, latest edition)
+
+PPAC's FY2025-26 Ready Reckoner shows refineries producing more petrol (42.8 -> 49.8 Mt, FY22-23 to FY25-26) as the blend rose to E20,
+with the surplus exported (13.1 -> 16.7 Mt); the gap between blended consumption and production + imports - exports is the ethanol
+(implied 12% -> 22% of MS mass). For the Paradip-basket refinery, E12 -> E20 displaces ~367 kt/y of a 3,861 kt/y gasoline pool. A
+gasoline-lean FCC mode (ZSM-5, higher severity, propylene mode) removes 134-496 kt/y, but the Process Consulting Services paper's wet-gas
+figures show the gas plant is the constraint (+5.1% wet-gas flow per wt% propylene; the propylene mode is beyond the paper's range).
+**Selling the extra LPG/LCO as fuel loses money; only the PP routes pay** (`docs/PETROL_DISPLACEMENT.md`).
+
+* **Observed prices reproduce reported GRM without calibration** in three of five years (FY22-23: $19.37 vs IOCL $19.52); it misses
+  FY2024-25 - reported, not hidden. **NRL's GRM is not comparable** (excise benefit + domestic Assam crude) and is excluded from fits.
+* **Steam cracker (naphtha -> ethylene) does not pay** on these assumptions at September 2026 or January 2026 prices, at 3-4 Mt/y of
+  naphtha, in every stress case after capital (`docs/PETROCHEMICAL_EVALUATION.md`).
+* **Crude sourcing** (`docs/CRUDE_SOURCING_AND_LOCAL_CURRENCY.md`): India paid below the Indian basket in 7 of 8 years (FY23-24: $8.4 bn);
+  the 2026 Hormuz shock cost ~$21 bn in four months; one basis point on the crude bill is $12.3 M/yr. **No measured saving from
+  local-currency settlement was found** - MoPNG reported suppliers passing conversion costs to IOC - and only the UAE can plausibly recycle
+  rupees. Russian crude is now a security, not a discount, answer (Urals at a premium to Brent in the 21-Sep snapshot).
+* **Safety** (`docs/SAFETY.md`): the official OISD list (105 standards) mapped to each design element, with model-driven flags (high-TAN crudes,
+  hot regenerator, gas-plant load, LPG/propylene). The standards were not read; this is a pointer, not a safety case.
+
 ## Not covered (roadmap)
 
 Catalytic reforming, hydrocracking, alkylation, sulfur recovery, hydrogen
-plant, steam-cracker/aromatics/PDH petrochemical routes, market propylene/PP price data, crude-column tray hydraulics, preheat-train pinch design, ZSM-5 /
+plant, aromatics/PDH/ethane-LPG dual-feed cracker routes, a reformer, market propylene/PP price data, crude-column tray hydraulics, preheat-train pinch design, ZSM-5 /
 propylene maximisation, equilibrium-catalyst metals (Ecat) model, crude
 compatibility/asphaltene stability, price-driven crude selection.
 

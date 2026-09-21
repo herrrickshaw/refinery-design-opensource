@@ -1,0 +1,427 @@
+{
+ "source": "https://www.oisd.gov.in/oisd-standards",
+ "fetched": "2026-09-21",
+ "count": 105,
+ "standards": {
+  "OISD-STD-105": {
+   "title": "Work Permit System",
+   "edition": "Aug, 2023"
+  },
+  "OISD-STD-106": {
+   "title": "Pressure Relief & Disposal System",
+   "edition": "Oct, 2010"
+  },
+  "OISD-STD-108": {
+   "title": "Oil Storage and Handling",
+   "edition": "Aug, 2023"
+  },
+  "OISD-STD-109": {
+   "title": "Process Design and Operating Philosophies on Blow Down & sewer system",
+   "edition": "Jan, 2015"
+  },
+  "OISD-RP-110": {
+   "title": "Recommended Practices on Static Electricity",
+   "edition": "Oct, 2018"
+  },
+  "OISD-STD-111": {
+   "title": "Process Design & Operating Philosophies on Fired Process Furnace",
+   "edition": "Apr, 2016"
+  },
+  "OISD-STD-112": {
+   "title": "Safe Handling of Air Hydrocarbon Mixtures & Pyrophoric Substances",
+   "edition": "Aug, 2019"
+  },
+  "OISD-STD-113": {
+   "title": "Classification of Area for Electrical Installations at Hydrocarbon  Processing & Handling Facilities",
+   "edition": "Oct, 2013"
+  },
+  "OISD-STD-114": {
+   "title": "Safe Handling of Hazardous Chemicals",
+   "edition": "Oct, 2010"
+  },
+  "OISD-GDN-115": {
+   "title": "Guidelines on Fire Fighting Equipment and Appliances in Petroleum  Industry",
+   "edition": "Aug, 2023"
+  },
+  "OISD-STD-116": {
+   "title": "Fire Protection Facilities for Petroleum Refineries, Petrochemical Complexes & Oil/Gas Processing Plants",
+   "edition": "Jun, 2025"
+  },
+  "OISD-STD-117": {
+   "title": "Fire Protection Facilities for Petroleum Depots, Terminals, Pipeline  Installations & Lube oil installations",
+   "edition": "Sep, 2017"
+  },
+  "OISD-STD-118": {
+   "title": "Layouts for Oil and Gas Installations",
+   "edition": "Jun, 2025"
+  },
+  "OISD-STD-128": {
+   "title": "Inspection of Unfired Pressure Vessels",
+   "edition": "Jun, 2024"
+  },
+  "OISD-STD-129": {
+   "title": "Inspection of Storage Tanks",
+   "edition": "Aug, 2023"
+  },
+  "OISD-STD-130": {
+   "title": "Inspection of Piping Systems",
+   "edition": "Jun, 2024"
+  },
+  "OISD-STD-131": {
+   "title": "Inspection of Boilers",
+   "edition": "Aug, 2019"
+  },
+  "OISD-STD-132": {
+   "title": "Inspection of Pressure Relieving devices",
+   "edition": "Jul, 2012"
+  },
+  "OISD-STD-133": {
+   "title": "Inspection of Fired Heaters",
+   "edition": "Apr, 2016"
+  },
+  "OISD-STD-134": {
+   "title": "Inspection of Heat Exchangers",
+   "edition": "Oct, 2010"
+  },
+  "OISD-STD-135": {
+   "title": "Inspection of Loading & Unloading hoses for Petroleum Products",
+   "edition": "Sep, 2021"
+  },
+  "OISD-STD-137": {
+   "title": "Inspection of Electrical Equipment",
+   "edition": "Apr, 2016"
+  },
+  "OISD-STD-139": {
+   "title": "Design, Construction, Inspection & Maintenance of Offshore Pipelines and  Facilities & Requirements Of Deep Water Pipelines",
+   "edition": "Oct, 2017"
+  },
+  "OISD-STD-141": {
+   "title": "Cross Country liquid hydrocarbon pipeline",
+   "edition": "Aug, 2026"
+  },
+  "OISD-STD-142": {
+   "title": "Inspection of fire fighting equipments and systems",
+   "edition": "Aug, 2023"
+  },
+  "OISD-STD-144": {
+   "title": "Liquefied Petroleum Gas (LPG) Installations",
+   "edition": "Aug, 2026"
+  },
+  "OISD-STD-145": {
+   "title": "Internal Safety Audits",
+   "edition": "Sep, 2021"
+  },
+  "OISD-RP-146": {
+   "title": "Preservation of idle electrical equipment",
+   "edition": "Aug, 2023"
+  },
+  "OISD-RP-147": {
+   "title": "Inspection & safe practices during electrical installations",
+   "edition": "Aug, 2023"
+  },
+  "OISD-RP-148": {
+   "title": "Inspection & safe practices during overhauling electrical equipment",
+   "edition": "Aug, 2000"
+  },
+  "OISD-RP-149": {
+   "title": "Design aspects for safety in electrical systems",
+   "edition": "Oct, 2013"
+  },
+  "OISD-STD-150": {
+   "title": "Design and Safety Requirements for Liquefied Petroleum Gas Mounded  Storage Facility",
+   "edition": "Sep, 2021"
+  },
+  "OISD-STD-151": {
+   "title": "Safety in Design, Fabrication and Fittings Propane Tank Trucks",
+   "edition": "Oct, 2018"
+  },
+  "OISD-STD-152": {
+   "title": "Safety Instrumentation for Process System in Hydrocarbon Industry",
+   "edition": "Jun, 2024"
+  },
+  "OISD-STD-153": {
+   "title": "Maintenance & inspection of safety instrumentation in hydrocarbon industry",
+   "edition": "Jan, 2015"
+  },
+  "OISD-STD-154": {
+   "title": "Training in midstream and downstream sector of petroleum industry",
+   "edition": "Aug, 2026"
+  },
+  "OISD-STD-155": {
+   "title": "Personal Protective Equipment",
+   "edition": "Sep, 2021"
+  },
+  "OISD-STD-156": {
+   "title": "Fire Protection Facilities for Ports Handling Hydrocarbons",
+   "edition": "Oct, 2017"
+  },
+  "OISD-RP-157": {
+   "title": "Safety in Transportation of Bulk Petroleum Products (Rail and Road)",
+   "edition": "Aug, 2019"
+  },
+  "OISD-RP-158": {
+   "title": "Recommended Practices on Storage and Handling of Bulk Liquefied Petroleum Gas",
+   "edition": "Aug, 2000"
+  },
+  "OISD-STD-159": {
+   "title": "LPG Tank Trucks - Requirements of Safety on Design/Fabrication & Fittings",
+   "edition": "Oct, 2018"
+  },
+  "OISD-GDN-161": {
+   "title": "LPG Tank Truck Incidents Rescue & Relief Operations",
+   "edition": "Oct, 2018"
+  },
+  "OISD-STD-162": {
+   "title": "Safety in installation and maintenance of LPG Cylinders Manifold",
+   "edition": "Oct, 2018"
+  },
+  "OISD-STD-163": {
+   "title": "Safety of Control Room for Hydrocarbon industry",
+   "edition": "Jun, 2024"
+  },
+  "OISD-STD-164": {
+   "title": "Fire Proofing of Steel Supporting Structures in Oil & Gas Industry",
+   "edition": "Jul, 2012"
+  },
+  "OISD-GDN-165": {
+   "title": "Guidelines for Rescue & Relief Operations for POL Tank Truck Accident",
+   "edition": "Aug, 2023"
+  },
+  "OISD-GDN-166": {
+   "title": "Guidelines for Occupational Health Monitoring in Oil and Gas Industry",
+   "edition": "Jul, 2012"
+  },
+  "OISD-RP-167": {
+   "title": "POL Tank lorry Design & Safety",
+   "edition": "Aug, 2019"
+  },
+  "OISD-GDN-169": {
+   "title": "OISD Guidelines on Small LPG Bottling Plants (Design and Fire Protection facilities)",
+   "edition": "Oct, 2017"
+  },
+  "OISD-STD-170": {
+   "title": "Inspection, Maintenance, Repairs & Rehabilitation of Foundations &  Structures",
+   "edition": "Jul, 1997"
+  },
+  "OISD-STD-171": {
+   "title": "Preservation of Idle Static & Rotary Mechanical Equipment",
+   "edition": "Jul, 1998"
+  },
+  "OISD-STD-173": {
+   "title": "Fire Prevention and Protection System for Electrical Installations",
+   "edition": "Oct, 2017"
+  },
+  "OISD-STD-174": {
+   "title": "Well Control",
+   "edition": "Jun, 2024"
+  },
+  "OISD-STD-175": {
+   "title": "Cementing Operations",
+   "edition": "Aug, 2026"
+  },
+  "OISD-STD-176": {
+   "title": "Health, Safety & Environment Training for Exploration & Production Industry",
+   "edition": "Jun, 2025"
+  },
+  "OISD-STD-177": {
+   "title": "Inspection and Maintenance of Insulation System",
+   "edition": "Sep, 2021"
+  },
+  "OISD-STD-178": {
+   "title": "Management of Change",
+   "edition": "Aug, 2023"
+  },
+  "OISD-STD-179": {
+   "title": "Safety Requirements on Compression, Storage, Handling & Refueling Of  Natural Gas (CNG) For Use In Automotive Sector.",
+   "edition": "Apr, 2016"
+  },
+  "OISD-GDN-180": {
+   "title": "Lightning Protection",
+   "edition": "Oct, 2018"
+  },
+  "OISD-STD-181": {
+   "title": "Geophysical Operations",
+   "edition": "Jun, 2024"
+  },
+  "OISD-GDN-182": {
+   "title": "Safe Practices for Workover and Well Stimulation Operations",
+   "edition": "Oct, 2018"
+  },
+  "OISD-STD-183": {
+   "title": "Standard on Logging Operations",
+   "edition": "Oct, 2013"
+  },
+  "OISD-STD-184": {
+   "title": "Standard on Life Saving Appliances",
+   "edition": "Jun, 2025"
+  },
+  "OISD-STD-185": {
+   "title": "Wire Line Operations",
+   "edition": "Aug, 2002"
+  },
+  "OISD-STD-186": {
+   "title": "Simultaneous Operations in E&P Industry",
+   "edition": "Aug, 2023"
+  },
+  "OISD-STD-187": {
+   "title": "Care and Use of Wire Rope",
+   "edition": "Aug, 2023"
+  },
+  "OISD-STD-188": {
+   "title": "Corrosion Monitoring and Control of Offshore & Onshore Pipelines",
+   "edition": "Aug, 2019"
+  },
+  "OISD-STD-189": {
+   "title": "Standard On Fire Fighting Equipment for Drilling Rigs, Work Over Rigs  and Production Installations",
+   "edition": "Jul, 2012"
+  },
+  "OISD-STD-190": {
+   "title": "Safety in Derrick Floor Operations (Onshore and Offshore Drilling Rigs)",
+   "edition": "Jun, 2025"
+  },
+  "OISD-STD-191": {
+   "title": "Oil Field Explosive Safety",
+   "edition": "Oct, 2017"
+  },
+  "OISD-GDN-192": {
+   "title": "Guidelines on Health, Safety and Environment Management and Practices during Construction",
+   "edition": "Aug, 2026"
+  },
+  "OISD-GDN-193": {
+   "title": "Guidelines for Gas Lift Operations & Maintenance",
+   "edition": "Sep, 2001"
+  },
+  "OISD-STD-194": {
+   "title": "Standard for Handling, Storage & Regasification of Liquefied Natural Gas (LNG)",
+   "edition": "Jun, 2025"
+  },
+  "OISD-GDN-200": {
+   "title": "Guidelines for preparation of oil spill contingency plan",
+   "edition": "Jun, 2024"
+  },
+  "OISD-STD-201": {
+   "title": "Environment Management in Oil & Gas Industry",
+   "edition": "Aug, 2026"
+  },
+  "OISD-GDN-202": {
+   "title": "Field Inspection of Drilling & Work-over Rig Mast, Substructure & Rig Equipment",
+   "edition": "Jan, 2015"
+  },
+  "OISD-GDN-203": {
+   "title": "Operation, Maintenance & Inspection of Hoisting Equipment",
+   "edition": "Sep, 2003"
+  },
+  "OISD-RP-205": {
+   "title": "Recommended Practices for Crane Operation, Maintenance & Testing (for  Upstream)",
+   "edition": "Aug, 2019"
+  },
+  "OISD-GDN-206": {
+   "title": "Guidelines on Safety Management System in Oil And Gas Industry",
+   "edition": "Jun, 2025"
+  },
+  "OISD-STD-210": {
+   "title": "Storage, Handling and Refueling of LPG for automotive use",
+   "edition": "Aug, 2023"
+  },
+  "OISD-GDN-211": {
+   "title": "Safety in Petroleum Laboratories",
+   "edition": "Aug, 2019"
+  },
+  "OISD-STD-214": {
+   "title": "Cross Country LPG Pipelines",
+   "edition": "Aug, 2026"
+  },
+  "OISD-STD-216": {
+   "title": "Electrical Safety in Onshore and Offshore Drilling and Workover Rigs",
+   "edition": "Aug, 2026"
+  },
+  "OISD-GDN-218": {
+   "title": "Guidelines For Safe Rig- Up & Rig- Down Of Drilling And Work- Over Rigs",
+   "edition": "Oct, 2004"
+  },
+  "OISD-GDN-219": {
+   "title": "Guidelines on Field Inspection, Handling & Testing of Casing Pipe & Tubing",
+   "edition": "Oct, 2004"
+  },
+  "OISD-GDN-224": {
+   "title": "Monitoring & Control of Volatile Organic Compounds Emission",
+   "edition": "Aug, 2023"
+  },
+  "OISD-STD-225": {
+   "title": "Storage, Handling & Dispensing at Petroleum Retail Outlets",
+   "edition": "Oct, 2010"
+  },
+  "OISD-STD-226": {
+   "title": "Natural Gas Transmission Pipelines and City Gas Distribution Networks",
+   "edition": "Aug, 2026"
+  },
+  "OISD-STD-227": {
+   "title": "Emergency Response and Preparedness in Oil & Gas Industry",
+   "edition": "Aug, 2023"
+  },
+  "OISD-GDN-228": {
+   "title": "Selection, Training & Placement of Fire Operators in Hydrocarbon &  Petrochemical Industry",
+   "edition": "Jul, 2008"
+  },
+  "OISD-STD-230": {
+   "title": "Unlined Underground Rock Cavern Storage for Petroleum & Liquefied Petroleum Gas",
+   "edition": "Sep, 2021"
+  },
+  "OISD-STD-231": {
+   "title": "Sucker Rod Pumping Units",
+   "edition": "Jul, 2008"
+  },
+  "OISD-STD-233": {
+   "title": "Non Piggable Onshore Hydrocarbon Pipeline",
+   "edition": "Jun, 2025"
+  },
+  "OISD-STD-234": {
+   "title": "Electrical Safety in Onshore Production Installations in E&P Sector",
+   "edition": "Jan, 2015"
+  },
+  "OISD-STD-235": {
+   "title": "Storage, Handling, Refuelling and fire fighting at aviation fuelling stations",
+   "edition": "Jan, 2015"
+  },
+  "OISD-STD-236": {
+   "title": "Design, Layout, Operation & Maintenance of Refrigerated LPG Storage",
+   "edition": "Feb, 2014"
+  },
+  "OISD-STD-237": {
+   "title": "Layout, Design consideration, Safety, Operation and Maintenance of Lube/  Grease manufacturing and filling plants",
+   "edition": "Jan, 2015"
+  },
+  "OISD-RP-238": {
+   "title": "Well Integrity",
+   "edition": "Apr, 2016"
+  },
+  "OISD-GDN-239": {
+   "title": "Guidelines On Annular Casing Pressure Management for Onshore Wells",
+   "edition": "Mar, 2016"
+  },
+  "OISD-STD-240": {
+   "title": "Asset Integrity Management of rotary equipment",
+   "edition": "Jun, 2024"
+  },
+  "OISD-STD-241": {
+   "title": "Safety in the production, storage, and transportation of hydrogen and hydrogen blends",
+   "edition": "Jun, 2024"
+  },
+  "OISD-RP-242": {
+   "title": "Recommended practices for Drilling and Testing of HPHT Wells",
+   "edition": "Sep, 2021"
+  },
+  "OISD-RP-243": {
+   "title": "Recommended Practices on Coal based Methane (CBM) operations",
+   "edition": "Oct, 2018"
+  },
+  "OISD-STD-244": {
+   "title": "Storage and handling of Petroleum Products at depots and terminals including standalone crude oil storage facilities",
+   "edition": "Jan, 2015"
+  },
+  "OISD-STD-245": {
+   "title": "Standard on safety for LNG bunkering facilities at ports for large ships, coastal shipping and inland water transport (IWT) terminals",
+   "edition": "Oct, 2018"
+  }
+ }
+}
