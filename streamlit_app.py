@@ -16,7 +16,7 @@ from refinery_design.assay import INF, Slate, available_crudes, load_crude
 from refinery_design.coker import delayed_coker
 from refinery_design.distillation import distill
 from refinery_design.fcc import FccFeed, FccKinetics, FccOperation, cooler_duty_for_regen_temperature, fcc_operate, riser_kinetics, rot_sweep
-from refinery_design import crude_sourcing as csrc, ethanol as eth, india, petchem_prices as pcp, rundown as rd, safety as sfty, trade as ptrade
+from refinery_design import crude_sourcing as csrc, dual_feed_cracker as dfc, steam_cracker as scr, ethanol as eth, india, petchem_prices as pcp, rundown as rd, safety as sfty, trade as ptrade
 from refinery_design.fcc_modes import modes as fcc_modes_fn
 from refinery_design.routes import petrol_switch_options
 from refinery_design.flowsheet import RefineryConfig, refine
@@ -32,12 +32,18 @@ st.caption(
     "and docs/METHODOLOGY.md for citations."
 )
 
+@st.cache_resource
+def paradip_model_refinery_dual():
+    from refinery_design.benchmarks import paradip_model_refinery
+    return paradip_model_refinery(True)
+
+
 KEYS = available_crudes()
 NAMES = {k: load_crude(k).name for k in KEYS}
 
-tab_types, tab_slate, tab_cdu, tab_fcc, tab_ht, tab_ref, tab_india, tab_grm, tab_petrol, tab_src, tab_safe = st.tabs(
+tab_types, tab_slate, tab_cdu, tab_fcc, tab_ht, tab_ref, tab_india, tab_grm, tab_petrol, tab_dual, tab_src, tab_safe = st.tabs(
     ["Crude types", "Slate & blending", "Crude / vacuum unit", "FCC", "Hydrotreater & coker", "Whole refinery",
-     "India: CHT & PPAC", "GRM & petrochemicals", "Petrol & routes", "Crude sourcing", "Safety"]
+     "India: CHT & PPAC", "GRM & petrochemicals", "Petrol & routes", "Dual-feed cracker", "Crude sourcing", "Safety"]
 )
 
 
@@ -310,6 +316,61 @@ with tab_petrol:
     st.dataframe(pd.DataFrame([{"route": r.name, "gasoline removed kt/y": round(r.gasoline_removed_kt_y), "fuel change $M/y": round(r.fuel_margin_usd_m_y),
                                 "petchem before capital $M/y": None if r.petchem_margin_usd_m_y is None else round(r.petchem_margin_usd_m_y),
                                 "net $M/y": None if r.net_usd_m_y is None else round(r.net_usd_m_y), "note": r.note} for r in rows]), hide_index=True)
+
+with tab_dual:
+    st.header("Dual-feed cracker: refinery naphtha + LPG")
+    st.caption("Propane yields from a real industrial table (US patent 5,990,370, BP Chemicals), recycled to extinction; butane and the feed split are "
+               "ASSUMPTIONS. Prices default to the Sept-2026 deck. See docs/PETROCHEMICAL_EVALUATION.md.")
+    snapd = pcp.crude_snapshot()
+    deckd = ptrade.RebasedTradeDeck("2025-26", snapd["brent"])
+    prd = pcp.iocl_deck()
+    d1, d2, d3, d4 = st.columns(4)
+    feed_mt = d1.number_input("Total feed (Mt/y)", 0.5, 8.0, 4.0, step=0.5, key="dual_feed")
+    lpg_share = d2.slider("LPG share of feed (%)", 0, 100, 75, step=5) / 100.0
+    bfrac = d3.slider("Butane share of the LPG (%)", 0, 100, 50, step=10, help="Butane yields are ASSUMED.") / 100.0
+    capex_tpa = d4.number_input("Capex ($ per tpa at 4 Mt)", 500.0, 2500.0, 1500.0, step=100.0, key="dual_capex")
+    e1, e2c, e3, e4 = st.columns(4)
+    pe_d = e1.number_input("PE price ($/t)", 600.0, 2500.0, float(round(pcp.iocl_pe_usd_t())), step=50.0, key="dual_pe")
+    pp_d = e2c.number_input("PP price ($/t)", 600.0, 2500.0, float(round(prd.pp_usd_t)), step=50.0, key="dual_pp")
+    nap_d = e3.number_input("Naphtha ($/t)", 300.0, 1500.0, float(round(deckd.product_usd_t("naphtha"))), step=25.0)
+    lpg_d = e4.number_input("LPG ($/t)", 300.0, 1500.0, float(round(deckd.product_usd_t("lpg"))), step=25.0)
+    ad = scr.CrackerAssumptions(capex_usd_per_tpa_at_ref=capex_tpa)
+    total = feed_mt * 1e6
+    od = dfc.build_dual_feed(total * (1 - lpg_share), total * lpg_share, butane_fraction=bfrac, a=ad)
+    ed = dfc.evaluate_dual_feed(od, deckd, pe_d, pp_d, naphtha_usd_t=nap_d, lpg_usd_t=lpg_d, a=ad)
+    m1, m2, m3, m4 = st.columns(4)
+    m1.metric("Ethylene", f"{od.ethylene_t_y/1e6:.2f} Mt/y")
+    m2.metric("Margin before capital", f"${ed.margin_before_capital_usd_y/1e6:,.0f} M/y")
+    m3.metric("Net after capital", f"${ed.net_usd_y/1e6:,.0f} M/y")
+    m4.metric("Break-even PE", f"${ed.breakeven_pe_usd_t:,.0f}/t")
+    try:
+        be = dfc.breakeven_lpg_usd_t(od, deckd, pe_d, pp_d, naphtha_usd_t=nap_d, a=ad) if od.lpg_t_y > 0 else None
+    except ValueError:
+        be = None
+    if be is not None:
+        st.write(f"Break-even LPG price at this mix: **${be:,.0f}/t** (deck ${lpg_d:,.0f}/t).")
+    for w in od.warnings:
+        st.warning(w)
+    st.subheader("LPG-share sweep at this feed size")
+    sweep = pd.DataFrame(dfc.lpg_share_sweep(total, deckd, pe_d, pp_d, butane_fraction=bfrac, a=ad))
+    sweep["lpg_share"] = (sweep["lpg_share"] * 100).round(0).astype(int)
+    st.dataframe(sweep.rename(columns={"lpg_share": "LPG %", "ethylene_mt": "ethylene Mt/y", "before_capital_usd_m": "before capital $M/y",
+                                       "net_usd_m": "net $M/y", "margin_per_t_feed": "$/t feed", "breakeven_pe": "break-even PE $/t"}).round(1),
+                 hide_index=True)
+    st.line_chart(sweep.set_index("lpg_share")[["before_capital_usd_m", "net_usd_m"]].rename(columns={"before_capital_usd_m": "before capital $M/y", "net_usd_m": "net $M/y"}))
+    st.subheader("Propane yields: patent Table 1 (per pass) and recycled to extinction")
+    st.dataframe(pd.DataFrame([{"conversion %": c, **{k: round(v, 1) for k, v in {
+        "ethylene": dfc.propane_yields(c).ethylene, "propylene": dfc.propane_yields(c).propylene, "C4": dfc.propane_yields(c).c4,
+        "pygas": dfc.propane_yields(c).pygas, "fuel oil": dfc.propane_yields(c).pyrolysis_fuel_oil}.items()}} for c in (84, 88, 92)]), hide_index=True)
+    st.subheader("The refinery's own supply (Paradip basket)")
+    Rd = paradip_model_refinery_dual()
+    rd_out = dfc.refinery_dual_feed(Rd, deckd, prd, pe_d, butane_fraction=bfrac, a=ad)
+    sup, o_r, e_r = rd_out["supply"], rd_out["option"], rd_out["evaluation"]
+    st.write(f"LPG pool {sup['lpg_pool_t_y']/1e3:,.0f} kt/y, less FCC propylene kept for PP {sup['propylene_recovered_t_y']/1e3:,.0f} kt/y -> "
+             f"**{sup['available_t_y']/1e3:,.0f} kt/y** available. With {o_r.naphtha_t_y/1e3:,.0f} kt/y naphtha: ethylene {o_r.ethylene_t_y/1e6:.2f} Mt/y, "
+             f"cash ${e_r.margin_before_capital_usd_y/1e6:,.0f} M/y, net ${e_r.net_usd_y/1e6:,.0f} M/y.")
+    for w in o_r.warnings:
+        st.warning(w)
 
 with tab_src:
     st.header("Crude sourcing and local-currency settlement")
