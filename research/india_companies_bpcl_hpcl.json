@@ -1,0 +1,1952 @@
+{
+ "as_of": "2026-09-21",
+ "fiscal_year_convention": "FY2015-16 = 1 Apr 2015 - 31 Mar 2016; capacity taken at 1 April of FY start (PPAC convention)",
+ "units": "capacity MMTPA; throughput MMT; utilisation %; GRM US$/bbl",
+ "refineries": {
+  "BPCL Mumbai": {
+   "operator": "BPCL",
+   "capacity_mmtpa_ppac_1_april": {
+    "FY2015-16": 12.0,
+    "FY2016-17": 12.0,
+    "FY2017-18": 12.0,
+    "FY2018-19": 12.0,
+    "FY2019-20": 12.0,
+    "FY2020-21": 12.0,
+    "FY2021-22": 12.0,
+    "FY2022-23": 12.0,
+    "FY2023-24": 12.0,
+    "FY2024-25": 12.0,
+    "FY2025-26": 12.0
+   },
+   "capacity_source": "S_PPAC_HIST (Installed refining capacity, dates are 1 April of the FY start year, e.g. FY2015-16 = 1.04.2015)",
+   "throughput_mmt": {
+    "FY2015-16": [
+     {
+      "value": 13.4,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     }
+    ],
+    "FY2016-17": [
+     {
+      "value": 13.5,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     }
+    ],
+    "FY2017-18": [
+     {
+      "value": 14.1,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     }
+    ],
+    "FY2018-19": [
+     {
+      "value": 14.8,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     }
+    ],
+    "FY2019-20": [
+     {
+      "value": 15,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     }
+    ],
+    "FY2020-21": [
+     {
+      "value": 12.9,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     }
+    ],
+    "FY2021-22": [
+     {
+      "value": 14.4,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     }
+    ],
+    "FY2022-23": [
+     {
+      "value": 14.54,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     },
+     {
+      "value": 14.66,
+      "source": "S_BPCL_AR2324",
+      "note": "AR 2023-24 refinery table \"Refinery Throughput (MMT)\" Mumbai 2022-23 = 14.66; Crude Oil Processed 14.55"
+     }
+    ],
+    "FY2023-24": [
+     {
+      "value": 15.05,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     },
+     {
+      "value": 15.2,
+      "source": "S_BPCL_AR2425",
+      "note": "AR 2024-25 table \"Refinery Throughput (MMT)\" Mumbai 2023-24 = 15.20 (crude oil processed 15.05)"
+     },
+     {
+      "value": 15.052,
+      "source": "S_PPAC_CRUDE",
+      "note": "PPAC row \"BPCL-MUMBAI, MAHARASHTRA\" 15,052 (000 MT), provisional"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 15.5,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     },
+     {
+      "value": 15.58,
+      "source": "S_BPCL_AR2425",
+      "note": "AR 2024-25 table: Refinery Throughput 15.58; Crude Oil Processed 15.53"
+     },
+     {
+      "value": 15.529,
+      "source": "S_PPAC_CRUDE",
+      "note": "PPAC row 15,529 (000 MT), provisional"
+     }
+    ],
+    "FY2025-26": [
+     {
+      "value": 16.042,
+      "source": "S_PPAC_CRUDE",
+      "note": "PPAC row \"BPCL-MUMBAI, MAHARASHTRA\" 16,042 (000 MT), provisional, updated 01-09-2026"
+     }
+    ]
+   },
+   "utilisation_pct_published": {
+    "FY2022-23": [
+     {
+      "value": 121.22,
+      "source": "S_BPCL_AR2324",
+      "note": "AR 2023-24 table \"Capacity Utilization (%)*\" (crude processed / installed capacity)"
+     }
+    ],
+    "FY2023-24": [
+     {
+      "value": 125.43,
+      "source": "S_BPCL_AR2425",
+      "note": "AR 2024-25 table"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 129.82,
+      "source": "S_BPCL_AR2425",
+      "note": "AR 2024-25 table"
+     },
+     {
+      "value": 130,
+      "source": "S_BPCL_IP_Q3FY26",
+      "note": "Investor presentation Jan 2026 slide \"Refining - Mumbai Refinery\": \"Utilization: 130% (FY25)\""
+     }
+    ]
+   },
+   "utilisation_pct_derived_from_CHT_throughput_over_PPAC_capacity": {
+    "FY2015-16": 111.7,
+    "FY2016-17": 112.5,
+    "FY2017-18": 117.5,
+    "FY2018-19": 123.3,
+    "FY2019-20": 125.0,
+    "FY2020-21": 107.5,
+    "FY2021-22": 120.0,
+    "FY2022-23": 121.2,
+    "FY2023-24": 125.4,
+    "FY2024-25": 129.2
+   },
+   "distillate_yield_pct_CHT": {
+    "FY2014-15": 81.76,
+    "FY2015-16": 84.29,
+    "FY2016-17": 86.15,
+    "FY2017-18": 84.3,
+    "FY2018-19": 82.2,
+    "FY2019-20": 84.9,
+    "FY2020-21": 83.66,
+    "FY2021-22": 84.4,
+    "FY2022-23": 85.5,
+    "FY2023-24": 80.9,
+    "FY2024-25": 81.1
+   },
+   "grm_usd_per_bbl": {
+    "FY2022-23": [
+     {
+      "value": 15.2,
+      "source": "S_BPCL_AR2324",
+      "note": "US$/bbl, AR 2023-24 table"
+     }
+    ],
+    "FY2023-24": [
+     {
+      "value": 9.62,
+      "source": "S_BPCL_AR2425",
+      "note": "US$/bbl"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 4.86,
+      "source": "S_BPCL_AR2425",
+      "note": "US$/bbl"
+     }
+    ]
+   },
+   "complexity": {
+    "nelson_complexity_index": [
+     {
+      "value": 9.84,
+      "source": "S_BPCL_IP_Q3FY26",
+      "note": "slide \"Refining - Mumbai Refinery\" Key Highlights: Nelson Index: 9.84"
+     },
+     {
+      "value": 9.8,
+      "source": "S_CHT_NCI",
+      "note": "CHT NCI table (OGJ 2025 survey), commissioned 1955"
+     }
+    ]
+   },
+   "fcc_units": [
+    {
+     "unit": "Old Catalytic Cracking Unit (CCU) + FCCU (two catalytic cracking units)",
+     "capacity": "NOT FOUND",
+     "commissioning_year": "NOT FOUND (BPCL says \"40+ year old CCU & FCC units\")",
+     "source": "S_BPCL_IP_Q3FY26",
+     "wording": "\"Hydrocracker + 2 FCCU + 2 DHT + CCR + ISOM\"; PRFCC slide: \"Replacement of 40+ year old CCU & FCC units\"; AR 2024-25: \"replacing the existing old Catalytic Cracking Unit (CCU) and Fluidized Catalytic Cracking Unit (FCCU) with a state-of-the-art Petro Resid Fluidized Catalytic Cracking (PRFCC) Unit ... gross capital expenditure of Rs 14,200 crore\""
+    },
+    {
+     "unit": "PRFCC (Petro Resid FCC) - replacement, planned",
+     "capacity": "NOT FOUND (not stated in sources fetched)",
+     "commissioning_year": "expected 2029 (Jan 2026 IP)",
+     "source": "S_BPCL_IP_Q3FY26",
+     "wording": "\"Petro Resid Fluidized Catalytic Cracking (PRFCC) Unit ~INR 14k Crores Investment - Expected to be commissioned by 2029 - Replacement of 40+ year old CCU & FCC units - Valorise low-value Vacuum Residue to high-value products - Propylene, MS and HSD - Flexibility to process more high-sulphur crudes\""
+    }
+   ],
+   "notes": [
+    "Throughput/capacity = 12 MMTPA unchanged since 1.4.2006 per PPAC; utilisation >100% every year.",
+    "BPCL FY24 AR states intention to raise Mumbai nameplate from 12 to 16 MMTPA (and Kochi 15.5 to 18) \"in the next five years through revamps\" (initial studies in progress); Jan-2026 IP: \"Potential for expansion to 16 MMTPA\".",
+    "Mumbai lube: PDPP not here; DAS (De-aromatic solvent) 200 KTPA train expected FY2025-26 (AR 2023-24)."
+   ]
+  },
+  "BPCL Kochi": {
+   "operator": "BPCL",
+   "capacity_mmtpa_ppac_1_april": {
+    "FY2015-16": 9.5,
+    "FY2016-17": 9.5,
+    "FY2017-18": 12.4,
+    "FY2018-19": 15.5,
+    "FY2019-20": 15.5,
+    "FY2020-21": 15.5,
+    "FY2021-22": 15.5,
+    "FY2022-23": 15.5,
+    "FY2023-24": 15.5,
+    "FY2024-25": 15.5,
+    "FY2025-26": 15.5
+   },
+   "capacity_source": "S_PPAC_HIST; 9.5 -> 12.4 (1.4.2017) -> 15.5 (1.4.2018) = Integrated Refinery Expansion Project (IREP), commissioned 2017 per secondary sources (see notes)",
+   "throughput_mmt": {
+    "FY2015-16": [
+     {
+      "value": 10.7,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     }
+    ],
+    "FY2016-17": [
+     {
+      "value": 11.8,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     }
+    ],
+    "FY2017-18": [
+     {
+      "value": 14.1,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     }
+    ],
+    "FY2018-19": [
+     {
+      "value": 16.1,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     }
+    ],
+    "FY2019-20": [
+     {
+      "value": 16.5,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     }
+    ],
+    "FY2020-21": [
+     {
+      "value": 13.3,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     }
+    ],
+    "FY2021-22": [
+     {
+      "value": 15.4,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     }
+    ],
+    "FY2022-23": [
+     {
+      "value": 16.01,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     },
+     {
+      "value": 16.12,
+      "source": "S_BPCL_AR2324",
+      "note": "AR table Refinery Throughput 16.12; crude processed 16.02"
+     }
+    ],
+    "FY2023-24": [
+     {
+      "value": 17.31,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     },
+     {
+      "value": 17.54,
+      "source": "S_BPCL_AR2425",
+      "note": "AR 2024-25 table Refinery Throughput 17.54 (crude processed 17.31)"
+     },
+     {
+      "value": 17.314,
+      "source": "S_PPAC_CRUDE",
+      "note": "PPAC row 17,314"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 17.2,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     },
+     {
+      "value": 17.22,
+      "source": "S_BPCL_AR2425",
+      "note": "AR 2024-25 table Refinery Throughput 17.22 (crude processed 17.19)"
+     },
+     {
+      "value": 17.193,
+      "source": "S_PPAC_CRUDE",
+      "note": "PPAC row 17,193"
+     }
+    ],
+    "FY2025-26": [
+     {
+      "value": 17.559,
+      "source": "S_PPAC_CRUDE",
+      "note": "PPAC row \"BPCL-KOCHI, KERALA\" 17,559 (000 MT), provisional"
+     }
+    ]
+   },
+   "utilisation_pct_published": {
+    "FY2022-23": [
+     {
+      "value": 103.33,
+      "source": "S_BPCL_AR2324",
+      "note": "AR table"
+     }
+    ],
+    "FY2023-24": [
+     {
+      "value": 111.7,
+      "source": "S_BPCL_AR2425",
+      "note": "AR table"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 111.11,
+      "source": "S_BPCL_AR2425",
+      "note": "AR table"
+     },
+     {
+      "value": 111,
+      "source": "S_BPCL_IP_Q3FY26",
+      "note": "slide: \"Utilization: 111% (FY25)\"; note \"Capacity Utilization in FY21 at 85% due to Covid-19 lockdown\""
+     }
+    ]
+   },
+   "utilisation_pct_derived_from_CHT_throughput_over_PPAC_capacity": {
+    "FY2015-16": 112.6,
+    "FY2016-17": 124.2,
+    "FY2017-18": 113.7,
+    "FY2018-19": 103.9,
+    "FY2019-20": 106.5,
+    "FY2020-21": 85.8,
+    "FY2021-22": 99.4,
+    "FY2022-23": 103.3,
+    "FY2023-24": 111.7,
+    "FY2024-25": 111.0
+   },
+   "distillate_yield_pct_CHT": {
+    "FY2014-15": 84.67,
+    "FY2015-16": 85.7,
+    "FY2016-17": 85.17,
+    "FY2017-18": 83.9,
+    "FY2018-19": 82.5,
+    "FY2019-20": 84.2,
+    "FY2020-21": 83.77,
+    "FY2021-22": 85.4,
+    "FY2022-23": 83.9,
+    "FY2023-24": 84.2,
+    "FY2024-25": 83.5
+   },
+   "grm_usd_per_bbl": {
+    "FY2022-23": [
+     {
+      "value": 21.01,
+      "source": "S_BPCL_AR2324",
+      "note": "AR table"
+     }
+    ],
+    "FY2023-24": [
+     {
+      "value": 15.39,
+      "source": "S_BPCL_AR2425"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 6.96,
+      "source": "S_BPCL_AR2425"
+     }
+    ]
+   },
+   "complexity": {
+    "nelson_complexity_index": [
+     {
+      "value": 11.22,
+      "source": "S_BPCL_IP_Q3FY26",
+      "note": "slide Kochi Key Highlights"
+     },
+     {
+      "value": 11.2,
+      "source": "S_CHT_NCI"
+     }
+    ]
+   },
+   "fcc_units": [
+    {
+     "unit": "FCCU (conventional) - VGO-HDS fed",
+     "capacity": "NOT FOUND",
+     "commissioning_year": "NOT FOUND",
+     "source": "S_BPCL_KOCHI_PROCESS",
+     "wording": "\"major secondary processing facilities in the Kochi refinery include a Fluidized Catalytic Cracking (FCC) Unit ... VGO Hydro Desulphurization (VGO-HDS) Unit, Petro Fluidized Catalytic Cracking (PFCC) Unit ...\"; IP: \"2 FCCU + 2 DHT + 2CCR + ISOM + DCU / Petrochemicals Refinery\""
+    },
+    {
+     "unit": "PFCC (Petro FCC) - the IREP-era propylene-maximising unit",
+     "capacity": "NOT FOUND",
+     "commissioning_year": "NOT FOUND in a primary source (IREP overall capacity 9.5->15.5 MMTPA reached by 1.4.2018 per PPAC)",
+     "source": "S_BPCL_AR2324",
+     "wording": "AR 2023-24: \"Kochi Refinery has the capability to produce additional Propylene feedstock after catering to the requirement in the PDPP Unit. With minor modification of the existing Petro Fluid Catalytic Cracker (PFCC) Unit, Propylene feedstock can be further enhanced.\""
+    },
+    {
+     "unit": "PFCC revamp for Homo-PP feedstock (planned)",
+     "capacity": "PP unit 400 KTPA",
+     "commissioning_year": "Oct 2027 (AR 2024-25 project table; AR 2023-24 same) / Dec 2027 (AR 2024-25 MD&A text) / \"by 2027\" & \"2027-28\" (Jan 2026 IP)",
+     "source": "S_BPCL_AR2425",
+     "wording": "AR 2024-25: \"setting up a 400 KTPA Polypropylene Unit and associated facilities, along with revamping the Petro Fluid Catalytic Cracking (PFCC) Unit for the production of Homo grade Polypropylene at Kochi Refinery. The total project cost is Rs 4,460 crore, with a scheduled completion in October 2027. ... 9.6% progress as on March 31, 2025\""
+    }
+   ],
+   "notes": [
+    "PDPP (Propylene Derivatives Petrochemical Project, 329 KTPA niche petrochemicals) at Kochi: \"commissioned in 2021-22\" (Jan 2026 IP); AR 2023-24 says \"successful integration of Niche petrochemicals of 329 KTPA through the PDPP\".",
+    "Kochi Q4 FY26 fuel & loss 6.48% (Q4 FY26 call, third-party AI transcript).",
+    "Aug 2026 AGM (ANI report): Kochi capacity to go 15.5 -> 17 MMTPA; earlier documents said 18 MMTPA potential."
+   ]
+  },
+  "BPCL Bina": {
+   "operator": "BPCL (BORL; became BPCL wholly-owned subsidiary w.e.f. Jun 2021 per CHT note \"Bina became a PSU w.e.f. Jun21\"; merged into BPCL - PPAC lists it under BPCL from 1.4.2023)",
+   "capacity_mmtpa_ppac_1_april": {
+    "FY2015-16": 6.0,
+    "FY2016-17": 6.0,
+    "FY2017-18": 6.0,
+    "FY2018-19": 6.0,
+    "FY2019-20": 7.8,
+    "FY2020-21": 7.8,
+    "FY2021-22": 7.8,
+    "FY2022-23": 7.8,
+    "FY2023-24": 7.8,
+    "FY2024-25": 7.8,
+    "FY2025-26": 7.8
+   },
+   "capacity_source": "S_PPAC_HIST rows BORL-Bina (6.0 to 1.4.2018, 7.8 from 1.4.2019 column) then BPC, Bina 7.8 from 1.4.2023; 7.8 still on 1.04.2026",
+   "throughput_mmt": {
+    "FY2021-22": [
+     {
+      "value": 7.4,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     }
+    ],
+    "FY2022-23": [
+     {
+      "value": 7.84,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     },
+     {
+      "value": 7.75,
+      "source": "S_BPCL_AR2324",
+      "note": "AR table Refinery Throughput 7.75; crude processed 7.84"
+     }
+    ],
+    "FY2023-24": [
+     {
+      "value": 7.13,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     },
+     {
+      "value": 7.19,
+      "source": "S_BPCL_AR2425",
+      "note": "AR table 7.19 (crude 7.13)"
+     },
+     {
+      "value": 7.133,
+      "source": "S_PPAC_CRUDE",
+      "note": "PPAC row \"BORL-BINA\" 7,133"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 7.7,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     },
+     {
+      "value": 7.71,
+      "source": "S_BPCL_AR2425",
+      "note": "AR table 7.71"
+     },
+     {
+      "value": 7.709,
+      "source": "S_PPAC_CRUDE",
+      "note": "PPAC row \"BPCL-BINA\" 7,709"
+     }
+    ],
+    "FY2025-26": [
+     {
+      "value": 7.391,
+      "source": "S_PPAC_CRUDE",
+      "note": "PPAC row \"BPCL-BINA\" 7,391"
+     }
+    ]
+   },
+   "utilisation_pct_published": {
+    "FY2022-23": [
+     {
+      "value": 100.52,
+      "source": "S_BPCL_AR2324"
+     }
+    ],
+    "FY2023-24": [
+     {
+      "value": 91.45,
+      "source": "S_BPCL_AR2425"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 98.85,
+      "source": "S_BPCL_AR2425"
+     },
+     {
+      "value": 99,
+      "source": "S_BPCL_IP_Q3FY26",
+      "note": "slide \"Utilization: 99% (FY25)\""
+     }
+    ]
+   },
+   "utilisation_pct_derived_from_CHT_throughput_over_PPAC_capacity": {
+    "FY2021-22": 94.9,
+    "FY2022-23": 100.5,
+    "FY2023-24": 91.4,
+    "FY2024-25": 98.7
+   },
+   "distillate_yield_pct_CHT": {
+    "FY2019-20": 82.96,
+    "FY2020-21": 85.3,
+    "FY2021-22": 84.3,
+    "FY2022-23": 85.3,
+    "FY2023-24": 84.5,
+    "FY2024-25": 84.4
+   },
+   "grm_usd_per_bbl": {
+    "FY2022-23": [
+     {
+      "value": 28.18,
+      "source": "S_BPCL_AR2324"
+     }
+    ],
+    "FY2023-24": [
+     {
+      "value": 20.66,
+      "source": "S_BPCL_AR2324",
+      "note": "AR 2023-24 table; AR 2024-25 shows 20.66 for 2023-24 as well"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 10.5,
+      "source": "S_BPCL_AR2425"
+     }
+    ]
+   },
+   "complexity": {
+    "nelson_complexity_index": [
+     {
+      "value": 11.76,
+      "source": "S_BPCL_IP_Q3FY26"
+     },
+     {
+      "value": 11.8,
+      "source": "S_CHT_NCI"
+     }
+    ]
+   },
+   "fcc_units": [
+    {
+     "unit": "NONE - Bina has no FCC/RFCC",
+     "capacity": "n/a",
+     "commissioning_year": "n/a",
+     "source": "S_BPCL_IP_Q3FY26",
+     "wording": "Jan 2026 IP slide \"Refining - Bina Refinery\": \"HCU & DHT units and 3-Drum DCU\" (no FCCU listed); contrast Mumbai \"Hydrocracker + 2 FCCU\" and Kochi \"2 FCCU\". Third-party (Offshore Technology / NS Energy) lists Bina secondary units as FCHC 1.95 MTPA, DHDT, DCU 1.36 MTPA, CCR, NHT, NIU - no FCC."
+    }
+   ],
+   "notes": [
+    "Bina expansion (BPREP): 7.8 -> ~11 MMTPA (later documents \">11\"; IP shows Vadinar-Bina pipeline 7.8 -> 11.15 MMTPA). Adds a 4,000 KTPA new CDU, 300 KTPA bitumen unit and revamps existing hydrocracker 2.6 -> 3.55 MMTPA (AR 2023-24). The \"cracker\" is a 1,200 KTPA Dual Feed (steam) ethylene Cracker, not an FCC; downstream 1,150 KTPA HDPE+LLDPE, 550 KTPA PP, 50 KTPA Butene-1, plus BTX liquid chemicals.",
+    "Q4 FY26 fuel & loss Bina 9.01% (Q4 FY26 call, third-party transcript)."
+   ]
+  },
+  "HPCL Mumbai": {
+   "operator": "HPCL",
+   "capacity_mmtpa_ppac_1_april": {
+    "FY2015-16": 6.5,
+    "FY2016-17": 6.5,
+    "FY2017-18": 7.5,
+    "FY2018-19": 7.5,
+    "FY2019-20": 7.5,
+    "FY2020-21": 7.5,
+    "FY2021-22": 7.5,
+    "FY2022-23": 9.5,
+    "FY2023-24": 9.5,
+    "FY2024-25": 9.5,
+    "FY2025-26": 9.5
+   },
+   "capacity_source": "S_PPAC_HIST: 6.5 to 1.4.2016, 7.5 on 1.4.2017-1.4.2021, 9.5 from 1.4.2022 (Mumbai expansion 7.5->9.5 MMTPA, Rs 5,381 crore, per Q4FY26 IP)",
+   "throughput_mmt": {
+    "FY2015-16": [
+     {
+      "value": 8.0,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     }
+    ],
+    "FY2016-17": [
+     {
+      "value": 8.5,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     }
+    ],
+    "FY2017-18": [
+     {
+      "value": 8.6,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     }
+    ],
+    "FY2018-19": [
+     {
+      "value": 8.7,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     },
+     {
+      "value": 8.67,
+      "source": "S_HPCL_AR2223",
+      "note": "AR 2022-23 five-year table \"Mumbai Refinery\""
+     }
+    ],
+    "FY2019-20": [
+     {
+      "value": 8.1,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     },
+     {
+      "value": 8.07,
+      "source": "S_HPCL_AR2223"
+     }
+    ],
+    "FY2020-21": [
+     {
+      "value": 7.4,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     },
+     {
+      "value": 7.37,
+      "source": "S_HPCL_AR2223"
+     }
+    ],
+    "FY2021-22": [
+     {
+      "value": 5.6,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     },
+     {
+      "value": 5.56,
+      "source": "S_HPCL_AR2223"
+     }
+    ],
+    "FY2022-23": [
+     {
+      "value": 9.8,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     },
+     {
+      "value": 9.8,
+      "source": "S_HPCL_AR2223"
+     }
+    ],
+    "FY2023-24": [
+     {
+      "value": 9.64,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     },
+     {
+      "value": 9.64,
+      "source": "S_HPCL_REFPAGE",
+      "note": "hp-refineries page table"
+     },
+     {
+      "value": 9.64,
+      "source": "S_PPAC_CRUDE",
+      "note": "PPAC 9,640"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 10.0,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     },
+     {
+      "value": 9.957,
+      "source": "S_HPCL_AR2425",
+      "note": "AR 2024-25 \"Crude Thruput TMT 9,957\""
+     },
+     {
+      "value": 9.958,
+      "source": "S_PPAC_CRUDE"
+     }
+    ],
+    "FY2025-26": [
+     {
+      "value": 10.0,
+      "source": "S_HPCL_PR_FY26",
+      "note": "press release 13 May 2026: \"Mumbai Refinery registered highest-ever crude throughput of 10.00 MMT, operating at 105% of its capacity\""
+     },
+     {
+      "value": 10.007,
+      "source": "S_PPAC_CRUDE",
+      "note": "PPAC 10,007"
+     }
+    ]
+   },
+   "utilisation_pct_published": {
+    "FY2022-23": [
+     {
+      "value": 103.2,
+      "source": "S_HPCL_AR2223",
+      "note": "AR 2022-23 \"Capacity utilization %\" Mumbai"
+     }
+    ],
+    "FY2023-24": [
+     {
+      "value": 102,
+      "source": "S_HPCL_IP_Q4FY26",
+      "note": "chart on slide 21 (rendered image)"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 104.8,
+      "source": "S_HPCL_AR2425",
+      "note": "AR 2024-25 \"Operating Performance of Refineries\" table"
+     },
+     {
+      "value": 105,
+      "source": "S_HPCL_IP_Q4FY26",
+      "note": "chart"
+     }
+    ],
+    "FY2025-26": [
+     {
+      "value": 105,
+      "source": "S_HPCL_PR_FY26"
+     },
+     {
+      "value": 105,
+      "source": "S_HPCL_IP_Q4FY26",
+      "note": "chart"
+     }
+    ]
+   },
+   "utilisation_pct_derived_from_CHT_throughput_over_PPAC_capacity": {
+    "FY2015-16": 123.1,
+    "FY2016-17": 130.8,
+    "FY2017-18": 114.7,
+    "FY2018-19": 116.0,
+    "FY2019-20": 108.0,
+    "FY2020-21": 98.7,
+    "FY2021-22": 74.7,
+    "FY2022-23": 103.2,
+    "FY2023-24": 101.5,
+    "FY2024-25": 105.3
+   },
+   "distillate_yield_pct_CHT": {
+    "FY2014-15": 75.9,
+    "FY2015-16": 76.0,
+    "FY2016-17": 77.6,
+    "FY2017-18": 77.4,
+    "FY2018-19": 77.6,
+    "FY2019-20": 77.0,
+    "FY2020-21": 76.23,
+    "FY2021-22": 70.4,
+    "FY2022-23": 75.9,
+    "FY2023-24": 76.1,
+    "FY2024-25": 74.6
+   },
+   "distillate_yield_pct_company": {
+    "FY2022-23": [
+     {
+      "value": 77.4,
+      "source": "S_HPCL_AR2223"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 76.1,
+      "source": "S_HPCL_AR2425",
+      "note": "CHT shows 74.6 for FY2024-25 - two values kept"
+     }
+    ]
+   },
+   "grm_usd_per_bbl": {
+    "FY2021-22": [
+     {
+      "value": 7.6,
+      "source": "S_HPCL_AR2223",
+      "note": "gross of export cess"
+     }
+    ],
+    "FY2022-23": [
+     {
+      "value": 14.82,
+      "source": "S_HPCL_AR2223",
+      "note": "before export levies"
+     }
+    ],
+    "FY2023-24": [
+     {
+      "value": 10.35,
+      "source": "S_HPCL_AR2425"
+     },
+     {
+      "value": 10.35,
+      "source": "S_HPCL_IP_Q4FY26"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 5.92,
+      "source": "S_HPCL_AR2425"
+     }
+    ],
+    "FY2025-26": [
+     {
+      "value": 8.04,
+      "source": "S_HPCL_IP_Q4FY26",
+      "note": "chart slide 21"
+     }
+    ]
+   },
+   "complexity": {
+    "nelson_complexity_index": [
+     {
+      "value": 9.3,
+      "source": "S_CHT_NCI",
+      "note": "OGJ 2025 survey; year of commissioning 1954"
+     }
+    ]
+   },
+   "fcc_units": [
+    {
+     "unit": "NFCCU (new FCC) and OFCCU (old FCC)",
+     "capacity": "NOT FOUND",
+     "commissioning_year": "NOT FOUND",
+     "source": "S_HPCL_AR2425",
+     "wording": "AR 2024-25 Annexure (technology absorption): \"co-processing of plastic pyrolysis oil (PPO) in the NFCC unit at Mumbai\"; \"MR-OFCCU\"; \"MR NFCCU ZSM loader\"; \"Trial of ... (additive for FCC Unit) completed at VR-FCCU-2\". Two FCC units at Mumbai are named (NFCCU, OFCCU); HPCL AR does not give capacities."
+    }
+   ],
+   "notes": [
+    "Mumbai Lube Modernization & Bottoms Upgradation Project: LOBS 475 -> 764 KTPA, bitumen +~487 KTPA (fuel oil to bitumen), \"distillate yield improvement of the Refinery by around 4%\"; cost Rs 5,749 crore, 9.9% progress at 31-03-2026 (Q4FY26 IP). No FCC change.",
+    "Commissioned parallel hydrotreating of VGO in Diesel Hydrotreating unit of Mumbai Refinery (FY25) to boost MS; ED-Operations (Deccan Herald, ~Jun 2025): \"hardly any scope to increase the capacity of the Mumbai refinery\".",
+    "Mumbai lube refinery capacity 428 TMTPA."
+   ]
+  },
+  "HPCL Visakh": {
+   "operator": "HPCL",
+   "capacity_mmtpa_ppac_1_april": {
+    "FY2015-16": 8.3,
+    "FY2016-17": 8.3,
+    "FY2017-18": 8.3,
+    "FY2018-19": 8.3,
+    "FY2019-20": 8.3,
+    "FY2020-21": 8.3,
+    "FY2021-22": 8.3,
+    "FY2022-23": 8.3,
+    "FY2023-24": 11.0,
+    "FY2024-25": 13.7,
+    "FY2025-26": 15.0
+   },
+   "capacity_source": "S_PPAC_HIST: 8.3 through 1.4.2022; 11.0 (1.4.2023); 13.7 (1.4.2024); 15.0 (1.4.2025 onward) = VRMP progressive commissioning",
+   "throughput_mmt": {
+    "FY2015-16": [
+     {
+      "value": 9.2,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     }
+    ],
+    "FY2016-17": [
+     {
+      "value": 9.3,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     }
+    ],
+    "FY2017-18": [
+     {
+      "value": 9.6,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     }
+    ],
+    "FY2018-19": [
+     {
+      "value": 9.8,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     },
+     {
+      "value": 9.77,
+      "source": "S_HPCL_AR2223"
+     }
+    ],
+    "FY2019-20": [
+     {
+      "value": 9.1,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     },
+     {
+      "value": 9.11,
+      "source": "S_HPCL_AR2223"
+     }
+    ],
+    "FY2020-21": [
+     {
+      "value": 9.1,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     },
+     {
+      "value": 9.05,
+      "source": "S_HPCL_AR2223"
+     }
+    ],
+    "FY2021-22": [
+     {
+      "value": 8.4,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     },
+     {
+      "value": 8.41,
+      "source": "S_HPCL_AR2223"
+     }
+    ],
+    "FY2022-23": [
+     {
+      "value": 9.28,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     },
+     {
+      "value": 9.29,
+      "source": "S_HPCL_AR2223",
+      "note": "AR: 9,286.6 TMT"
+     }
+    ],
+    "FY2023-24": [
+     {
+      "value": 12.68,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     },
+     {
+      "value": 12.69,
+      "source": "S_HPCL_REFPAGE"
+     },
+     {
+      "value": 12.689,
+      "source": "S_PPAC_CRUDE"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 15.3,
+      "source": "S_CHT_CRUDE",
+      "note": "CHT table \"Crude Throughput (MMT) of PSU Refineries\" (source cited by CHT: PPAC); rounded to 0.1 for FY15-16..FY21-22"
+     },
+     {
+      "value": 15.31,
+      "source": "S_HPCL_AR2425",
+      "note": "15,310 TMT"
+     },
+     {
+      "value": 15.31,
+      "source": "S_PPAC_CRUDE"
+     }
+    ],
+    "FY2025-26": [
+     {
+      "value": 16.04,
+      "source": "S_HPCL_PR_FY26",
+      "note": "\"Visakh Refinery registered highest-ever crude throughput of 16.04 MMT, operating at 107% of its capacity\""
+     },
+     {
+      "value": 16.036,
+      "source": "S_PPAC_CRUDE"
+     }
+    ]
+   },
+   "utilisation_pct_published": {
+    "FY2022-23": [
+     {
+      "value": 111.9,
+      "source": "S_HPCL_AR2223",
+      "note": "AR \"Capacity utilization %\" Visakh"
+     }
+    ],
+    "FY2023-24": [
+     {
+      "value": 105,
+      "source": "S_HPCL_IP_Q4FY26",
+      "note": "chart"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 111.8,
+      "source": "S_HPCL_AR2425",
+      "note": "AR table (=15.31/13.7 base)"
+     },
+     {
+      "value": 112,
+      "source": "S_HPCL_IP_Q4FY26",
+      "note": "chart"
+     }
+    ],
+    "FY2025-26": [
+     {
+      "value": 107,
+      "source": "S_HPCL_PR_FY26",
+      "note": "press release"
+     },
+     {
+      "value": 107,
+      "source": "S_HPCL_IP_Q4FY26",
+      "note": "chart"
+     }
+    ]
+   },
+   "utilisation_pct_derived_from_CHT_throughput_over_PPAC_capacity": {
+    "FY2015-16": 110.8,
+    "FY2016-17": 112.0,
+    "FY2017-18": 115.7,
+    "FY2018-19": 118.1,
+    "FY2019-20": 109.6,
+    "FY2020-21": 109.6,
+    "FY2021-22": 101.2,
+    "FY2022-23": 111.8,
+    "FY2023-24": 115.3,
+    "FY2024-25": 111.7
+   },
+   "distillate_yield_pct_CHT": {
+    "FY2014-15": 78.76,
+    "FY2015-16": 75.7,
+    "FY2016-17": 74.0,
+    "FY2017-18": 74.5,
+    "FY2018-19": 74.5,
+    "FY2019-20": 72.1,
+    "FY2020-21": 74.38,
+    "FY2021-22": 70.7,
+    "FY2022-23": 67.9,
+    "FY2023-24": 71.6,
+    "FY2024-25": 73.8
+   },
+   "distillate_yield_pct_company": {
+    "FY2022-23": [
+     {
+      "value": 68.0,
+      "source": "S_HPCL_AR2223",
+      "note": "Visakh; note: FY2021-22? AR column header 2022-23 = Mumbai 77.4 / Visakh 68.0"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 74.3,
+      "source": "S_HPCL_AR2425",
+      "note": "CHT 73.8"
+     }
+    ],
+    "FY2025-26": [
+     {
+      "value": 74.5,
+      "source": "S_HPCL_PR_FY26",
+      "note": "\"highest-ever distillate yield of 74.5%\""
+     }
+    ]
+   },
+   "grm_usd_per_bbl": {
+    "FY2021-22": [
+     {
+      "value": 6.92,
+      "source": "S_HPCL_AR2223",
+      "note": "gross of export cess"
+     }
+    ],
+    "FY2022-23": [
+     {
+      "value": 9.2,
+      "source": "S_HPCL_AR2223"
+     }
+    ],
+    "FY2023-24": [
+     {
+      "value": 8.12,
+      "source": "S_HPCL_AR2425"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 5.63,
+      "source": "S_HPCL_AR2425"
+     }
+    ],
+    "FY2025-26": [
+     {
+      "value": 9.26,
+      "source": "S_HPCL_IP_Q4FY26",
+      "note": "chart slide 21"
+     }
+    ]
+   },
+   "complexity": {
+    "nelson_complexity_index": [
+     {
+      "value": 8.4,
+      "source": "S_CHT_NCI",
+      "note": "OGJ 2025 survey; this is the pre-/partial-VRMP value listed by CHT"
+     }
+    ]
+   },
+   "fcc_units": [
+    {
+     "unit": "FCC-1 and FCC-2 (existing two FCCs; FCCU-I, FCCU-II)",
+     "capacity": "NOT FOUND",
+     "commissioning_year": "NOT FOUND",
+     "source": "S_VRMP_DFR",
+     "wording": "EIL Detailed Feasibility Report (VRMP) exec summary: \"one of the most integrated refineries with three crude distillation units, MS Block (NHT-ISOM-CCR), Diesel Hydro Desulphurization unit, two Fluid Catalytic Cracking units, Diesel hydro treating unit, Visbreaker Unit, Bitumen Blowing unit and Propylene Recovery unit\"; existing Visbreaker 1.0 MMTPA, Bitumen Blowing 0.225 MMTPA. HPCL AR 2024-25 names \"VR-FCCU-2\" and \"FCCU-I\", \"FCCU-II\"."
+    },
+    {
+     "unit": "FCHCU (Full Conversion Hydrocracker) commissioned 2023; VRMP HGU, SRU, NIU, Off-gas PSA commissioned 2022-2023; Residue Upgradation Facility (RUF) with 3.55 MMTPA LC-MAX residue hydrocracker",
+     "capacity": "RUF 3.55 MMTPA",
+     "commissioning_year": "RUF commissioned December 2025 (search-result summary of HPCL press coverage; HPCL press release 13 May 2026 says \"Residual Upgradation Facility (RUF) was commissioned in Visakh Refinery during the Year\" on the hp-refineries page); AR 2024-25: \"mechanically completed and ... advanced stage of commissioning\"",
+     "source": "S_HPCL_AR2425",
+     "wording": "AR 2024-25: \"First of its kind in India, Residue Upgradation Facility (RUF), with installed capacity of 3.55 MMTPA ... first unit in the world using LC-MAX technology which enables highest conversion of bottoms ... full capacity of 15 MMTPA.\" No new FCC is part of the as-built VRMP; the RUF is a hydrocracker, not an FCC. (The early 2013-era feasibility considered a VGO-HDT + new Petro-FCC option and rejected/replaced it with SDA + slurry hydrocracker.)"
+    }
+   ],
+   "notes": [
+    "VRMP cost: Rs 30,609 crore (Q4FY26 IP, \"Dedicated to Nation\"); Rs 26,264 crore in a June-2025 trade report (chemindigest, citing projectstoday) - two values kept.",
+    "Naphtha Isomerisation Unit revamp for capacity and RON improvement underway (AR 2024-25).",
+    "Deccan Herald (~June 2025), ED Operations Visakh: target 16 MMTPA this year, 18 MMTPA in 3-4 years, 20 MMTPA by 2031-32."
+   ]
+  },
+  "HMEL Bathinda (JV, 48.99% HPCL)": {
+   "operator": "HMEL (HPCL 48.99% / Mittal Energy Investments 48.99%)",
+   "capacity_mmtpa_ppac_1_april": {
+    "FY2015-16": 9.0,
+    "FY2016-17": 9.0,
+    "FY2017-18": 9.0,
+    "FY2018-19": 11.3,
+    "FY2019-20": 11.3,
+    "FY2020-21": 11.3,
+    "FY2021-22": 11.3,
+    "FY2022-23": 11.3,
+    "FY2023-24": 11.3,
+    "FY2024-25": 11.3,
+    "FY2025-26": 11.3
+   },
+   "capacity_source": "S_PPAC_HIST: 9.0 to 1.4.2017, 11.3 from 1.4.2018",
+   "throughput_mmt": {
+    "FY2023-24": [
+     {
+      "value": 12.648,
+      "source": "S_PPAC_CRUDE",
+      "note": "PPAC 12,648"
+     },
+     {
+      "value": 12.65,
+      "source": "S_HPCL_IP_Q4FY26",
+      "note": "chart"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 13.045,
+      "source": "S_HPCL_AR2425",
+      "note": "\"highest-ever crude throughput of 13.045 MMT\""
+     },
+     {
+      "value": 13.045,
+      "source": "S_PPAC_CRUDE",
+      "note": "PPAC 13,045"
+     }
+    ],
+    "FY2025-26": [
+     {
+      "value": 11.654,
+      "source": "S_PPAC_CRUDE",
+      "note": "PPAC 11,654"
+     },
+     {
+      "value": 11.62,
+      "source": "S_HPCL_IP_Q4FY26",
+      "note": "chart"
+     }
+    ]
+   },
+   "utilisation_pct_published": {
+    "FY2023-24": [
+     {
+      "value": 112,
+      "source": "S_HPCL_IP_Q4FY26",
+      "note": "chart"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 115,
+      "source": "S_HPCL_IP_Q4FY26",
+      "note": "chart"
+     }
+    ],
+    "FY2025-26": [
+     {
+      "value": 103,
+      "source": "S_HPCL_IP_Q4FY26",
+      "note": "chart"
+     }
+    ],
+    "FY2022-23": [
+     {
+      "value": 113,
+      "source": "S_WEBSEARCH_HMEL",
+      "note": "search-result summary (icra/hmel): throughput 12.7 MMT, utilisation 113% - not verified against primary page"
+     }
+    ]
+   },
+   "grm_usd_per_bbl": {
+    "FY2023-24": [
+     {
+      "value": 17.15,
+      "source": "S_HPCL_IP_Q4FY26",
+      "note": "chart slide 21"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 9.27,
+      "source": "S_HPCL_IP_Q4FY26"
+     }
+    ],
+    "FY2025-26": [
+     {
+      "value": 12.21,
+      "source": "S_HPCL_IP_Q4FY26"
+     }
+    ]
+   },
+   "complexity": {
+    "nelson_complexity_index": [
+     {
+      "value": 12.6,
+      "source": "S_WEBSEARCH_HMEL",
+      "note": "search-result summary only (Wikipedia/HMEL); NOT verified on primary page"
+     }
+    ]
+   },
+   "fcc_units": [
+    {
+     "unit": "Petro-FCCU integrated with polypropylene plant",
+     "capacity": "NOT FOUND",
+     "commissioning_year": "NOT FOUND (refinery commissioned 2012; expansion to 11.3 MMTPA)",
+     "source": "S_HMEL_PAGE",
+     "wording": "hmel.in: \"The first refinery to integrate a Polypropylene plant with Petro-FCCU for value-added PP production.\" Petchem: 1.2 MMTPA dual-feed cracker, 1.2 MMTPA PE, 1.0 MMTPA PP."
+    }
+   ],
+   "notes": [
+    "HMEL announced a Rs 2,600 crore investment (Dec 2025) for downstream polypropylene industries and fine chemicals at Bathinda (Business Standard/hmel.in headlines; details not fetched).",
+    "HPCL Q4FY26 IP capacity plan: HMEL 11.3 MMTPA (2025-26) -> 11.8 MMTPA (2027-28), i.e. +0.5 MMTPA.",
+    "HMEL earlier years (FY2015-16..FY2021-22) throughput NOT FOUND in a primary source."
+   ]
+  },
+  "HRRL Barmer (under construction, HPCL 74%)": {
+   "operator": "HPCL Rajasthan Refinery Ltd (HPCL 74% / Govt of Rajasthan 26%)",
+   "capacity_mmtpa_ppac_1_april": {
+    "1.04.2026": 9.0
+   },
+   "throughput_mmt": {
+    "FY2025-26": [
+     {
+      "value": 0.176,
+      "source": "S_HPCL_PR_FY26",
+      "note": "press release: \"Crude cut-in at CDU-VDU commenced and 176 TMT crude processed during trial run in Feb'2026\""
+     }
+    ]
+   },
+   "utilisation_pct_published": {},
+   "complexity": {
+    "nelson_complexity_index": [
+     {
+      "value": 17.0,
+      "source": "S_HPCL_IP_Q4FY26",
+      "note": "slide \"HRRL: Uniqueness of the Project\"; \"26% Petrochemical Yields\"; PII 26%"
+     }
+    ]
+   },
+   "fcc_units": [
+    {
+     "unit": "PFCC (Petrochemical FCC incl. Propylene Recovery Unit), TechnipFMC-licensed",
+     "capacity": "2.9 million tpy (EPCC-03 package) per Hydrocarbon Engineering; Wikipedia says FCCU 2.9 MMTPA",
+     "commissioning_year": "Commissioning in progress at 13 May 2026 (\"Commissioning of PFCC, DHDT and MS Block units in progress\"); refinery dedicated to nation 4 July 2026",
+     "source": "S_HYDROCARBON_ENG",
+     "wording": "\"a Dual Feed Cracker Unit (DFCU), EPCC-07 Package (capacity: 890 000 tpy) and a Petrochemical Fluidized Catalytic Cracking (PFCC) including Propylene Recovery Unit, EPCC-03 Package (capacity: 2.9 million tpy) ... licensed by TechnipFMC\". Q4FY26 IP unit list: \"CDU/VDU, MS Block Unit, Prime G, DHDT Unit, HGU, SRU, VGO-HDT, PFCC Unit, DCU\"; petchem: \"DFCU, PPU, Butene-1, LLDPE/HDPE Swing\"."
+    }
+   ],
+   "planned_products_ktpa": {
+    "MS": 995,
+    "HSD": 4035,
+    "PP": 1073,
+    "LLDPE": 479,
+    "HDPE": 479,
+    "Butadiene": 146,
+    "Benzene": 134,
+    "Toluene": 104,
+    "Sulphur": 157,
+    "source": "S_HPCL_IP_Q4FY26 slide \"HRRL: Units, Product Slate & Expected Margins\""
+   },
+   "notes": [
+    "Project cost Rs 79,459 crore, 91.6% physical progress at 31-03-2026 (Q4FY26 IP). Other cost figures: Rs 72,937 crore (domain-b, Jan 2026 article), Rs 43,129 crore (Jan 2019 announcement per Wikipedia) - kept as disagreeing sources.",
+    "Design: 9.0 MMTPA (1.5 MMTPA Rajasthan crude + 7.5 imported, flex to 9.0 imported); 13 process units; petrochemical capacity 2.4 MMTPA; PE 2x500 KTPA, PP 2x490 KTPA (IP).",
+    "20 April 2026 fire in the CDU; restoration then commissioning cycle (press release 13 May 2026). HPCL page: \"Refinery section has been completed and commissioned ... dedicated to the Nation by the Hon'ble Prime Minister on 4 July 2026\".",
+    "Commissioning timeline slippage: AR 2024-25 said \"progressively commissioned during ... 2025-26\"; domain-b (Jan 2026): crude processing by end-Jan 2026; trial 176 TMT in Feb 2026."
+   ]
+  }
+ },
+ "company_totals_by_year": {
+  "BPCL (Mumbai+Kochi+Bina)": {
+   "installed_capacity_mmtpa_ppac": {
+    "1.04.2015": 21.5,
+    "1.04.2016": 21.5,
+    "1.04.2017": 24.4,
+    "1.04.2018": 27.5,
+    "1.04.2019": 27.5,
+    "1.04.2020": 27.5,
+    "1.04.2021": 27.5,
+    "1.04.2022": 27.5,
+    "1.04.2023": 35.3,
+    "1.04.2024": 35.3,
+    "1.04.2025": 35.3,
+    "1.04.2026": 35.3,
+    "note": "PPAC \"BPC, Total\" row - EXCLUDES BORL-Bina until 1.4.2022 (BORL listed separately under JV/PVT: 6.0 to 1.4.2018, 7.8 from 1.4.2019); includes Bina from 1.4.2023.",
+    "source": "S_PPAC_HIST"
+   },
+   "throughput_mmt": {
+    "FY2022-23": [
+     {
+      "value": 38.53,
+      "source": "S_BPCL_AR2324",
+      "note": "AR 2023-24: aggregate refinery throughput"
+     }
+    ],
+    "FY2023-24": [
+     {
+      "value": 39.93,
+      "source": "S_BPCL_AR2425",
+      "note": "AR 2024-25: 39.93; AR 2023-24 also 39.93"
+     },
+     {
+      "value": 39.499,
+      "source": "S_PPAC_CRUDE",
+      "note": "PPAC BPCL-TOTAL 39,499"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 40.51,
+      "source": "S_BPCL_AR2425",
+      "note": "\"record throughput of 40.51 MMT\""
+     },
+     {
+      "value": 40.431,
+      "source": "S_PPAC_CRUDE",
+      "note": "PPAC 40,431"
+     }
+    ],
+    "FY2025-26": [
+     {
+      "value": 41.15,
+      "source": "S_BPCL_Q4FY26_CALL",
+      "note": "\"refinery throughput of 41.15 MMT, which is our highest ever\" - third-party AI-generated transcript of 20 May 2026 call; ANI/AGM says 41.2 MMT & 116.6% utilisation"
+     },
+     {
+      "value": 40.993,
+      "source": "S_PPAC_CRUDE",
+      "note": "PPAC BPCL-TOTAL 40,993"
+     }
+    ]
+   },
+   "utilisation_pct": {
+    "FY2022-23": [
+     {
+      "value": 108.79,
+      "source": "S_BPCL_AR2324"
+     }
+    ],
+    "FY2023-24": [
+     {
+      "value": 111.89,
+      "source": "S_BPCL_AR2425"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 114.76,
+      "source": "S_BPCL_AR2425"
+     },
+     {
+      "value": 115,
+      "source": "S_BPCL_AR2425",
+      "note": "AR MD&A \"average capacity utilization stood at 115%\""
+     }
+    ],
+    "FY2025-26": [
+     {
+      "value": 116,
+      "source": "S_BPCL_Q4FY26_CALL",
+      "note": "\"our refineries operated at 116% of capacity utilization\" (also 118% quoted in Q&A)"
+     },
+     {
+      "value": 116.6,
+      "source": "S_ANI_AGM",
+      "note": "ANI report of 73rd AGM 27 Aug 2026"
+     }
+    ]
+   },
+   "grm_usd_per_bbl": {
+    "FY2021-22": [
+     {
+      "value": 9.7,
+      "source": "S_BPCL_IP_Q3FY26",
+      "note": "chart \"Numbers indicate BPCL GRM\" - read from text layer, lower confidence"
+     }
+    ],
+    "FY2022-23": [
+     {
+      "value": 20.24,
+      "source": "S_BPCL_AR2324"
+     }
+    ],
+    "FY2023-24": [
+     {
+      "value": 14.14,
+      "source": "S_BPCL_AR2425"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 6.82,
+      "source": "S_BPCL_AR2425"
+     }
+    ],
+    "FY2025-26": [
+     {
+      "value": 11.74,
+      "source": "S_BPCL_Q4FY26_CALL",
+      "note": "also ANI AGM report"
+     }
+    ],
+    "FY2020-21": [
+     {
+      "value": 4.1,
+      "source": "S_BPCL_IP_Q3FY26",
+      "note": "chart, lower confidence"
+     }
+    ]
+   },
+   "distillate_yield_pct": {
+    "FY2024-25": [
+     {
+      "value": 84.3,
+      "source": "S_BPCL_AR2425",
+      "note": "MD&A \"highest distillate yield of 84.3% amongst PSU refineries\""
+     },
+     {
+      "value": 83.0,
+      "source": "S_CHT_DY",
+      "note": "CHT Total BPCL 2024-25 = 83.0"
+     }
+    ],
+    "FY2025-26": [
+     {
+      "value": 84.54,
+      "source": "S_BPCL_Q4FY26_CALL"
+     }
+    ]
+   }
+  },
+  "HPCL (Mumbai+Visakh, excl. HMEL)": {
+   "installed_capacity_mmtpa_ppac": {
+    "1.04.2015": 14.8,
+    "1.04.2016": 14.8,
+    "1.04.2017": 15.8,
+    "1.04.2018": 15.8,
+    "1.04.2019": 15.8,
+    "1.04.2020": 15.8,
+    "1.04.2021": 15.8,
+    "1.04.2022": 17.8,
+    "1.04.2023": 20.5,
+    "1.04.2024": 23.2,
+    "1.04.2025": 24.5,
+    "1.04.2026": 24.5,
+    "source": "S_PPAC_HIST \"HPC,Total\""
+   },
+   "throughput_mmt": {
+    "FY2018-19": [
+     {
+      "value": 18.44,
+      "source": "S_HPCL_AR2223",
+      "note": "five-year table"
+     }
+    ],
+    "FY2019-20": [
+     {
+      "value": 17.18,
+      "source": "S_HPCL_AR2223"
+     }
+    ],
+    "FY2020-21": [
+     {
+      "value": 16.42,
+      "source": "S_HPCL_AR2223"
+     }
+    ],
+    "FY2021-22": [
+     {
+      "value": 13.97,
+      "source": "S_HPCL_AR2223"
+     }
+    ],
+    "FY2022-23": [
+     {
+      "value": 19.09,
+      "source": "S_HPCL_AR2223"
+     }
+    ],
+    "FY2023-24": [
+     {
+      "value": 22.33,
+      "source": "S_HPCL_REFPAGE"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 25.27,
+      "source": "S_HPCL_AR2425"
+     }
+    ],
+    "FY2025-26": [
+     {
+      "value": 26.04,
+      "source": "S_HPCL_PR_FY26"
+     }
+    ]
+   },
+   "utilisation_pct": {
+    "FY2024-25": [
+     {
+      "value": 108.9,
+      "source": "S_HPCL_AR2425",
+      "note": "average capacity utilisation"
+     }
+    ],
+    "FY2025-26": [
+     {
+      "value": 107,
+      "source": "S_HPCL_PR_FY26",
+      "note": "derived: Visakh 107%, Mumbai 105% (no combined figure given in the press release)"
+     }
+    ]
+   },
+   "grm_usd_per_bbl": {
+    "FY2021-22": [
+     {
+      "value": 7.19,
+      "source": "S_HPCL_AR2223",
+      "note": "gross of export cess"
+     }
+    ],
+    "FY2022-23": [
+     {
+      "value": 12.09,
+      "source": "S_HPCL_AR2223"
+     }
+    ],
+    "FY2023-24": [
+     {
+      "value": 9.08,
+      "source": "S_HPCL_AR2425",
+      "note": "gross of export cess"
+     }
+    ],
+    "FY2024-25": [
+     {
+      "value": 5.74,
+      "source": "S_HPCL_AR2425"
+     }
+    ],
+    "FY2025-26": [
+     {
+      "value": 8.79,
+      "source": "S_HPCL_PR_FY26",
+      "note": "; Q4 FY26 14.27"
+     }
+    ]
+   },
+   "distillate_yield_pct": {
+    "FY2025-26": [
+     {
+      "value": 75.8,
+      "source": "S_HPCL_PR_FY26",
+      "note": "\"highest-ever distillate yield of 75.8%\""
+     }
+    ]
+   },
+   "capex": {
+    "FY2024-25": [
+     {
+      "value": "Rs 14,508 crore",
+      "source": "S_HPCL_PR_Q4FY25"
+     }
+    ],
+    "FY2025-26": [
+     {
+      "value": "Rs 15,705 crore",
+      "source": "S_HPCL_PR_FY26",
+      "note": "cumulative FY26 capex incl. JV/subsidiary investments"
+     }
+    ]
+   }
+  }
+ },
+ "plans": [
+  {
+   "company": "BPCL",
+   "project": "Bina Petrochemical & Refinery Expansion Project (BPREP)",
+   "scope": "Bina refinery 7.8 -> ~11 MMTPA; 1,200 KTPA dual-feed ethylene cracker; 1,150 KTPA HDPE+LLDPE; 550 KTPA PP; 50 KTPA Butene-1; BTX; new 4,000 KTPA CDU, 300 KTPA bitumen unit, hydrocracker revamp 2.6->3.55 MMTPA; 2.2 MMTPA petrochemicals",
+   "capex": [
+    {
+     "value": "Rs 43,367 crore",
+     "source": "S_BPCL_AR2324",
+     "note": "AR 2023-24 and AR 2024-25 \"project cost\" (net of input tax credit)"
+    },
+    {
+     "value": "Rs 49,000 crore",
+     "source": "S_BPCL_AR2425",
+     "note": "Director (Refineries) bio / CMD statement"
+    },
+    {
+     "value": "~Rs 49,800 crore",
+     "source": "S_BPCL_Q4FY26_CALL",
+     "note": "Q4 FY26 call: \"total project cost is around 49,800 crore\" (third-party transcript)"
+    },
+    {
+     "value": "~INR 50k crore",
+     "source": "S_BPCL_IP_Q3FY26",
+     "note": ""
+    }
+   ],
+   "commissioning": [
+    {
+     "value": "May 2028",
+     "source": "S_BPCL_AR2425"
+    },
+    {
+     "value": "\"by 2028\"",
+     "source": "S_BPCL_IP_Q3FY26"
+    }
+   ],
+   "progress": [
+    {
+     "value": "1.8%",
+     "as_of": "31-03-2024",
+     "source": "S_BPCL_AR2324"
+    },
+    {
+     "value": "11%",
+     "as_of": "31-03-2025",
+     "source": "S_BPCL_AR2425"
+    },
+    {
+     "value": "23% vs planned 32%; Rs 4,700 crore incurred; Rs 25,400 crore committed",
+     "as_of": "~Q4 FY26 (20 May 2026 call)",
+     "source": "S_BPCL_Q4FY26_CALL",
+     "note": "delay attributed to geopolitical developments/supply chain; all major packages awarded by Feb 2026"
+    }
+   ]
+  },
+  {
+   "company": "BPCL",
+   "project": "Polypropylene unit at Kochi (400 KTPA) + PFCC revamp",
+   "capex": [
+    {
+     "value": "Rs 4,460 crore",
+     "source": "S_BPCL_AR2425"
+    },
+    {
+     "value": "~Rs 5,000 crore +/-10%",
+     "source": "S_BPCL_Q4FY26_CALL",
+     "note": "\"initially approved for 5,000 crore ... 85-90% awarded\""
+    }
+   ],
+   "commissioning": [
+    {
+     "value": "October 2027",
+     "source": "S_BPCL_AR2425"
+    },
+    {
+     "value": "December 2027",
+     "source": "S_BPCL_AR2425",
+     "note": "MD&A narrative"
+    },
+    {
+     "value": "by 2027 / 2027-28",
+     "source": "S_BPCL_IP_Q3FY26"
+    }
+   ],
+   "progress": [
+    {
+     "value": "9.6%",
+     "as_of": "31-03-2025",
+     "source": "S_BPCL_AR2425"
+    }
+   ]
+  },
+  {
+   "company": "BPCL",
+   "project": "Mumbai PRFCC (Petro Resid FCC) replacing old CCU and FCCU",
+   "capex": [
+    {
+     "value": "Rs 14,200 crore gross",
+     "source": "S_BPCL_AR2425"
+    },
+    {
+     "value": "~Rs 14,000 crore",
+     "source": "S_ANI_AGM"
+    }
+   ],
+   "commissioning": [
+    {
+     "value": "expected by 2029",
+     "source": "S_BPCL_IP_Q3FY26"
+    }
+   ],
+   "note": "Q4 FY26 call (20 May 2026): \"Work has just started; license selection and BDEP are ongoing\"; Rs ~11,000 crore FY27 allocation covers Bina + Kochi PP + Mumbai PRFCC + regular refinery capex"
+  },
+  {
+   "company": "BPCL",
+   "project": "Kochi capacity 15.5 -> 17 MMTPA (creeping expansion)",
+   "commissioning": [
+    {
+     "value": "not stated",
+     "source": "S_ANI_AGM"
+    }
+   ],
+   "note": "earlier documents (AR 2023-24, IP): potential 18 MMTPA; Mumbai 12 -> 16 MMTPA potential; overall 35.3 -> 45 MMTPA aspiration"
+  },
+  {
+   "company": "BPCL",
+   "project": "Andhra Pradesh greenfield refinery-cum-petrochemical complex (Ramayapatnam), 9 MMTPA proposed",
+   "note": "AR 2024-25: 6,000 acres sanctioned, target Petrochemical Intensity Index 35%, feasibility ongoing; Q4 FY26 call: environmental & technical studies completed, detailed engineering and financial appraisal underway; capex not stated"
+  },
+  {
+   "company": "HPCL",
+   "project": "Visakh Refinery Modernisation Project (VRMP)",
+   "scope": "capacity 8.3 -> 15.0 MMTPA; new CDU/VDU; FCHCU (2023); RUF 3.55 MMTPA LC-MAX residue hydrocracker; NIU, HGU, SRU; DHT",
+   "capex": [
+    {
+     "value": "Rs 30,609 crore",
+     "source": "S_HPCL_IP_Q4FY26"
+    },
+    {
+     "value": "Rs 26,264 crore",
+     "source": "S_CHEMINDIGEST_VIZAG",
+     "note": "June 2025 trade article"
+    }
+   ],
+   "commissioning": [
+    {
+     "value": "RUF commissioned Dec 2025",
+     "source": "S_HPCL_PR_FY26_SEARCH",
+     "note": "from search summary of HPCL press coverage; not directly seen in the press-release text I fetched"
+    },
+    {
+     "value": "\"Dedicated to Nation\"",
+     "source": "S_HPCL_IP_Q4FY26"
+    }
+   ]
+  },
+  {
+   "company": "HPCL",
+   "project": "Visakh further expansion 15 -> 18 MMTPA in 3-4 yrs and 20 MMTPA by 2031-32 (stated target)",
+   "source": "S_DH_VIZAG",
+   "note": "quote from ED-Operations Visakh Refinery, article ~June 2025; no capex given"
+  },
+  {
+   "company": "HPCL",
+   "project": "HRRL 9 MMTPA refinery + 2.4 MMTPA petchem (PFCC 2.9 MTPA, DFCU 0.89 MTPA, PP 2x490 KTPA, PE 2x500 KTPA)",
+   "capex": [
+    {
+     "value": "Rs 79,459 crore",
+     "source": "S_HPCL_IP_Q4FY26"
+    },
+    {
+     "value": "Rs 72,937 crore",
+     "source": "S_DOMAINB_HRRL"
+    },
+    {
+     "value": "Rs 43,129 crore (2019 announcement)",
+     "source": "S_WIKI_BARMER"
+    }
+   ],
+   "commissioning": [
+    {
+     "value": "dedicated to the Nation 4 July 2026",
+     "source": "S_HPCL_REFPAGE"
+    },
+    {
+     "value": "\"progressively commissioned during 2025-26\"",
+     "source": "S_HPCL_AR2425"
+    }
+   ]
+  },
+  {
+   "company": "HPCL",
+   "project": "Mumbai Lube Modernization & Bottoms Upgradation Project",
+   "capex": [
+    {
+     "value": "Rs 5,749 crore",
+     "source": "S_HPCL_IP_Q4FY26"
+    }
+   ],
+   "note": "9.9% progress at 31-03-2026; LOBS 475->764 KTPA; bitumen +487 KTPA; ~4% distillate yield improvement; commissioning date NOT FOUND"
+  },
+  {
+   "company": "HPCL group",
+   "project": "HPCL capacity roadmap",
+   "note": "Q4FY26 IP: 35.8 MMTPA (2025-26, incl. HMEL 11.3) -> 45.3 MMTPA (2027-28) with HRRL +9.0 and HMEL +0.5; FY24-FY28 capex plan Rs 77,000 crore"
+  }
+ ],
+ "sources": {
+  "S_PPAC_HIST": "https://ppac.gov.in/uploads/page-images/1787032950_Refining_Capacity_Historic.xlsx (linked from https://ppac.gov.in/infrastructure/installed-refinery-capacity), sheet \"Installed refining capacity\", 1997-2026 as on 1 April, 000 MT",
+  "S_PPAC_CAP_PAGE": "https://ppac.gov.in/infrastructure/installed-refinery-capacity (table dated 1.04.2026: BPC Mumbai 12000, Kochi 15500, Bina 7800; HPC Mumbai 9500, Vizag 15000; HMEL 11300; HRRL 9000 (000 MT))",
+  "S_PPAC_CRUDE": "https://ppac.gov.in/production/crude-processing - POST https://ppac.gov.in/AjaxController/getCrudeProcessingData (financialYear=2023-2024/2024-2025/2025-2026, reportBy=1, pageId=41); backing files e.g. https://ppac.gov.in/download.php?file=reports/1714110847_crude-oil-processed-by-refinaries_en.xlsx; \"Source: Oil Companies. All figures are provisional.\" Historical file requires PPAC member login - NOT downloaded.",
+  "S_CHT_CRUDE": "https://cht.gov.in/crude-processing (page last updated 08-06-2026; \"Source: PPAC\")",
+  "S_CHT_DY": "https://cht.gov.in/distillate-yield (last updated 20-01-2026; \"% on Crude ... Source: PPAC\")",
+  "S_CHT_NCI": "https://cht.gov.in/refinery-complexity-index (NCI based on OGJ WW Refining & Complexity survey 2025)",
+  "S_BPCL_AR2425": "https://www.bharatpetroleum.in/bharat-petroleum/pdf/annual-report-2024-25.pdf (BPCL Integrated Report 2024-25)",
+  "S_BPCL_AR2324": "https://www.msei.in/SX-Content/Listing/Annual-Reports/2024/BPCL-2024.pdf (BPCL Annual Report 2023-24)",
+  "S_BPCL_IP_Q3FY26": "https://www.bharatpetroleum.in/images/files/bpcl-investor-presentation-q3-2026.pdf (Investor Presentation January 2026; contains FY25 utilisation and NCI per refinery)",
+  "S_BPCL_Q4FY26_CALL": "https://files.tijoristack.ai/concall/transcript/352-20-May-2026.pdf (Q4 FY26 earnings call 20 May 2026; page footer: \"Report is AI-generated and may contain inaccuracies\" - treat as secondary)",
+  "S_BPCL_KOCHI_PROCESS": "https://www.bharatpetroleum.in/our-businesses/refineries/kochi-refinery/process",
+  "S_ANI_AGM": "https://aninews.in/news/business/bpcl-plans-to-raise-kochi-refinery-capacity-to-17-mmtpa-as-it-deepens-petrochemical-integration20260827140723/ (ANI, 27 Aug 2026, BPCL 73rd AGM)",
+  "S_HPCL_AR2425": "https://www.hindustanpetroleum.com/documents/pdf/HPCL-Annual-Report-2024-25.pdf (73rd Integrated Annual Report)",
+  "S_HPCL_AR2223": "https://www.hindustanpetroleum.com/documents/pdf/HPCL_Annual_Report_2022-23.pdf (71st Annual Report; 5-year table FY18-19..FY22-23)",
+  "S_HPCL_REFPAGE": "https://www.hindustanpetroleum.com/hp-refineries (table FY2020-21..FY2025-26 throughput; HRRL status)",
+  "S_HPCL_PR_FY26": "https://www.hindustanpetroleum.com/NewsroomDetails/459 (HPCL FY26 results press release, Mumbai 13 May 2026)",
+  "S_HPCL_PR_FY26_SEARCH": "WebSearch summary of https://www.hindustanpetroleum.com/NewsroomDetails/459 and trade reports: RUF commissioned Dec 2025 (not seen in fetched text)",
+  "S_HPCL_PR_Q4FY25": "https://www.hindustanpetroleum.com/NewsroomDetails/439 (6 May 2025)",
+  "S_HPCL_IP_Q4FY26": "https://www.hindustanpetroleum.com/documents/pdf/Investor-Presentation-Q4-FY-2025-26.pdf (slide 21 chart rendered and read visually; slides 30-33 project table)",
+  "S_VRMP_DFR": "https://environmentclearance.nic.in/writereaddata/form-1A/PFR/27_Annexure%20-%20I%20Executive_summary05.01.pdf (EIL detailed feasibility report exec summary, Visakh Refinery Modernization Project; early-stage scheme, undated)",
+  "S_HYDROCARBON_ENG": "https://www.hydrocarbonengineering.com/petrochemicals/05012021/lt-hydrocarbon-engineering-awarded-epcc-contract-by-hrrl/ (5 Jan 2021)",
+  "S_WIKI_BARMER": "https://en.wikipedia.org/wiki/Barmer_Refinery (secondary)",
+  "S_DOMAINB_HRRL": "https://www.domain-b.com/industry/industry-general/hpcl-barmer-refinery-crude-start-jan (Jan 2026)",
+  "S_DH_VIZAG": "https://www.deccanherald.com/business/hpcl-eyes-scaling-up-vizag-refinery-capacity-by-3mmtpa-in-3-years-3579879 (article date not captured; content refers to FY25 as last year, ~June 2025)",
+  "S_CHEMINDIGEST_VIZAG": "https://chemindigest.com/hpcl-plans-eighteen-mtpa-capacity-at-visakh-refinery-by-2029/ (12 June 2025)",
+  "S_HMEL_PAGE": "https://www.hmel.in/gurugobindsinghrefinery/",
+  "S_WEBSEARCH_HMEL": "WebSearch summaries (HMEL FY2023 throughput 12.7 MMT/113%; NCI 12.6) - not verified on the primary page"
+ },
+ "gaps": [
+  "FY2015-16..FY2017-18 published (company) capacity utilisation: not found; only DERIVED (CHT throughput / PPAC 1-April capacity) values given, flagged as derived. CHT throughput for FY2015-16..FY2021-22 is rounded to 0.1 MMT.",
+  "PPAC historical crude-processing workbook (FY1997+) is behind a member login/CAPTCHA modal; not downloaded (rule: no account creation). PPAC monthly data obtained only for FY2023-24, FY2024-25, FY2025-26 (via public JSON endpoint).",
+  "BPCL FY2018-19, FY2020-21 annual reports (refinery-wise table with published utilisation/GRM for FY16-FY22): not retrieved; BPCL AR 2022-23 not fetched (its FY23 numbers come from AR 2023-24 comparatives). BPCL per-refinery GRM before FY2022-23: NOT FOUND (only group GRM chart values FY21 4.1, FY22 9.7 read from a chart text layer, low confidence).",
+  "BPCL FY2025-26 Annual Report and refinery-wise FY26 utilisation/GRM/distillate yield: not found. FY26 company totals come from a third-party AI-generated call transcript plus an ANI news report; BPCL Q4 FY26 investor presentation URL not located (guessed URL returned HTML, not PDF). PPAC refinery-wise FY26 throughput is available (see refineries).",
+  "HPCL FY2015-16..FY2017-18 company-published throughput: only CHT (rounded) values. HPCL FY2023-24 annual report not fetched (FY24 figures from AR 2024-25 comparatives, hp-refineries page, PPAC).",
+  "Unit-level FCC/PFCC/RFCC capacities and commissioning years: NOT FOUND for BPCL Mumbai (CCU, FCCU), BPCL Kochi (FCCU, PFCC), HPCL Mumbai (NFCCU, OFCCU), HPCL Visakh (FCCU-I/II), HMEL (Petro-FCCU). Only unit counts/names and HRRL PFCC 2.9 MTPA (EPCC package capacity) found. Kochi IREP commissioning year (2017) rests on PPAC capacity step (12.4 at 1.4.2017, 15.5 at 1.4.2018) and unfetched secondary search results.",
+  "HMEL throughput/utilisation FY2015-16..FY2022-23 from a primary source, HMEL NCI and HMEL Petro-FCCU capacity: NOT FOUND (search-summary only, unverified).",
+  "HPCL Visakh Nelson index after VRMP/RUF (CHT still shows 8.4); HPCL Mumbai/Visakh unit-wise FCC yield or propylene output: NOT FOUND.",
+  "Mumbai Lube Modernization & Bottoms Upgradation commissioning date: NOT FOUND. BPCL Andhra 9 MMTPA capex/date: NOT FOUND. Kochi 17 MMTPA revamp capex/date: NOT FOUND. HMEL Rs 2,600 crore project details not fetched.",
+  "Disagreements kept, not resolved: BPCL AR \"refinery throughput\" vs \"crude oil processed\" vs PPAC vs CHT (differences 0.05-0.2 MMT); HPCL AR utilisation uses design-capacity basis (Visakh FY25 111.8% = 15.31/13.7) whereas PPAC lists 15.0 at 1.4.2025; distillate yield company vs CHT (HPCL Mumbai FY25 76.1 vs 74.6; Visakh 74.3 vs 73.8); BPREP cost 43,367 / 49,000 / 49,800 / ~50,000 crore; HRRL cost 79,459 / 72,937 crore; Kochi PP commissioning Oct vs Dec 2027; VRMP cost 30,609 vs 26,264 crore.",
+  "One search-tool summary (HPCL FY2017-18 throughput \"15.31/9.96\") was clearly wrong (those are FY25 numbers) and was discarded. Search summaries were used only where flagged."
+ ],
+ "premise_checks": [
+  "USER PREMISE CHECK: \"Bina 7.8 -> 11 MMTPA with a 1.2 Mt/y dual-feed cracker\" - confirmed (BPCL AR 2023-24/2024-25). It is a steam ethylene cracker (DFCU), not an FCC; Bina has no FCC unit (HCU + DCU only). The propylene/PP linkage is Kochi (PFCC revamp + 400 KTPA PP) and Bina (550 KTPA PP fed from the cracker).",
+  "\"Kochi PFCC/polypropylene\" - confirmed: 400 KTPA PP with PFCC revamp, Rs 4,460 crore, due Oct/Dec 2027."
+ ]
+}

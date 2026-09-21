@@ -16,7 +16,7 @@ from refinery_design.assay import INF, Slate, available_crudes, load_crude
 from refinery_design.coker import delayed_coker
 from refinery_design.distillation import distill
 from refinery_design.fcc import FccFeed, FccKinetics, FccOperation, cooler_duty_for_regen_temperature, fcc_operate, riser_kinetics, rot_sweep
-from refinery_design import crude_sourcing as csrc, dual_feed_cracker as dfc, steam_cracker as scr, ethanol as eth, india, petchem_prices as pcp, rundown as rd, safety as sfty, trade as ptrade
+from refinery_design import companies as cos, crude_sourcing as csrc, dual_feed_cracker as dfc, steam_cracker as scr, ethanol as eth, india, petchem_prices as pcp, rundown as rd, safety as sfty, trade as ptrade
 from refinery_design.fcc_modes import modes as fcc_modes_fn
 from refinery_design.routes import petrol_switch_options
 from refinery_design.flowsheet import RefineryConfig, refine
@@ -41,9 +41,9 @@ def paradip_model_refinery_dual():
 KEYS = available_crudes()
 NAMES = {k: load_crude(k).name for k in KEYS}
 
-tab_types, tab_slate, tab_cdu, tab_fcc, tab_ht, tab_ref, tab_india, tab_grm, tab_petrol, tab_dual, tab_src, tab_safe = st.tabs(
+tab_types, tab_slate, tab_cdu, tab_fcc, tab_ht, tab_ref, tab_india, tab_grm, tab_petrol, tab_dual, tab_cos, tab_src, tab_safe = st.tabs(
     ["Crude types", "Slate & blending", "Crude / vacuum unit", "FCC", "Hydrotreater & coker", "Whole refinery",
-     "India: CHT & PPAC", "GRM & petrochemicals", "Petrol & routes", "Dual-feed cracker", "Crude sourcing", "Safety"]
+     "India: CHT & PPAC", "GRM & petrochemicals", "Petrol & routes", "Dual-feed cracker", "Indian refiners", "Crude sourcing", "Safety"]
 )
 
 
@@ -371,6 +371,59 @@ with tab_dual:
              f"cash ${e_r.margin_before_capital_usd_y/1e6:,.0f} M/y, net ${e_r.net_usd_y/1e6:,.0f} M/y.")
     for w in o_r.warnings:
         st.warning(w)
+
+with tab_cos:
+    st.header("Indian refiners: capacity, production runs, FCC units and plans")
+    st.caption("PPAC Ready Reckoners and refinery-wise tables, IPNG 2019-20, company annual reports and investor material; every value has a source and "
+               "disagreeing sources are kept. Utilisation is DERIVED (throughput / 1-April capacity). See docs/INDIA_COMPANIES.md.")
+    grp = st.selectbox("Company", list(cos.MODULES), key="cos_company")
+    mod = cos.MODULES[grp]
+    rlist = mod.refineries()
+    then_fy, now_fy = st.select_slider("Compare fiscal years", options=cos.years(), value=("2015-16", "2025-26"), key="cos_range")
+    rows = []
+    for r in rlist:
+        v = cos.then_vs_now(r["id"], then_fy, now_fy)
+        rows.append({"refinery": r["id"], f"capacity {then_fy}": v["capacity_then"], f"capacity {now_fy}": v["capacity_now"],
+                     f"throughput {then_fy}": v["throughput_then"], f"throughput {now_fy}": v["throughput_now"], "throughput change %": v["throughput_change_pct"],
+                     f"utilisation {then_fy} %": v["utilisation_then"], f"utilisation {now_fy} %": v["utilisation_now"],
+                     f"distillate {then_fy} %": v["distillate_then"], f"distillate {now_fy} %": v["distillate_now"],
+                     "capacity inferred": v["capacity_inferred_now"], "note": v["note"]})
+    st.dataframe(pd.DataFrame(rows), hide_index=True)
+    if grp != "Others":
+        ru = cos.company_rollup(mod.NAME, now_fy)
+        st.write(f"**{mod.NAME} {now_fy}:** {ru['throughput_mmt']:.1f} MMT on {ru['capacity_mmtpa']:.1f} MMTPA = {ru['utilisation_pct']}% "
+                 f"({ru['refineries_counted']} of {ru['refineries_total']} refineries with both numbers)" + (f"; unconfirmed >125%: {', '.join(ru['flagged'])}" if ru["flagged"] else ""))
+    tbl = pd.DataFrame(cos.utilisation_table(None))
+    tbl = tbl[tbl["refinery"].isin([r["id"] for r in rlist])]
+    if not tbl.empty:
+        c1c, c2c = st.columns(2)
+        c1c.caption("Crude processed (MMT)")
+        c1c.line_chart(tbl.pivot(index="fy", columns="refinery", values="throughput_mmt"))
+        c2c.caption("Derived utilisation (%)")
+        c2c.line_chart(tbl.pivot(index="fy", columns="refinery", values="utilisation_pct"))
+        flagged = tbl[tbl["flag"].notna()][["refinery", "fy", "utilisation_pct", "flag"]]
+        if not flagged.empty:
+            with st.expander(f"{len(flagged)} refinery-years above 125% utilisation"):
+                st.dataframe(flagged, hide_index=True)
+    st.subheader("FCC-family units")
+    fu = pd.DataFrame([u for r in rlist for u in r["fcc_units"]])
+    if not fu.empty:
+        st.dataframe(fu[["refinery", "unit", "kind", "status", "change", "year", "capacity", "confidence", "note"]].rename(columns={"capacity": "capacity MMTPA"}), hide_index=True)
+    fc = pd.DataFrame([e for r in rlist for e in cos.fcc_changes(refinery_id=r["id"])])
+    if not fc.empty:
+        st.caption("Documented FCC-related changes (there is no published FCC yield or operating-mode data - propylene wt%, conversion - so mode shifts are not visible except where a company said so)")
+        st.dataframe(fc[["year", "refinery", "kind", "event"]], hide_index=True)
+    pl = pd.DataFrame(cos.plans(mod.NAME) if grp != "Others" else [p for n in cos.others.NAMES for p in cos.plans(n)])
+    if not pl.empty:
+        st.subheader("Announced plans")
+        st.dataframe(pl.drop_duplicates(subset=["company", "project"]).reindex(columns=["company", "project", "scope", "capex", "timing", "status"]), hide_index=True)
+    st.subheader("Caveats for this company")
+    for c in mod.CAVEATS:
+        st.warning(c)
+    with st.expander("India-wide FCC picture (lower bounds; many nameplates were never published)"):
+        st.dataframe(pd.DataFrame([{"kind": k, "operating units": d["operating"]["units"], "operating known MMTPA": d["operating"]["capacity_known_mmtpa"],
+                                    "operating nameplate not found": d["operating"]["capacity_unknown"], "coming units": d["coming"]["units"],
+                                    "coming known MMTPA": d["coming"]["capacity_known_mmtpa"]} for k, d in cos.fcc_summary().items()]), hide_index=True)
 
 with tab_src:
     st.header("Crude sourcing and local-currency settlement")

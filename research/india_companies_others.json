@@ -1,0 +1,1691 @@
+{
+ "generated": "2026-09-21",
+ "units_note": "throughput in thousand tonnes (TMT) unless labelled; capacity MMTPA; FY = April-March; derived items labelled *_derived",
+ "refineries": {
+  "Reliance_Jamnagar_DTA": {
+   "capacity_mmtpa_on_1_april": {
+    "2015": 33.0,
+    "2016": 33.0,
+    "2017": 33.0,
+    "2018": 33.0,
+    "2019": 33.0,
+    "2020": 33.0,
+    "2026": 33.0
+   },
+   "throughput_tmt_by_fy": {
+    "2015-16": {
+     "value_tmt": 32428,
+     "source": "IPNG"
+    },
+    "2016-17": {
+     "value_tmt": 32823,
+     "source": "IPNG"
+    },
+    "2017-18": {
+     "value_tmt": 33153,
+     "source": "IPNG"
+    },
+    "2018-19": {
+     "value_tmt": 31752,
+     "source": "IPNG"
+    },
+    "2019-20": {
+     "value_tmt": 33019,
+     "source": "IPNG"
+    },
+    "2020-21": {
+     "value_tmt": 34100,
+     "source": "PPAC"
+    },
+    "2021-22": {
+     "value_tmt": 34757,
+     "source": "PPAC"
+    },
+    "2022-23": {
+     "value_tmt": 34433,
+     "source": "PPAC"
+    },
+    "2023-24": {
+     "value_tmt": 34390,
+     "source": "PPAC"
+    },
+    "2024-25": {
+     "value_tmt": 34990,
+     "source": "PPAC"
+    },
+    "2025-26": {
+     "value_tmt": 33646,
+     "source": "PPAC"
+    }
+   },
+   "utilisation_pct_derived_by_fy": {
+    "2015-16": {
+     "pct_derived": 98.3,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 33.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2015)"
+    },
+    "2016-17": {
+     "pct_derived": 99.5,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 33.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2016)"
+    },
+    "2017-18": {
+     "pct_derived": 100.5,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 33.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2017)"
+    },
+    "2018-19": {
+     "pct_derived": 96.2,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 33.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2018)"
+    },
+    "2019-20": {
+     "pct_derived": 100.1,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 33.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2019)"
+    },
+    "2020-21": {
+     "pct_derived": 103.3,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 33.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2020)"
+    },
+    "2021-22": {
+     "pct_derived": 105.3,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 33.0,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2022-23": {
+     "pct_derived": 104.3,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 33.0,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2023-24": {
+     "pct_derived": 104.2,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 33.0,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2024-25": {
+     "pct_derived": 106.0,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 33.0,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2025-26": {
+     "pct_derived": 102.0,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 33.0,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    }
+   },
+   "fcc_units": [
+    {
+     "fact": "FCC listed among Jamnagar complex units (FCC, Coker, Alkylation, Paraxylene, Polypropylene, ROGC, Petcoke gasification); nameplate capacity NOT published in the sources fetched",
+     "source": "S22"
+    },
+    {
+     "fact": "FY2018-19: \"unplanned shutdown of Fluid Catalytic Cracking (FCC) Unit\" cited as one reason segment EBIT fell 19.8% (GRM US$9.2/bbl)",
+     "source": "S21 (ar2018-19/mda.html)"
+    },
+    {
+     "fact": "Petcoke/coke gasification linked to DTA refinery: installation & mechanical completion in FY2016-17; all Gasification-complex units started in FY2018-19; \"full scale commissioning of coke gasification project\" and \"augmentation of Coking capacity\" in FY2019-20; \"Petcoke Gasification complex operation has been stabilised ... being ramped-up\"",
+     "source": "S21"
+    },
+    {
+     "fact": "FY2025-26 Q4: \"Record gasifier output\"; \"Jamnagar Complex fuel cost minimized by sustaining higher gasifier availability\"",
+     "source": "S18,S19"
+    }
+   ],
+   "notes": [
+    "RIL does not publish refinery-wise throughput/GRM; PPAC series comes from oil-company returns. RIL-defined \"Total throughput\" (all O2C inputs, not crude only) is 80.5 MMT FY25, 80.0 MMT FY26 (S18) - not comparable with PPAC crude processed 66.18 / 67.33 MMT.",
+    "No RFCC-specific unit disclosed anywhere fetched; the label \"RFCC\" could not be sourced to a company document.",
+    "FY2025-26 monthly (PPAC, 000 MT) Apr..Mar: 1551, 2897, 2873, 2996, 3000, 2926, 2987, 2928, 3023, 2916, 2675, 2874. April 2025 dip coincides with a reported 21-day crude + secondary unit maintenance (S23, secondary source); PPAC does not state cause.",
+    "Company-published GRM (US$/bbl, combined Jamnagar): FY15-16 10.8, FY16-17 11.0, FY17-18 11.6, FY18-19 9.2, FY19-20 8.9 (S21). GRM not found for FY20-21 onward (RIL reports O2C segment EBITDA instead)."
+   ]
+  },
+  "Reliance_Jamnagar_SEZ": {
+   "capacity_mmtpa_on_1_april": {
+    "2015": 27.0,
+    "2016": 27.0,
+    "2017": 27.0,
+    "2018": 35.2,
+    "2019": 35.2,
+    "2020": 35.2,
+    "2026": 35.2
+   },
+   "throughput_tmt_by_fy": {
+    "2015-16": {
+     "value_tmt": 37133,
+     "source": "IPNG"
+    },
+    "2016-17": {
+     "value_tmt": 37351,
+     "source": "IPNG"
+    },
+    "2017-18": {
+     "value_tmt": 37317,
+     "source": "IPNG"
+    },
+    "2018-19": {
+     "value_tmt": 37393,
+     "source": "IPNG"
+    },
+    "2019-20": {
+     "value_tmt": 35876,
+     "source": "IPNG"
+    },
+    "2020-21": {
+     "value_tmt": 26841,
+     "source": "PPAC"
+    },
+    "2021-22": {
+     "value_tmt": 28264,
+     "source": "PPAC"
+    },
+    "2022-23": {
+     "value_tmt": 27872,
+     "source": "PPAC"
+    },
+    "2023-24": {
+     "value_tmt": 28300,
+     "source": "PPAC"
+    },
+    "2024-25": {
+     "value_tmt": 31192,
+     "source": "PPAC"
+    },
+    "2025-26": {
+     "value_tmt": 33682,
+     "source": "PPAC"
+    }
+   },
+   "utilisation_pct_derived_by_fy": {
+    "2015-16": {
+     "pct_derived": 137.5,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 27.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2015)"
+    },
+    "2016-17": {
+     "pct_derived": 138.3,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 27.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2016)"
+    },
+    "2017-18": {
+     "pct_derived": 138.2,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 27.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2017)"
+    },
+    "2018-19": {
+     "pct_derived": 106.2,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 35.2,
+     "capacity_basis": "IPNG III.1 (1 Apr 2018)"
+    },
+    "2019-20": {
+     "pct_derived": 101.9,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 35.2,
+     "capacity_basis": "IPNG III.1 (1 Apr 2019)"
+    },
+    "2020-21": {
+     "pct_derived": 76.3,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 35.2,
+     "capacity_basis": "IPNG III.1 (1 Apr 2020)"
+    },
+    "2021-22": {
+     "pct_derived": 80.3,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 35.2,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2022-23": {
+     "pct_derived": 79.2,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 35.2,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2023-24": {
+     "pct_derived": 80.4,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 35.2,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2024-25": {
+     "pct_derived": 88.6,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 35.2,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2025-26": {
+     "pct_derived": 95.7,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 35.2,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    }
+   },
+   "fcc_units": [
+    {
+     "fact": "Gasification linked to SEZ refinery: installation & mechanical completion \"substantially achieved\" in FY2016-17 (S21). No SEZ-specific FCC/RFCC unit disclosed.",
+     "source": "S21"
+    }
+   ],
+   "notes": [
+    "SEZ capacity in IPNG III.1 rises 27.0 -> 35.2 MMTPA between the 1 Apr 2017 and 1 Apr 2018 columns. Derived utilisation for FY15-16..FY17-18 (>130%) is throughput divided by the then-listed 27.0 nameplate and is therefore inflated by the re-rating; both raw numbers are shown.",
+    "FY2025-26 monthly (PPAC): 3113, 2876, 2737, 2830, 2868, 2622, 2578, 2778, 3186, 2851, 2701, 2543. FY25-26 SEZ (33.68) exceeded DTA (33.65) for the first time in the PPAC series fetched.",
+    "Complex-level: 1.4 million bpd, Nelson complexity 21.1 (company web page S22; company-level, not split DTA/SEZ)."
+   ]
+  },
+  "Nayara_Vadinar": {
+   "capacity_mmtpa_on_1_april": {
+    "2015": 20.0,
+    "2016": 20.0,
+    "2017": 20.0,
+    "2018": 20.0,
+    "2019": 20.0,
+    "2020": 20.0,
+    "2026": 20.0
+   },
+   "throughput_tmt_by_fy": {
+    "2015-16": {
+     "value_tmt": 19101,
+     "source": "IPNG"
+    },
+    "2016-17": {
+     "value_tmt": 20919,
+     "source": "IPNG"
+    },
+    "2017-18": {
+     "value_tmt": 20693,
+     "source": "IPNG"
+    },
+    "2018-19": {
+     "value_tmt": 18896,
+     "source": "IPNG"
+    },
+    "2019-20": {
+     "value_tmt": 20620,
+     "source": "IPNG"
+    },
+    "2020-21": {
+     "value_tmt": 17067,
+     "source": "PPAC"
+    },
+    "2021-22": {
+     "value_tmt": 20164,
+     "source": "PPAC"
+    },
+    "2022-23": {
+     "value_tmt": 18692,
+     "source": "PPAC"
+    },
+    "2023-24": {
+     "value_tmt": 20322,
+     "source": "PPAC"
+    },
+    "2024-25": {
+     "value_tmt": 20487,
+     "source": "PPAC"
+    },
+    "2025-26": {
+     "value_tmt": 18851,
+     "source": "PPAC"
+    }
+   },
+   "utilisation_pct_derived_by_fy": {
+    "2015-16": {
+     "pct_derived": 95.5,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 20.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2015)"
+    },
+    "2016-17": {
+     "pct_derived": 104.6,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 20.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2016)"
+    },
+    "2017-18": {
+     "pct_derived": 103.5,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 20.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2017)"
+    },
+    "2018-19": {
+     "pct_derived": 94.5,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 20.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2018)"
+    },
+    "2019-20": {
+     "pct_derived": 103.1,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 20.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2019)"
+    },
+    "2020-21": {
+     "pct_derived": 85.3,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 20.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2020)"
+    },
+    "2021-22": {
+     "pct_derived": 100.8,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 20.0,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2022-23": {
+     "pct_derived": 93.5,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 20.0,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2023-24": {
+     "pct_derived": 101.6,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 20.0,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2024-25": {
+     "pct_derived": 102.4,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 20.0,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2025-26": {
+     "pct_derived": 94.3,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 20.0,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    }
+   },
+   "fcc_units": [
+    {
+     "fact": "FCC and diesel hydro-desulphuriser commissioned Nov 2006 (first phase); 2012 expansion to 20 mtpa included final Delayed Coker Unit",
+     "source": "S30 (Wikipedia, secondary)"
+    },
+    {
+     "fact": "Petrochemical project = Propylene Recovery Unit + upgrade of existing FCC unit + 450,000 tpa polypropylene unit (UNIPOL); foundation stone Nov 2021; investment ~Rs 6,000 cr per search summary",
+     "source": "S27; investment figure from search summary (ICIS/polymerupdate), page not re-verified"
+    },
+    {
+     "fact": "PP production expected Oct-Dec 2023 quarter (headline S29); a search summary states operations began in that window - actual start date not verified from a Nayara document",
+     "source": "S29"
+    }
+   ],
+   "notes": [
+    "Complexity 11.8 (Wikipedia S30, secondary). FCC nameplate NOT found (one search summary said FCCU 2.9 Mt/yr but its origin could not be verified - excluded).",
+    "FY2025-26 monthly (PPAC, 000 MT) Apr..Mar: 1665, 1762, 1709, 1691, 1406, 1244, 1546, 1554, 1592, 1589, 1438, 1654 (FY24-25 monthly range 1584-1764). Aug/Sep 2025 are the lows, after EU designation (18 Jul 2025) and US sanctions.",
+    "Press figures: crude intake \"plunged to just 240,000 b/d after EU and US sanctions hit in August, but rebounded to 420,000 b/d in November\" (OilPrice 25 Nov 2025, S24) - intake, not PPAC processing; different basis. A search-summary line \"403,000 b/d received in 2025, 72% Russian-origin\" not verified at source.",
+    "Nayara is private and does not publish an annual report with throughput/GRM in the sources reached; nayaraenergy.com returned HTTP 403. Ownership: Rosneft 49.13%, Kesani/UCP the rest (S25, S28); Al Jazeera 3 Jul 2026: refinery \"processing only Russian oil since other suppliers backed out\"."
+   ]
+  },
+  "CPCL_Manali": {
+   "capacity_mmtpa_on_1_april": {
+    "2015": 10.5,
+    "2016": 10.5,
+    "2017": 10.5,
+    "2018": 10.5,
+    "2019": 10.5,
+    "2020": 10.5,
+    "2026": 10.5
+   },
+   "throughput_tmt_by_fy": {
+    "2015-16": {
+     "value_tmt": 9100,
+     "source": "IPNG"
+    },
+    "2016-17": {
+     "value_tmt": 9725,
+     "source": "IPNG"
+    },
+    "2017-18": {
+     "value_tmt": 10289,
+     "source": "IPNG"
+    },
+    "2018-19": {
+     "value_tmt": 10271,
+     "source": "IPNG"
+    },
+    "2019-20": {
+     "value_tmt": 10161,
+     "source": "IPNG"
+    },
+    "2020-21": {
+     "value_tmt": 8243,
+     "source": "PPAC"
+    },
+    "2021-22": {
+     "value_tmt": 9040,
+     "source": "PPAC"
+    },
+    "2022-23": {
+     "value_tmt": 11316,
+     "source": "PPAC"
+    },
+    "2023-24": {
+     "value_tmt": 11642,
+     "source": "PPAC"
+    },
+    "2024-25": {
+     "value_tmt": 10454,
+     "source": "PPAC"
+    },
+    "2025-26": {
+     "value_tmt": 11710,
+     "source": "PPAC"
+    }
+   },
+   "utilisation_pct_derived_by_fy": {
+    "2015-16": {
+     "pct_derived": 86.7,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 10.5,
+     "capacity_basis": "IPNG III.1 (1 Apr 2015)"
+    },
+    "2016-17": {
+     "pct_derived": 92.6,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 10.5,
+     "capacity_basis": "IPNG III.1 (1 Apr 2016)"
+    },
+    "2017-18": {
+     "pct_derived": 98.0,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 10.5,
+     "capacity_basis": "IPNG III.1 (1 Apr 2017)"
+    },
+    "2018-19": {
+     "pct_derived": 97.8,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 10.5,
+     "capacity_basis": "IPNG III.1 (1 Apr 2018)"
+    },
+    "2019-20": {
+     "pct_derived": 96.8,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 10.5,
+     "capacity_basis": "IPNG III.1 (1 Apr 2019)"
+    },
+    "2020-21": {
+     "pct_derived": 78.5,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 10.5,
+     "capacity_basis": "IPNG III.1 (1 Apr 2020)"
+    },
+    "2021-22": {
+     "pct_derived": 86.1,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 10.5,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2022-23": {
+     "pct_derived": 107.8,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 10.5,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2023-24": {
+     "pct_derived": 110.9,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 10.5,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2024-25": {
+     "pct_derived": 99.6,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 10.5,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2025-26": {
+     "pct_derived": 111.5,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 10.5,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    }
+   },
+   "fcc_units": [
+    {
+     "fact": "One FCCU at Manali. Record throughput 1,085 TMT in FY2025-26 (previous best 1,084 TMT in FY2017-18; 1,075 TMT in FY2014-15)",
+     "source": "S4; S7 (AR 2017-18)"
+    },
+    {
+     "fact": "FY2021-22 (post Refinery-III M&I): \"FCCU T'put at 38% over design\" (design value not stated)",
+     "source": "S7 (AR 2021-22)"
+    },
+    {
+     "fact": "Other secondary units FY25-26: OHCU record 2,559 TMT, DCU record 2,154 TMT; Nelson Complexity Index 10.8; distillate yield 79.1% (record); GDS 0.6 MMTPA unit (FY22 AR)",
+     "source": "S4,S7"
+    }
+   ],
+   "notes": [
+    "Company-reported utilisation vs 10.5 MMTPA design: FY2024-25 99.6% (10.454 MMT); FY2025-26 112% (11.71 MMT, \"despite planned turnaround\"). Company totals incl. Cauvery Basin: FY16-17..FY19-20 see CPCL_Cauvery.",
+    "Company GRM (US$/bbl; Singapore GRM in brackets): FY16-17 6.05; FY17-18 6.42 (S7); FY21-22 8.85; FY22-23 11.91 (S6); FY23-24 8.64 (6.61); FY24-25 4.22 (3.80) (S5); FY25-26 9.28 (5.80) (S4). FY18-19, FY19-20, FY20-21 GRM not extracted.",
+    "Distillate yield %: FY17 72.6, FY18 73.2 (S7), FY19 74.4 (combined; Manali 73.7), FY20 77.6 (\"previous best\" per S4), FY25 75.7, FY26 79.1 (S4).",
+    "Company total throughput (Manali+CBR) MMT: FY17-18 10.789; FY18-19 10.695 (Manali 10.271 + CBR 0.423); FY19-20 10.161; FY20-21 8.243; FY21-22 9.040; FY22-23 11.316; FY23-24 11.642 (S7,S6,S4). FY20-21 low due to turnaround/COVID per AR.",
+    "Manali planned projects (FY25-26 AR): Group II/III lube base stock (catalytic dewaxing, up to 256 KTPA) Rs 1,620 cr; grid upgrade 110->400 kV Rs 443 cr; \"refinery expansion to 14 MMTPA, petrochemical integration\" listed as strategic initiatives with no capex/date given (S4)."
+   ]
+  },
+  "CPCL_Cauvery_Basin_Nagapattinam": {
+   "capacity_mmtpa_on_1_april": {
+    "2015": 1.0,
+    "2016": 1.0,
+    "2017": 1.0,
+    "2018": 1.0,
+    "2019": 1.0,
+    "2020": 1.0,
+    "2026": 0.0,
+    "note": "PPAC xlsx 1.04.2026: 'CPCL, Cauvery Basin*' = 0 with footnote '* CAUVERY BASIN REFINERY IS UNDER CAPACITY AUGMENTATION.'; IPNG note: 'CPCL CBR refinery is under shutdown due to limitation in meeting required Product specifications with the existing configuration.' (FY19-20 throughput 0)"
+   },
+   "throughput_tmt_by_fy": {
+    "2015-16": {
+     "value_tmt": 544,
+     "source": "IPNG"
+    },
+    "2016-17": {
+     "value_tmt": 531,
+     "source": "IPNG"
+    },
+    "2017-18": {
+     "value_tmt": 500,
+     "source": "IPNG"
+    },
+    "2018-19": {
+     "value_tmt": 423,
+     "source": "IPNG"
+    },
+    "2019-20": {
+     "value_tmt": 0,
+     "source": "IPNG"
+    },
+    "2020-21": {
+     "value_tmt": 0,
+     "source": "PPAC (row CPCL-NARIMANAM = 0)"
+    },
+    "2021-22": {
+     "value_tmt": 0,
+     "source": "PPAC (row CPCL-NARIMANAM = 0)"
+    },
+    "2022-23": {
+     "value_tmt": 0,
+     "source": "PPAC (row CPCL-NARIMANAM = 0)"
+    },
+    "2023-24": {
+     "value_tmt": 0,
+     "source": "PPAC (row CPCL-NARIMANAM = 0)"
+    },
+    "2024-25": {
+     "value_tmt": 0,
+     "source": "PPAC (row CPCL-NARIMANAM = 0)"
+    },
+    "2025-26": {
+     "value_tmt": 0,
+     "source": "PPAC (row CPCL-NARIMANAM = 0)"
+    }
+   },
+   "utilisation_pct_derived_by_fy": {
+    "2015-16": {
+     "pct_derived": 54.4,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 1.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2015)"
+    },
+    "2016-17": {
+     "pct_derived": 53.1,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 1.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2016)"
+    },
+    "2017-18": {
+     "pct_derived": 50.0,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 1.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2017)"
+    },
+    "2018-19": {
+     "pct_derived": 42.3,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 1.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2018)"
+    },
+    "2019-20": {
+     "pct_derived": 0.0,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 1.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2019)"
+    }
+   },
+   "fcc_units": [
+    {
+     "fact": "Planned new 9 MMTPA refinery-cum-petrochemical complex will use indigenous CDU, INDMAX (IOC fluid catalytic cracking family) and Octamax units and includes a polypropylene unit",
+     "source": "S37"
+    }
+   ],
+   "notes": [
+    "Existing 1.0 MMTPA CBR refinery (Narimanam): throughput 544/531/500/423 TMT FY16..FY19, 0 in FY20 onward (shut down; IPNG note). Plan: dismantle existing refinery and build 9 MMTPA JV refinery (CBRPL, incorporated 6 Jan 2023) on ~619 acres CPCL land + ~663 acres acquired."
+   ]
+  },
+  "MRPL_Mangalore": {
+   "capacity_mmtpa_on_1_april": {
+    "2015": 15.0,
+    "2016": 15.0,
+    "2017": 15.0,
+    "2018": 15.0,
+    "2019": 15.0,
+    "2020": 15.0,
+    "2026": 15.0
+   },
+   "throughput_tmt_by_fy": {
+    "2015-16": {
+     "value_tmt": 15532,
+     "source": "IPNG"
+    },
+    "2016-17": {
+     "value_tmt": 15965,
+     "source": "IPNG"
+    },
+    "2017-18": {
+     "value_tmt": 16130,
+     "source": "IPNG"
+    },
+    "2018-19": {
+     "value_tmt": 16231,
+     "source": "IPNG"
+    },
+    "2019-20": {
+     "value_tmt": 13953,
+     "source": "IPNG"
+    },
+    "2020-21": {
+     "value_tmt": 11475,
+     "source": "PPAC"
+    },
+    "2021-22": {
+     "value_tmt": 14871,
+     "source": "PPAC"
+    },
+    "2022-23": {
+     "value_tmt": 17116,
+     "source": "PPAC"
+    },
+    "2023-24": {
+     "value_tmt": 16533,
+     "source": "PPAC"
+    },
+    "2024-25": {
+     "value_tmt": 18044,
+     "source": "PPAC"
+    },
+    "2025-26": {
+     "value_tmt": 16774,
+     "source": "PPAC"
+    }
+   },
+   "utilisation_pct_derived_by_fy": {
+    "2015-16": {
+     "pct_derived": 103.5,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 15.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2015)"
+    },
+    "2016-17": {
+     "pct_derived": 106.4,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 15.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2016)"
+    },
+    "2017-18": {
+     "pct_derived": 107.5,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 15.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2017)"
+    },
+    "2018-19": {
+     "pct_derived": 108.2,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 15.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2018)"
+    },
+    "2019-20": {
+     "pct_derived": 93.0,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 15.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2019)"
+    },
+    "2020-21": {
+     "pct_derived": 76.5,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 15.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2020)"
+    },
+    "2021-22": {
+     "pct_derived": 99.1,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 15.0,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2022-23": {
+     "pct_derived": 114.1,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 15.0,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2023-24": {
+     "pct_derived": 110.2,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 15.0,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2024-25": {
+     "pct_derived": 120.3,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 15.0,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2025-26": {
+     "pct_derived": 111.8,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 15.0,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    }
+   },
+   "fcc_units": [
+    {
+     "fact": "Petro-FCC (PFCC/PFCCU) commissioned in Phase-III (Q2 FY2014-15); produces propylene, LPG, gasoline from HCU unconverted oil/VGO/HCGO. Wet Gas Scrubber on PFCC regenerator stack: Rs 129 cr, mechanically complete Dec 2024, commissioned Mar 2025. LPG amine treating for PFCC also commissioned. Nameplate capacity NOT stated in AR text extracted.",
+     "source": "S8,S9,S35"
+    },
+    {
+     "fact": "Polypropylene unit (Phase-III): approved 23 Jul 2009 at Rs 1,803.78 cr; 440,000 tpa; commercial production from 18 Jun 2015. PP production 389,065 MT FY2023-24 and 454,641 MT FY2024-25; PP sales 384 TMT FY24 and 473 TMT FY25 (record dispatch 50.75 TMT May-24). Cast PP (CPP film grade) produced first time FY25",
+     "source": "S35 (via search summary), S9,S8"
+    }
+   ],
+   "notes": [
+    "Company throughput: FY22-23 17.116 MMT (114% util.), FY23-24 16.53 MMT (110%), FY24-25 18.04 MMT net / 18.18 MMT gross (120%), FY25-26 17.00 MMT \"crude and other materials processed\" (S8,S9,S10); PPAC FY24-25 = 18,044 (net).",
+    "GRM US$/bbl: FY22-23 9.88, FY23-24 10.36, FY24-25 4.45, FY25-26 9.22 (S9,S8,S10). Distillate yield: FY21-22 78.79% (prev. best), FY23-24 78.77%, FY24-25 81.93% (record). Fuel & loss FY25 10.42%.",
+    "Design capacity 15.0 MMTPA (IPNG, PPAC 2026). EIA for capacity expansion \"from 16.6 to 18.2 MMTPA\" updated by addendum 13/01/2025 and consent-for-operation application filed for 18.4 MMTPA (S8) - i.e. debottlenecked run-rate applications, not new nameplate in PPAC. 500 TPA green hydrogen unit EC obtained.",
+    "FY2025-26 monthly (PPAC): 1512, 1169, 737, 1521, 1484, 1387, 1544, 1474, 1543, 1532, 1397, 1475; June 2025 = 737 (cause not stated in sources fetched).",
+    "FY2019-20 dip to 13.95 MMT (IPNG); FY20-21 11.475 MMT (PPAC, COVID year)."
+   ]
+  },
+  "NRL_Numaligarh": {
+   "capacity_mmtpa_on_1_april": {
+    "2015": 3.0,
+    "2016": 3.0,
+    "2017": 3.0,
+    "2018": 3.0,
+    "2019": 3.0,
+    "2020": 3.0,
+    "2026": 3.0
+   },
+   "throughput_tmt_by_fy": {
+    "2015-16": {
+     "value_tmt": 2520,
+     "source": "IPNG"
+    },
+    "2016-17": {
+     "value_tmt": 2683,
+     "source": "IPNG"
+    },
+    "2017-18": {
+     "value_tmt": 2809,
+     "source": "IPNG"
+    },
+    "2018-19": {
+     "value_tmt": 2900,
+     "source": "IPNG"
+    },
+    "2019-20": {
+     "value_tmt": 2383,
+     "source": "IPNG"
+    },
+    "2020-21": {
+     "value_tmt": 2707,
+     "source": "PPAC"
+    },
+    "2021-22": {
+     "value_tmt": 2624,
+     "source": "PPAC"
+    },
+    "2022-23": {
+     "value_tmt": 3091,
+     "source": "PPAC"
+    },
+    "2023-24": {
+     "value_tmt": 2510,
+     "source": "PPAC"
+    },
+    "2024-25": {
+     "value_tmt": 3066,
+     "source": "PPAC"
+    },
+    "2025-26": {
+     "value_tmt": 3113,
+     "source": "PPAC"
+    }
+   },
+   "utilisation_pct_derived_by_fy": {
+    "2015-16": {
+     "pct_derived": 84.0,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 3.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2015)"
+    },
+    "2016-17": {
+     "pct_derived": 89.4,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 3.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2016)"
+    },
+    "2017-18": {
+     "pct_derived": 93.6,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 3.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2017)"
+    },
+    "2018-19": {
+     "pct_derived": 96.7,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 3.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2018)"
+    },
+    "2019-20": {
+     "pct_derived": 79.4,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 3.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2019)"
+    },
+    "2020-21": {
+     "pct_derived": 90.2,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 3.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2020)"
+    },
+    "2021-22": {
+     "pct_derived": 87.5,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 3.0,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2022-23": {
+     "pct_derived": 103.0,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 3.0,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2023-24": {
+     "pct_derived": 83.7,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 3.0,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2024-25": {
+     "pct_derived": 102.2,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 3.0,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2025-26": {
+     "pct_derived": 103.8,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 3.0,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    }
+   },
+   "fcc_units": [
+    {
+     "fact": "Existing 3 MMTPA refinery has no FCC in the sources reached. Expansion (NREP) adds a 6 MTPA CDU/VDU and a 1.95 MTPA high-severity petro-FCC (PFCCU) yielding LPG and propylene feeding a new 360 KTPA polypropylene unit, plus ebullated-bed residue hydrocracker, VGO hydrotreater, NHT/ISOM/CCR, DHDT, FCC gasoline desulphurisation",
+     "source": "S16 (Polymerupdate 4 Jul 2024); S17"
+    }
+   ],
+   "notes": [
+    "Company data: NRL Annual Report 2023-24 10-year table (capacity utilisation vs 3,000 TMT): FY14-15 2777 (93%), FY15-16 2520 (84%), FY16-17 2683 (89%), FY17-18 2809 (94%), FY18-19 2900 (97%), FY19-20 2383 (79%), FY20-21 2707 (90%), FY21-22 2624 (87%), FY22-23 3091 (103%), FY23-24 2510 (84%) (S11) - matches IPNG/PPAC. FY24-25 3,066 TMT \">100%\" (S13); FY25-26 3,113 TMT, 103% (S14).",
+    "GRM US$/bbl: FY23-24 13.17 (S11); FY24-25 5.14 (per Sentinel/search summary of company statement; S13 page excerpt did not itself contain the GRM). Distillate yield FY23-24 86.54%, FY24-25 86.7% (search summary).",
+    "PPAC FY23-24 monthly shows April 2023 = 0 (turnaround)."
+   ]
+  },
+  "HMEL_Bathinda": {
+   "capacity_mmtpa_on_1_april": {
+    "2015": 9.0,
+    "2016": 9.0,
+    "2017": 9.0,
+    "2018": 11.3,
+    "2019": 11.3,
+    "2020": 11.3,
+    "2026": 11.3
+   },
+   "throughput_tmt_by_fy": {
+    "2015-16": {
+     "value_tmt": 10713,
+     "source": "IPNG"
+    },
+    "2016-17": {
+     "value_tmt": 10521,
+     "source": "IPNG"
+    },
+    "2017-18": {
+     "value_tmt": 8830,
+     "source": "IPNG"
+    },
+    "2018-19": {
+     "value_tmt": 12473,
+     "source": "IPNG"
+    },
+    "2019-20": {
+     "value_tmt": 12242,
+     "source": "IPNG"
+    },
+    "2020-21": {
+     "value_tmt": 10072,
+     "source": "PPAC"
+    },
+    "2021-22": {
+     "value_tmt": 13027,
+     "source": "PPAC"
+    },
+    "2022-23": {
+     "value_tmt": 12735,
+     "source": "PPAC"
+    },
+    "2023-24": {
+     "value_tmt": 12648,
+     "source": "PPAC"
+    },
+    "2024-25": {
+     "value_tmt": 13045,
+     "source": "PPAC"
+    },
+    "2025-26": {
+     "value_tmt": 11654,
+     "source": "PPAC"
+    }
+   },
+   "utilisation_pct_derived_by_fy": {
+    "2015-16": {
+     "pct_derived": 119.0,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 9.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2015)"
+    },
+    "2016-17": {
+     "pct_derived": 116.9,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 9.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2016)"
+    },
+    "2017-18": {
+     "pct_derived": 98.1,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 9.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2017)"
+    },
+    "2018-19": {
+     "pct_derived": 110.4,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 11.3,
+     "capacity_basis": "IPNG III.1 (1 Apr 2018)"
+    },
+    "2019-20": {
+     "pct_derived": 108.3,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 11.3,
+     "capacity_basis": "IPNG III.1 (1 Apr 2019)"
+    },
+    "2020-21": {
+     "pct_derived": 89.1,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 11.3,
+     "capacity_basis": "IPNG III.1 (1 Apr 2020)"
+    },
+    "2021-22": {
+     "pct_derived": 115.3,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 11.3,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2022-23": {
+     "pct_derived": 112.7,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 11.3,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2023-24": {
+     "pct_derived": 111.9,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 11.3,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2024-25": {
+     "pct_derived": 115.4,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 11.3,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2025-26": {
+     "pct_derived": 103.1,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 11.3,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    }
+   },
+   "fcc_units": [
+    {
+     "fact": "Guru Gobind Singh Refinery has a Petro-FCC and Delayed Coker with upstream VGO+HCGO hydrotreater (offshore-technology / search summary; nameplate 47 kb/d FCC in same summary - single secondary source, low confidence). Polypropylene: 440 ktpa homopolymer PP unit (Novolen) per Yokogawa/search summary vs OGJ 2018 \"500,000-tpy PP\" contract - values disagree, kept both",
+     "source": "search summaries (offshore-technology.com marketdata/bhatinda-refinery-india; Yokogawa); S33"
+    }
+   ],
+   "notes": [
+    "FY2025-26 monthly (PPAC): 1067, 1113, 1074, 894, 1057, 966, 1084, 443, 640, 1155, 989, 1171. Nov-Dec 2025 lows are consistent with a reported ~40-day shutdown from early Nov (S31) - reported plan, not PPAC-confirmed cause.",
+    "HMEL capacity 9.0 -> 11.3 MMTPA (1 Apr 2018 column, S3); press (Aug 2025, S31): 226,000 bpd -> 236,000 bpd by Dec 2025. No GRM published in sources reached.",
+    "PPAC FY24-25 lists HMEL inside \"HPCL & JV-TOTAL\" and MRPL inside \"ONGC TOTAL\" - aggregation quirk of the PPAC table; refinery rows used here."
+   ]
+  },
+  "ONGC_Tatipaka": {
+   "capacity_mmtpa_on_1_april": {
+    "2015": 0.07,
+    "2016": 0.07,
+    "2017": 0.07,
+    "2018": 0.07,
+    "2019": 0.07,
+    "2020": 0.07,
+    "2026": 0.066
+   },
+   "throughput_tmt_by_fy": {
+    "2015-16": {
+     "value_tmt": 67,
+     "source": "IPNG"
+    },
+    "2016-17": {
+     "value_tmt": 86,
+     "source": "IPNG"
+    },
+    "2017-18": {
+     "value_tmt": 80,
+     "source": "IPNG"
+    },
+    "2018-19": {
+     "value_tmt": 66,
+     "source": "IPNG"
+    },
+    "2019-20": {
+     "value_tmt": 87,
+     "source": "IPNG"
+    },
+    "2020-21": {
+     "value_tmt": 81,
+     "source": "PPAC"
+    },
+    "2021-22": {
+     "value_tmt": 75,
+     "source": "PPAC"
+    },
+    "2022-23": {
+     "value_tmt": 73,
+     "source": "PPAC"
+    },
+    "2023-24": {
+     "value_tmt": 65,
+     "source": "PPAC"
+    },
+    "2024-25": {
+     "value_tmt": 74,
+     "source": "PPAC"
+    },
+    "2025-26": {
+     "value_tmt": 74,
+     "source": "PPAC"
+    }
+   },
+   "utilisation_pct_derived_by_fy": {
+    "2015-16": {
+     "pct_derived": 95.7,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 0.07,
+     "capacity_basis": "IPNG III.1 (1 Apr 2015)"
+    },
+    "2016-17": {
+     "pct_derived": 122.9,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 0.07,
+     "capacity_basis": "IPNG III.1 (1 Apr 2016)"
+    },
+    "2017-18": {
+     "pct_derived": 114.3,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 0.07,
+     "capacity_basis": "IPNG III.1 (1 Apr 2017)"
+    },
+    "2018-19": {
+     "pct_derived": 94.3,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 0.07,
+     "capacity_basis": "IPNG III.1 (1 Apr 2018)"
+    },
+    "2019-20": {
+     "pct_derived": 124.3,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 0.07,
+     "capacity_basis": "IPNG III.1 (1 Apr 2019)"
+    },
+    "2020-21": {
+     "pct_derived": 115.7,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 0.07,
+     "capacity_basis": "IPNG III.1 (1 Apr 2020)"
+    },
+    "2021-22": {
+     "pct_derived": 107.1,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 0.07,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2022-23": {
+     "pct_derived": 104.3,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 0.07,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2023-24": {
+     "pct_derived": 92.9,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 0.07,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2024-25": {
+     "pct_derived": 105.7,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 0.07,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2025-26": {
+     "pct_derived": 105.7,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 0.07,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    }
+   },
+   "fcc_units": [],
+   "notes": [
+    "0.066 MMTPA (66 TMT) condensate refinery; throughput 65-87 TMT/yr. No FCC."
+   ]
+  },
+  "BPCL_Bina_BORL": {
+   "capacity_mmtpa_on_1_april": {
+    "2015": 6.0,
+    "2016": 6.0,
+    "2017": 6.0,
+    "2018": 6.0,
+    "2019": 7.8,
+    "2020": 7.8,
+    "2026": 7.8
+   },
+   "throughput_tmt_by_fy": {
+    "2015-16": {
+     "value_tmt": 6402,
+     "source": "IPNG"
+    },
+    "2016-17": {
+     "value_tmt": 6360,
+     "source": "IPNG"
+    },
+    "2017-18": {
+     "value_tmt": 6708,
+     "source": "IPNG"
+    },
+    "2018-19": {
+     "value_tmt": 5716,
+     "source": "IPNG"
+    },
+    "2019-20": {
+     "value_tmt": 7913,
+     "source": "IPNG"
+    },
+    "2020-21": {
+     "value_tmt": 6190,
+     "source": "PPAC"
+    },
+    "2021-22": {
+     "value_tmt": 7410,
+     "source": "PPAC"
+    },
+    "2022-23": {
+     "value_tmt": 7841,
+     "source": "PPAC"
+    },
+    "2023-24": {
+     "value_tmt": 7133,
+     "source": "PPAC"
+    },
+    "2024-25": {
+     "value_tmt": 7709,
+     "source": "PPAC"
+    },
+    "2025-26": {
+     "value_tmt": 7391,
+     "source": "PPAC"
+    }
+   },
+   "utilisation_pct_derived_by_fy": {
+    "2015-16": {
+     "pct_derived": 106.7,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 6.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2015)"
+    },
+    "2016-17": {
+     "pct_derived": 106.0,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 6.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2016)"
+    },
+    "2017-18": {
+     "pct_derived": 111.8,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 6.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2017)"
+    },
+    "2018-19": {
+     "pct_derived": 95.3,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 6.0,
+     "capacity_basis": "IPNG III.1 (1 Apr 2018)"
+    },
+    "2019-20": {
+     "pct_derived": 101.4,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 7.8,
+     "capacity_basis": "IPNG III.1 (1 Apr 2019)"
+    },
+    "2020-21": {
+     "pct_derived": 79.4,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 7.8,
+     "capacity_basis": "IPNG III.1 (1 Apr 2020)"
+    },
+    "2021-22": {
+     "pct_derived": 95.0,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 7.8,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2022-23": {
+     "pct_derived": 100.5,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 7.8,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2023-24": {
+     "pct_derived": 91.4,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 7.8,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2024-25": {
+     "pct_derived": 98.8,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 7.8,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    },
+    "2025-26": {
+     "pct_derived": 94.8,
+     "formula": "throughput_tmt / (capacity_mmtpa*1000)",
+     "capacity_used_mmtpa": 7.8,
+     "capacity_basis": "INFERRED: same at 1 Apr 2020 (IPNG III.1) and 1 Apr 2026 (PPAC xlsx); intermediate years not fetched"
+    }
+   },
+   "fcc_units": [
+    {
+     "fact": "Not researched at unit level (out of primary target list).",
+     "source": null
+    }
+   ],
+   "notes": [
+    "Bharat Oman Refineries Ltd (BORL) appears as \"BORL-BINA\" in PPAC until FY23-24 and as \"BPCL-BINA\" from FY24-25. Expansion 7.8 -> 11 MMTPA + 1.2 MTPA ethylene cracker, cost ~Rs 48,926-49,000 cr, financial closure loan Rs 31,802 cr, commissioning planned 2028 (S36, via search summaries)."
+   ]
+  }
+ },
+ "company_totals_by_year": {
+  "all_india_crude_processed_tmt": {
+   "2015-16": 232865,
+   "2016-17": 245362,
+   "2017-18": 251935,
+   "2018-19": 257205,
+   "2019-20": 254386,
+   "2020-21": 221773,
+   "2021-22": 241704,
+   "2022-23": 255232,
+   "2023-24": 261546,
+   "2024-25": 268613,
+   "2025-26": 271991,
+   "source": "IPNG Table III.3 (FY16-FY20) and PPAC (FY21-FY26, provisional)"
+  },
+  "all_india_installed_capacity_mmtpa": {
+   "1_apr_2020": 249.87,
+   "1_apr_2026": 267.116,
+   "source": "IPNG III.1 total refinery capacity (OCR reading \"249.87\"); PPAC xlsx 1.04.2026 \"ALL INDIA TOTAL 267116\""
+  },
+  "RIL_total_crude_processed_tmt": {
+   "2015-16": 69561,
+   "2016-17": 70174,
+   "2017-18": 70470,
+   "2018-19": 69145,
+   "2019-20": 68895,
+   "2020-21": 60941,
+   "2021-22": 63021,
+   "2022-23": 62305,
+   "2023-24": 62690,
+   "2024-25": 66182,
+   "2025-26": 67329,
+   "source": "IPNG / PPAC"
+  },
+  "RIL_company_defined_total_throughput_mmt": {
+   "2024-25": 80.5,
+   "2025-26": 80.0,
+   "Q4_FY26": 19.5,
+   "Q4_FY25": 20.3,
+   "note": "includes non-crude feeds; \"Production meant for sale\" 71.2 (FY25), 70.9 (FY26), FY24 67.8 (S20)",
+   "source": "S18,S20"
+  },
+  "RIL_GRM_usd_per_bbl": {
+   "2015-16": 10.8,
+   "2016-17": 11.0,
+   "2017-18": 11.6,
+   "2018-19": 9.2,
+   "2019-20": 8.9,
+   "source": "S21; later years not disclosed as GRM in fetched material"
+  },
+  "RIL_O2C_segment_FY26": {
+   "revenue_cr": 662401,
+   "EBITDA_cr": 60546,
+   "FY25_revenue_cr": 626921,
+   "FY25_EBITDA_cr": 54988,
+   "source": "S18"
+  },
+  "CPCL_total_incl_CBR_tmt": {
+   "2015-16": 9644,
+   "2016-17": 10256,
+   "2017-18": 10789,
+   "2018-19": 10695,
+   "2019-20": 10161,
+   "2020-21": 8243,
+   "2021-22": 9040,
+   "2022-23": 11316,
+   "2023-24": 11642,
+   "2024-25": 10454,
+   "2025-26": 11710,
+   "source": "IPNG / PPAC (CBR = 0 from FY20)"
+  },
+  "GRM_usd_per_bbl_by_company": {
+   "CPCL": {
+    "2016-17": 6.05,
+    "2017-18": 6.42,
+    "2021-22": 8.85,
+    "2022-23": 11.91,
+    "2023-24": 8.64,
+    "2024-25": 4.22,
+    "2025-26": 9.28
+   },
+   "MRPL": {
+    "2022-23": 9.88,
+    "2023-24": 10.36,
+    "2024-25": 4.45,
+    "2025-26": 9.22
+   },
+   "NRL": {
+    "2023-24": 13.17,
+    "2024-25": 5.14
+   },
+   "RIL": {
+    "2015-16": 10.8,
+    "2016-17": 11.0,
+    "2017-18": 11.6,
+    "2018-19": 9.2,
+    "2019-20": 8.9
+   },
+   "Nayara": null,
+   "HMEL": null,
+   "note": "Company definitions differ (CPCL/MRPL/NRL \"GRM\" incl. own methodology); Nayara/HMEL/RIL(post FY20) not published in sources reached"
+  },
+  "Nayara_ownership": "Rosneft 49.13%, Kesani Enterprises/United Capital Partners hold the remainder (S25,S28); Reliance-Rosneft stake talks reported at \"nascent\" stage with valuation disagreement, nothing confirmed (S39)"
+ },
+ "plans": [
+  {
+   "company": "Numaligarh (NRL)",
+   "item": "Expansion 3 -> 9 MMTPA (new 6 MMTPA refinery with 1.95 MTPA PFCCU, residue hydrocracker) + 360 KTPA polypropylene + Paradip-Numaligarh crude pipeline (1,635 km, 9 MMTPA) + Siliguri product pipeline (654 km)",
+   "capex": "Rs 22,594 cr (orig) -> Rs 28,026 cr (MoPNG, Oct 2021, S17) -> Rs 33,901 cr revised (Feb 2026); PP unit Rs 7,231 cr; spent Rs 27,601 cr at 85% progress (S15)",
+   "dates": "Target completion moved: 2024 -> Dec 2025 (S16) -> Dec 2026 (S15; energiesmedia Feb 2026). A low-quality aggregator (discoveryalert) mentions 31 Dec 2027 - unverified. Physical progress 87.1% at 31 Mar 2026 per search summary (source not opened)",
+   "status_note": "S15 also cites post-expansion yields (MS, HSD, LPG) but units are garbled in extraction - not used"
+  },
+  {
+   "company": "CPCL",
+   "item": "Cauvery Basin Refinery & Petrochemicals Ltd (CBRPL), 9 MMTPA grass-roots refinery + polypropylene at Nagapattinam; INDMAX + Octamax units",
+   "capex": "Gross Rs 31,580 cr (FY21 & FY22 ARs; capital cost Rs 29,361 cr +/-10% excl BOO items, debt:equity 65:35); Rs 36,354 cr (+/-10%, excl BOOT) per FY2024-25 AR (S5); IOCL 75% / CPCL 25% revised structure (Boards Feb/Mar 2024, DIPAM 25 Sep 2024)",
+   "dates": "Mechanical completion ~39 months after statutory approvals (S5; 42-month schedule in a search summary). FY25-26 AR: revised structure/config \"currently under review\" at MoPNG; assets held as \"disposal group held for transfer\" Rs 1,473 cr; land handed over 31 Oct 2023; R&R paid Feb 2026 (S4)"
+  },
+  {
+   "company": "CPCL",
+   "item": "Manali: Group II/III LOBS (up to 256 KTPA) Rs 1,620 cr; grid upgrade Rs 443 cr; \"expansion to 14 MMTPA, petrochemical integration\" named as strategy",
+   "capex": "as stated; no capex/date for 14 MMTPA",
+   "dates": "n/a",
+   "source": "S4"
+  },
+  {
+   "company": "MRPL / ONGC",
+   "item": "June 2023 (Bloomberg): MRPL shelved 15->18 MTPA refinery expansion to focus on petrochemicals; new Karnataka petrochemical plant ~USD 3.63-4.84 bn (ONGC Rs 300-400 bn) commissioning \"in three to five years\", plus USD 0.73-0.85 bn on smaller petchem units; ONGC target 8 MTPA petchem by 2030 for ~Rs 1 trillion",
+   "capex": "as stated, press reports (S34)",
+   "dates": "2026-2028 window implied; no approved project or date found in MRPL FY24/FY25 ARs. MRPL FY24 AR: study to debottleneck PFCC to make more monomers; revamp + new niche petchem units (S9). Apr 2026: ONGC reportedly approved combining petrochemical marketing of ONGC/MRPL/OPaL (S38, low quality)"
+  },
+  {
+   "company": "MRPL",
+   "item": "Capacity creep: EIA/consent for 16.6 -> 18.2/18.4 MMTPA; 500 TPA green hydrogen; bio-ATF consent application",
+   "capex": "not stated",
+   "dates": "EIA addendum 13 Jan 2025 (S8)"
+  },
+  {
+   "company": "Nayara",
+   "item": "Vadinar: (a) Rs 4,000 cr modernisation by FY2025-26 (S27, Jun 2024); (b) 450 ktpa PP incl PRU + FCC upgrade (built); (c) 1.5 MMTPA ethane cracker, USD 8 bn (Rs 68,000 cr), FEED started - media report citing sources, Nayara did not comment (S28, Jan 2025); (d) Feb 2024: Petroleum Ministry official quoted \"increase [capacity] to 2X\" i.e. 20->40 MTPA - AA headline attributes to Nayara but quote is the ministry official (S26)",
+   "capex": "as stated",
+   "dates": "No dated schedule from Nayara found. EU sanctions on Nayara 18 Jul 2025 (S25/S24), US sanctions Aug 2025; PPAC shows Aug-Sep 2025 dip to 1,406/1,244 kt vs ~1,700 kt normal; FY25-26 total 18,851 kt vs 20,487 kt FY24-25 (-8.0%). Rosneft stake sale to Reliance reported as early-stage talks (S39)"
+  },
+  {
+   "company": "Reliance",
+   "item": "No new refining capacity announced in the material fetched. FY26 deck: gasifier output record; O2C \"growth projects\" in execution but not itemised; capex FY26 total group Rs 144,271 cr (S18)",
+   "capex": "group-level only",
+   "dates": "n/a",
+   "note": "Oil-to-chemicals: RIL 2019 O2C/Aramco 20% stake plan not researched here."
+  },
+  {
+   "company": "HMEL",
+   "item": "Rs 2,600 cr (Dec 2025): PP downstream + fine chemicals; capacity 226 -> 236 kb/d by Dec 2025; existing 1.2 Mtpa mixed-feed cracker, 450 ktpa HDPE, 500 ktpa PP complex (2018 EPCC ~USD 225 m)",
+   "capex": "as stated",
+   "dates": "S31,S32,S33"
+  },
+  {
+   "company": "BPCL Bina",
+   "item": "7.8 -> 11 MMTPA + 1.2 MTPA ethylene cracker",
+   "capex": "~Rs 48,926-49,000 cr; loan Rs 31,802 cr",
+   "dates": "foundation 15 Sep 2023; commissioning planned 2028 (S36)"
+  }
+ ],
+ "sources": [
+  {
+   "id": "S1",
+   "ref": "https://ppac.gov.in/AjaxController/getCrudeProcessingData  (POST financialYear=<yr>&reportBy=1&pageId=41) - refinery-wise monthly+total crude processed, unit 000 MT, source line \"Source: Oil Companies. All figures are provisional.\" Files: FY20-21 crude2020-21.xlsx (modified 06-10-2022), FY21-22 crude2021-2021.xlsx (06-10-2022), FY22-23 PT_crude(4).xlsx (25-04-2023), FY23-24 crude-oil-processed-by-refinaries_en.xlsx (26-04-2024), FY24-25 crude_processing_en.xlsx (25-07-2025), FY25-26 PT_crude_processing_current 2025-26.xls (01-09-2026). FY15-16..FY19-20 not served by this endpoint (returns empty)."
+  },
+  {
+   "id": "S2",
+   "ref": "https://ppac.gov.in/uploads/page-images/1786541385_Refining-capacity-April-2026.xlsx  (PPAC Installed Refining Capacity as on 1.04.2026, 000 MT; \"Source: Oil Companies\"; footnote \"CAUVERY BASIN REFINERY IS UNDER CAPACITY AUGMENTATION\")"
+  },
+  {
+   "id": "S3",
+   "ref": "https://mopng.gov.in/files/TableManagements/IPNG-2019-20.pdf  - Indian Petroleum & Natural Gas Statistics 2019-20; Table III.1 Petroleum Refining Capacity (p.57, MMTPA, columns read as capacity on 1 April 2014..2020) and Table III.3 Refinery-wise Crude Oil Processed (p.59, TMT, 2013-14..2019-20(P)). PDF is image-only; values were read by OCR (tesseract) and cross-checked to NRL annual report and CPCL annual reports where they overlap."
+  },
+  {
+   "id": "S4",
+   "ref": "CPCL Integrated Annual Report 2025-26 https://www.cpcl.co.in/wp-content/uploads/2026/08/CPCL_IAR_V17_Single.pdf"
+  },
+  {
+   "id": "S5",
+   "ref": "CPCL Annual Report 2024-25 https://www.cpcl.co.in/wp-content/uploads/2025/08/CPCL-IAR-2024-25-FINAL-SINGLE-SHEET-01.08.2025_compressed-2.pdf"
+  },
+  {
+   "id": "S6",
+   "ref": "CPCL Annual Report 2022-23 https://www.cpcl.co.in/wp-content/uploads/2026/06/High-Res_Final_CPCL_IAR_FY-22-23-Consolidated_compressed.pdf"
+  },
+  {
+   "id": "S7",
+   "ref": "CPCL Annual Report 2021-22 https://www.cpcl.co.in/wp-content/uploads/2022/09/Annual-Report-2021-22.pdf ; 2020-21 https://www.cpcl.co.in/wp-content/uploads/2022/07/ANNUAL-REPORT-2020-21.pdf ; 2019-20 https://www.cpcl.co.in/wp-content/uploads/2021/07/2019-2020.pdf ; 2018-19 https://www.cpcl.co.in/wp-content/uploads/Annual%20Reports/2018-2019.pdf ; 2017-18 https://www.cpcl.co.in/wp-content/uploads/Annual%20Reports/2017-2018.pdf"
+  },
+  {
+   "id": "S8",
+   "ref": "MRPL Annual Report 2024-25 https://admin.mrpl.co.in/img/UploadedFiles/AnnualReport/Files/161636e409d7464996e216b0ffbb5bba.pdf"
+  },
+  {
+   "id": "S9",
+   "ref": "MRPL Annual Report 2023-24 https://admin.mrpl.co.in/img/UploadedFiles/AnnualReport/Files/1817d38cd9bb442080a60295fd69afd3.pdf"
+  },
+  {
+   "id": "S10",
+   "ref": "MRPL FY2025-26 results, Mangalorean.com https://www.mangalorean.com/mrpl-announces-strong-financial-results-for-fy-2025-26/  (secondary report of company results; MRPL FY26 annual report PDF not fetched)"
+  },
+  {
+   "id": "S11",
+   "ref": "NRL Annual Report 2023-24 https://www.nrl.co.in/upload/NRL_Annual_Report_2023-24_12082024.pdf (Performance Profile 10-year table p.12)"
+  },
+  {
+   "id": "S12",
+   "ref": "NRL Refinery Expansion Project status PDF https://www.nrl.co.in/UPLOAD/TopMenuFile/TOPSUBMENU174888MainMenuEnglishLevel-3_RefineryExpansionProject.pdf"
+  },
+  {
+   "id": "S13",
+   "ref": "Sentinel Assam 17 Sep 2025 https://www.sentinelassam.com/topheadlines/assam-numaligarh-refinery-limited-net-worth-increased-by-25 (NRL chairman at 32nd AGM: FY25 3,066 TMT, >100% utilisation)"
+  },
+  {
+   "id": "S14",
+   "ref": "AIR News 1 Apr 2026 https://www.newsonair.gov.in/petroleum-natural-gas-minister-hardeep-singh-puri-congratulates-numaligarh-refinery-limited (NRL FY26 3,113 TMT, 103%)"
+  },
+  {
+   "id": "S15",
+   "ref": "ThePrint 24 Feb 2026 https://theprint.in/economy/numaligarh-refinery-expansion-project-cost-set-to-rise-to-rs-34000-cr-govt-nod-sought/2862472/ (read via WebFetch summary; curl 403)"
+  },
+  {
+   "id": "S16",
+   "ref": "Polymerupdate 4 Jul 2024 https://www.polymerupdate.com/news/details/1320982 (NRL expansion configuration incl. 1.95 MTPA PFCCU)"
+  },
+  {
+   "id": "S17",
+   "ref": "Construction World 12 Oct 2021 https://www.constructionworld.in/energy-infrastructure/oil-and-gas/centre-allows-revised-project-cost-for-numaligarh-refinery-expansion--/30426 (MoPNG approved Rs 28,026 cr, up from Rs 22,594 cr)"
+  },
+  {
+   "id": "S18",
+   "ref": "RIL Media Release Q4/FY2025-26, 24 Apr 2026 https://www.ril.com/sites/default/files/2026-04/24042026_Media_Release_RIL_Q4_FY2025-26_Financial_and_Operational_Performance.pdf (Operational update table: Total Throughput FY26 80.0, FY25 80.5 MMT)"
+  },
+  {
+   "id": "S19",
+   "ref": "RIL Analyst presentation FY2025-26 https://www.ril.com/sites/default/files/2026-04/FY2025-26_RIL_Analyst_Meeting.pdf"
+  },
+  {
+   "id": "S20",
+   "ref": "RIL Integrated Annual Report 2024-25 https://www.ril.com/reports/RIL-Integrated-Annual-Report-2024-25.pdf and https://www.ril.com/ar2024-25/oil-to-chemicals.html"
+  },
+  {
+   "id": "S21",
+   "ref": "RIL MD&A pages: https://www.ril.com/ar2016-17/mda.html , https://www.ril.com/ar2017-18/mda.html , https://www.ril.com/ar2018-19/mda.html , https://www.ril.com/ar2019-20/mda.html"
+  },
+  {
+   "id": "S22",
+   "ref": "RIL refining & marketing page https://www.ril.com/businesses/energy/refining-marketing (1.4 mbpd, complexity 21.1, unit list)"
+  },
+  {
+   "id": "S23",
+   "ref": "Inspectioneering 9 Apr 2025 https://inspectioneering.com/news/2025-04-09/11528/reliance-shuts-crude-and-secondary-units-for-21-day-maintenance-at-jamnagar-refi (21-day crude+secondary unit maintenance at 660,000 bpd refinery; via search summary, page not fetched)"
+  },
+  {
+   "id": "S24",
+   "ref": "OilPrice.com 25 Nov 2025 https://oilprice.com/Energy/Crude-Oil/Indias-Nayara-Energy-Defies-Sanctions-With-Record-Russian-Intake.html"
+  },
+  {
+   "id": "S25",
+   "ref": "Al Jazeera 3 Jul 2026 https://www.aljazeera.com/news/2026/7/3/what-is-nayara-the-indian-firm-russia-is-reportedly-importing-oil-from (via WebFetch)"
+  },
+  {
+   "id": "S26",
+   "ref": "Anadolu Agency 15 Feb 2024 https://www.aa.com.tr/en/energy/oil/indias-nayara-energy-announces-plans-to-double-gujarat-refinerys-capacity/40686 (via WebFetch)"
+  },
+  {
+   "id": "S27",
+   "ref": "Polymerupdate 19 Jun 2024 https://www.polymerupdate.com/Blogs/Details/1317845/All (Nayara Rs 4,000 cr modernisation, 450 ktpa PP incl PRU + FCC upgrade)"
+  },
+  {
+   "id": "S28",
+   "ref": "Polymerupdate 9 Jan 2025 https://www.polymerupdate.com/news/details/1360719 (Nayara US$8 bn / Rs 68,000 cr 1.5 MMTPA ethane cracker, media report citing sources)"
+  },
+  {
+   "id": "S29",
+   "ref": "Polymerupdate https://www.polymerupdate.com/News/Details/1206694 (headline: Nayara to commence PP production in Oct-Dec 2023 quarter; body not read)"
+  },
+  {
+   "id": "S30",
+   "ref": "Wikipedia Vadinar Refinery https://en.wikipedia.org/wiki/Vadinar_Refinery (complexity 11.8; FCC and DHDS commissioned Nov 2006; 2012 expansion to 20 mtpa with delayed coker) - secondary"
+  },
+  {
+   "id": "S31",
+   "ref": "Reuters via Yahoo/QCIntel/Hydrocarbon Processing (Aug 2025) https://www.hydrocarbonprocessing.com/news/2025/08/indias-hmel-plans-to-shut-refinery-for-40-day-maintenance-sources-say/ (HMEL 40-day shutdown from early Nov; 226,000 -> 236,000 bpd by Dec; via search summary)"
+  },
+  {
+   "id": "S32",
+   "ref": "HMEL press item 24 Dec 2025 https://www.hmel.in/news/hmel-to-make-a-new-investment-of-%E2%82%B92600-crore-at-guru-gobind-singh-refinery-bathinda/ (Rs 2,600 cr: PP downstream + fine chemicals)"
+  },
+  {
+   "id": "S33",
+   "ref": "OGJ 28 Aug 2018 https://www.ogj.com/refining-processing/refining/construction/article/17295774/hmel-advances-guru-gobind-singh-refinery-petchem-project (HDPE 450 ktpa + PP 500 ktpa, 1.2 Mtpa mixed-feed cracker; ~USD 225 m EPCC)"
+  },
+  {
+   "id": "S34",
+   "ref": "Offshore-technology / Bloomberg 8 Jun 2023 https://www.offshore-technology.com/news/mrpl-shelves-expansion-petrochemicals/ ; Construction World https://www.constructionworld.in/energy-infrastructure/oil-and-gas/mrpl-shifts-focus-to-chemicals--shelves-refinery-expansion/41555"
+  },
+  {
+   "id": "S35",
+   "ref": "ONGC https://ongcindia.com/web/hi/w/mrpl-completes-phase-iii-expansion-and-up-gradation-project (PP unit approved 23 Jul 2009, Rs 1,803.78 cr; 4.40 lakh TPA PP; commercial PP production 18 Jun 2015; PFCCU commissioned Q2 2014-15) - via search summary"
+  },
+  {
+   "id": "S36",
+   "ref": "BPCL Bina expansion: Business Standard 18 May 2023 https://www.business-standard.com/companies/news/bharat-petroleum-unveils-ambitious-rs-49-000-crore-petrochemical-capacity-expansion-project-at-bina-refinery-123051800777_1.html ; Yahoo Finance https://finance.yahoo.com/news/bpcl-secures-financial-closure-bina-163437806.html (via search summaries)"
+  },
+  {
+   "id": "S37",
+   "ref": "CPCL Cauvery Basin Refinery page https://cpcl.co.in/business/refinery/cauvery-basin-refinery/ (9 MMTPA; INDMAX unit; polypropylene; 50:50 JV wording)"
+  },
+  {
+   "id": "S38",
+   "ref": "Whalesbook 27 Apr 2026 https://www.whalesbook.com/news/Hinglish/industrial-goodsservices/ONGC-Merges-Petrochemicals-to-Boost-Profit-and-Cut-Indias-Imports/69ef49cc5a43f6b807c0cb8e (low-quality aggregator; ONGC approved integrating petrochemical marketing of ONGC, MRPL, OPaL)"
+  },
+  {
+   "id": "S39",
+   "ref": "Rosneft/Reliance talks: BW Businessworld https://www.businessworld.in/article/reliance-in-talks-to-acquire-rosnefts-stake-in-nayara-energy-561753 ; MarketScreener https://in.marketscreener.com/quote/stock/RELIANCE-INDUSTRIES-LTD-9058833/news/Rosneft-Reportedly-in-Early-Talks-with-Reliance-to-Sell-Stake-in-Nayara-50391532/ (headline-level, via search summary; valuation dispute, no deal confirmed)"
+  }
+ ],
+ "gaps": [
+  "PPAC refinery-wise crude processed for FY2015-16..FY2019-20 comes only from IPNG 2019-20 (OCR of an image-only PDF; totals tie: 232,865 / 245,362 / 251,935 / 257,205 / 254,386). FY2020-21..FY2025-26 from PPAC (provisional; FY25-26 file dated 01-09-2026). No cross-check for RIL, Nayara, HMEL from a company source.",
+  "Installed capacity for 1 April 2021-2025 not fetched (PPAC page only serves April 2026). Utilisation for FY2021-22..FY2025-26 is derived using the 1 Apr 2020 = 1 Apr 2026 values (identical); IPNG column headers were garbled by OCR and read as 1 Apr 2014..2020.",
+  "Derived utilisation is arithmetic (throughput / capacity), not company-reported, except where explicitly labelled (CPCL 99.6%/112%, MRPL 114/110/120%, NRL 79-103%).",
+  "FCC/RFCC nameplate capacities not found for Reliance, Nayara, MRPL PFCC, HMEL, CPCL FCCU (only relative statements). \"RFCC\" at Jamnagar not confirmed by a company document; Reliance lists \"FCC\".",
+  "Nayara: no annual report/throughput/GRM/Nelson from the company (site 403); GRM for Nayara, HMEL not published in reached sources; RIL GRM not found for FY20-21 onward.",
+  "CPCL GRM FY18-19..FY20-21, MRPL GRM before FY22-23, NRL GRM before FY23-24 not extracted. MRPL and NRL FY2025-26 annual reports not fetched (MRPL FY26 via press summary; NRL FY26 via AIR/news).",
+  "HMEL FY25-26 shutdown, Nayara Aug-Sep 2025 dip, RIL Apr 2025 dip: PPAC gives monthly numbers only; causes come from press (Reuters via summaries, OilPrice) and were not confirmed from company filings.",
+  "Nayara 2025-26 crude-intake b/d figures (240 kb/d trough, 420 kb/d Nov 2025) are from OilPrice (Kpler-type tracking); differ in basis from PPAC processing. No 2026 run-rate figure beyond PPAC FY26 total and Al Jazeera July 2026 statement.",
+  "Tatipaka and BORL/Bina not researched beyond capacity/throughput and expansion headline. MRPL page mrpl.co.in is behind a bot check (JS cookie challenge) - not bypassed; PDFs on admin.mrpl.co.in were fetched directly.",
+  "NRL completion date conflict: Dec 2026 (ThePrint Feb 2026, energiesmedia Feb 2026) vs a single unverified Dec 2027 mention; NRL cost Rs 28,026 cr vs Rs 33,901 cr (dated Oct 2021 vs Feb 2026)."
+ ]
+}

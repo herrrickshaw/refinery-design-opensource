@@ -218,3 +218,10 @@ reproducing any proprietary design basis.
   an assumption. Dual-feed facts: IOCL 1.5 Mt/y "dual-feed naphtha cracker" at Paradip, Rs 61,077 crore (Hydrocarbon Processing, fetched - no feed split
   given); BPCL Bina 1.2 Mt/y ethylene (OGJ); a search-result summary of industry sources says a seasonal LPG cost advantage made it the lowest-cost ethylene feed
   (unattributed, low confidence - the model derives the LPG/naphtha comparison from its own price deck instead).
+
+* **Indian refiners by company (`companies` submodule)** - `research/india_companies_{iocl,bpcl_hpcl,others}.json`, three extraction passes on 2026-09-21, each value with a source id:
+  PPAC Ready Reckoners (FY2022-23 and FY2025-26) and the PPAC refinery-wise crude-processing endpoint and installed-capacity workbook (1 April 2026; historic sheet 1997-2026);
+  IPNG 2019-20 (image-only PDF, read by OCR; totals tie to all-India); IOCL Integrated Annual Reports FY2015-16..FY2024-25 and the Q4 FY26 earnings-call transcript;
+  BPCL, HPCL, CPCL, MRPL and NRL annual reports; company investor presentations; CHT; Hydrocarbon Engineering, OGJ and press where nothing better exists.
+  The IOCL Integrated Annual Report 2025-26 "Project SPRINT" page was fetched (browser, JavaScript-walled) and contains no refinery figures. IOCL's site blocks curl (Sucuri challenge); Nayara's returned 403;
+  MRPL's is behind a bot check that was not bypassed (its PDFs downloaded directly). PPAC's historical crude-processing file needs a member login and was not accessed.

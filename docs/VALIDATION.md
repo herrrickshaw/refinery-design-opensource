@@ -298,3 +298,13 @@ overall yield (recycle to extinction, ~43% ethylene from propane) is *not* fitte
 plausibility check. Not validated: the butane slate (assumed), the ethane-recycle remainder split, the by-product values, and any dual-feed *interaction*
 (shared separation train, furnace changeover) - the model simply adds two single-feed slates and scales capex on total feed. With no LPG it reduces to
 the naphtha cracker exactly (tested).
+
+
+## 14. Indian refiners: derived utilisation against company-reported figures
+
+Utilisation is computed (throughput / capacity on 1 April) and is checked against every company-reported utilisation in the data - 21 refinery-years across BPCL, HPCL and HMEL.
+Twenty agree within 1.5 points (mean absolute difference 0.9 over all 21; BPCL Mumbai FY2024-25 129.83% derived vs 129.82% reported). The exception is HPCL Visakh FY2023-24
+(115.4% vs 105.0%): capacity went 8.3 -> 11.0 -> 13.7 MMTPA around then; that a company figure measured against capacity commissioned during the year explains it is inferred, not verified.
+Company-total ties: the refinery sums match IOCL's reported throughput to 0.5 MMT, BPCL's FY2025-26 41.15 MMT to 0.5, and Reliance's DTA + SEZ to its total crude processed exactly.
+Not validated: capacity carried forward for Reliance, Nayara, CPCL, MRPL, NRL and ONGC in FY2021-22..FY2025-26 (the 2020 and 2026 endpoints match, the years between were not fetched), any FCC nameplate from a
+trade-press summary, and every FCC yield or mode statement (none is published).
