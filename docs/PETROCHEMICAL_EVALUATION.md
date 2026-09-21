@@ -2,8 +2,9 @@
 
 An evaluation on the Paradip-like flowsheet (15 mtpa, medium-sour + heavy-sour
 basket, VGO hydrotreated), reproduced by `examples/petrochemical_evaluation.py`.
-Read `DATA_SOURCES.md` first: **no propylene or polypropylene price was available
-to this repo**, so the answer is a break-even, not a profit forecast.
+Read `DATA_SOURCES.md` first. The PP side now rests on a primary source (IOCL's own ex-works
+price lists, 2026); **no 2026 propylene price is accessible**, so propylene enters only as a
+break-even. The answer is a break-even and a headroom against an observed price, not a profit forecast.
 
 ## The question, and the data that anchor it
 
@@ -74,6 +75,43 @@ and +44/+49/+87. GRM uplift at $1,100/t: +0.55 / +0.67 / +1.31 $/bbl of crude
    here because gasoline-range and middle-distillate are priced within ~4% of each
    other per tonne (within ~4%).
 
+## Against an observed price deck (Sept 2026)
+
+`petchem_prices.py` holds IOCL's ex-works PP list (Rs/MT, basic and cash, GST additional; Thane) at
+three 2026 dates - read from the price-list PDFs IOCL's authorised distributor publishes:
+
+| Grade | 1 Jan | 1 Mar | 11 Sep | Jan -> Sep |
+|---|---|---|---|---|
+| Homopolymer injection (1110MG) | 90,452 | 99,952 | 154,452 | +70.8% |
+| Raffia (1030RG) | 91,502 | 101,502 | 154,002 | +68.3% |
+| BOPP (1030FG) | 95,202 | 104,702 | 164,202 | +72.5% |
+| Random copolymer (2120MC) | 99,182 | 108,532 | 174,532 | +76.0% |
+
+At Rs 95.82/$ (17 Sep 2026, from a search summary) homopolymer injection is **$1,612/t** list. The
+fuel side is re-based to the same date: live Brent $102.47 and Dubai $116.35 through PPAC's
+Indian-basket formula (Dubai standing in for Oman) = $112.97/bbl, with the PPAC-calibrated cracks
+kept as two regimes. At that crude level LPG is ~$904/t and gasoline/diesel $1,050-1,190/t, so the
+break-evens move up (~$1,180-1,320/t) - the higher crude raises what each route displaces.
+
+| Route | Break-even PP ($/t) | Headroom at list / 90% / 80% of list, weak cracks | strong cracks |
+|---|---|---|---|
+| Conventional | 1,182 | +430 / +269 / +108 | +430 / +269 / +108 |
+| ZSM-5 | 1,233-1,254 | +379 / +218 / +57 | +358 / +197 / +36 |
+| Propylene-mode | 1,265-1,320 | +347 / +185 / +24 | +292 / +131 / **-30** |
+
+Net after capital charge at list: conventional +$68 M/y, ZSM-5 +$85-90 M/y, propylene-mode
++$187-222 M/y (FCC-side capex excluded). **At the observed price every route pays, with $290-430/t of
+headroom - but the headroom is the price premium the market is paying now.** It is thin if the
+refinery nets 80% of list, and the propylene-mode route is the first to fail (in strong-cracks
+conditions). Selling propylene outright breaks even at $904-1,106/t; the only 2026 propylene figure
+found (Northeast Asia, $1,010/t in March, low confidence) is six months old while PP has since risen
+~55%, so it is a marker rather than a comparison.
+
+Read this with three cautions: the PP list price is a *domestic* selling price and carries whatever
+import-parity premium the Indian market has; PP rose 71% in 2026 alongside crude, so it is a level
+that may not persist; and the cracks are PPAC-year fits re-based to today's crude, not observed 2026
+cracks.
+
 ## Recommendation
 
 Treat the petrochemical step as an FCC-and-spread decision, not a complexity
@@ -89,7 +127,7 @@ decision:
 
 ## What would change the answer
 
-A propylene/PP price deck (the essential missing input), a real capex quote for the
+A dated propylene price (still missing - Polymerupdate's daily Propylene CFR India is behind a login), observed 2026 refinery cracks, a real capex quote for the
 FCC-side revamp, the actual propylene yield the FCC reaches on this feed (the
 16.2 wt% is Paradip-implied, not modelled), catalyst activity dilution from ZSM-5
 (each 5 wt% additive costs 1-2 wt% activity, not modelled), and product-quality

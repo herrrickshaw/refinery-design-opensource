@@ -82,13 +82,46 @@ uses FY2022-23.
 * **Verified (search summaries of FCC literature):** conventional FCC propylene
   ~6 wt% of feed; >9 wt% with ZSM-5 additive at 10-20 wt% loading; each 5 wt%
   additive dilutes catalyst activity 1-2 wt%; propylene-mode units above 20 wt%.
-* **Not available:** propylene, polypropylene, naphtha, LPG and petcoke prices.
-  The OilPriceAPI feed tried here carries crude (Brent, Dubai, Oman, WTI, Urals)
-  and US gasoline/diesel/jet only. Two industry articles on refining-petrochemical
-  integration were read and contain no usable price or margin figures. Hence the
-  break-even framing.
+* **Not available:** propylene, naphtha, LPG and petcoke prices. The OilPriceAPI feed
+  carries crude (Brent, Dubai, WTI, Urals; Oman not recognised) and US gasoline/diesel/jet
+  only. Two industry articles on refining-petrochemical integration contain no usable price
+  or margin figures. Polypropylene prices are covered by the next section; propylene is not.
 * **Assumptions, unsourced:** PP conversion opex, hurdle rate, plant life,
   the split of propylene-mode propylene between forgone gasoline and LCO.
+
+## Polypropylene and propylene prices - PP verified (primary), propylene not
+
+* **IOCL PP ex-works price lists - verified, primary.** Rs/MT, "basic & cash prices, GST
+  additional", from the PDFs IOCL's authorised distributor (Turakhia Polymers, DCA cum CS of
+  IOCL) publishes, mirrored at <https://www.plastemart.com/polymer-pricelist/pp-iocl/4/33>.
+  Read at 01-01-2026, 01-03-2026 and 11-09-2026 (Thane column): homopolymer injection 1110MG
+  Rs 90,452 / 99,952 / 154,452. Plastemart also reports the price *revisions* (IOCL +Rs 1,500 to
+  5,000/MT on 1 Sep 2026; +3,000 to 5,000 on 11 Sep). A distributor list, not IOCL's own site;
+  prices are before discounts and freight.
+* **USD/INR 95.82 (17 Sep 2026) - medium confidence:** from a web-search summary of the
+  exchange-rate history, not a fetched rate page.
+* **Crude snapshot 2026-09-21 (OilPriceAPI):** Brent $102.47, Dubai $116.35, WTI $94.62, Urals
+  $106.45. Oman is not offered; Dubai stands in for it in PPAC's basket formula.
+* **Aggregator snippets - low confidence, some conflicting:** India PP $1,050 (Jan 2026) rising to
+  $1,319 (Mar) in one result and $1,080 (Mar) in another, against +10.5% Jan-Mar on the IOCL list.
+  Not used in any calculation.
+* **Propylene - no 2026-09 price exists in anything accessible.** Snippets only: India CFR ~$760
+  (Sep 2025), ~$794 (Oct), ~$792 (Dec) from Procurement Resource; Northeast Asia ~$1,010 (Mar 2026)
+  from IMARC. Polymerupdate lists "Propylene CFR India" daily but behind a login, and its PP price
+  pages return blanks without one. `PetchemPriceDeck.propylene_usd_t` is left `None` by default.
+
+## Refinery rundowns - Digital Refining
+
+Articles read at <https://www.digitalrefining.com>: "Maximising distillate production from the FCC
+unit" (LCO +4-6 vol% by lowering the gasoline end point, ~5 vol% for 430 -> 380 degF; riser 10-30 degF
+cooler in distillate mode), "FCC product fractionation for maximum LCO" (LCO end point 640 degF /
+338 degC, flash point 130 degF / 54 degC; the yield figure itself is in a chart not in the text),
+"Refining/petrochemical integration - FCC gasoline to petrochemicals" (conventional FCC propylene
+3-5%, high-severity 15-28%; FCC gasoline sulfur 1,000-2,000 ppm; 50-70% aromatics in high-severity
+naphtha) and "Refining-petrochemicals integration: an Indian view" and "Increasing refinery
+profitability via propylene maximisation" (no usable numbers). From search summaries only: FCC ~20 vol%
+of the gasoline pool, LCO ~5% of the diesel pool, LCO cetane ~20. The figures are used as the
+`rundown.py` slope and as cross-checks; regional context (mostly US/global) differs from India.
 
 ## Delayed-coker correlations - partially verified
 

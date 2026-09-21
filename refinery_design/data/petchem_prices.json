@@ -1,0 +1,95 @@
+{
+ "_note": "Dated observations with sources; see scripts/build_petchem_prices.py",
+ "iocl_pp_ex_works_inr_per_mt": {
+  "basis": "basic & cash, GST additional, Thane; IOCL via Turakhia Polymers (Plastemart mirror)",
+  "url_pattern": "https://www.plastemart.com/Upload/pricelist/{d}-IOCL-Price-List.pdf",
+  "grades": {
+   "homopolymer_injection_1110MG": {
+    "2026-01-01": 90452,
+    "2026-03-01": 99952,
+    "2026-09-11": 154452
+   },
+   "raffia_1030RG": {
+    "2026-01-01": 91502,
+    "2026-03-01": 101502,
+    "2026-09-11": 154002
+   },
+   "bopp_1030FG": {
+    "2026-01-01": 95202,
+    "2026-03-01": 104702,
+    "2026-09-11": 164202
+   },
+   "random_copolymer_2120MC": {
+    "2026-01-01": 99182,
+    "2026-03-01": 108532,
+    "2026-09-11": 174532
+   }
+  }
+ },
+ "usd_inr": {
+  "value": 95.82,
+  "date": "2026-09-17",
+  "confidence": "medium",
+  "source": "web-search summary of USD/INR history (Investing.com / Wise / FRED results)"
+ },
+ "aggregators_pp_india_usd_t": [
+  {
+   "date": "2026-03",
+   "value": 1080,
+   "source": "IMARC (web-search snippet)",
+   "confidence": "low"
+  },
+  {
+   "date": "2026-01",
+   "value": 1050,
+   "source": "web-search snippet (India PP)",
+   "confidence": "low"
+  },
+  {
+   "date": "2026-03",
+   "value": 1319,
+   "source": "web-search snippet (India PP); conflicts with the 1,080 above and with the IOCL list's +10% Jan-Mar move",
+   "confidence": "low"
+  }
+ ],
+ "propylene_usd_t": [
+  {
+   "date": "2025-09",
+   "value": 760,
+   "market": "India CFR",
+   "source": "Procurement Resource (web-search snippet)",
+   "confidence": "low"
+  },
+  {
+   "date": "2025-10",
+   "value": 794,
+   "market": "India CFR",
+   "source": "Procurement Resource (web-search snippet)",
+   "confidence": "low"
+  },
+  {
+   "date": "2025-12",
+   "value": 792,
+   "market": "India CFR",
+   "source": "Procurement Resource (web-search snippet)",
+   "confidence": "low"
+  },
+  {
+   "date": "2026-03",
+   "value": 1010,
+   "market": "Northeast Asia",
+   "source": "IMARC (web-search snippet)",
+   "confidence": "low"
+  }
+ ],
+ "crude_snapshot_usd_bbl": {
+  "date": "2026-09-21 06:02 UTC",
+  "brent": 102.47,
+  "dubai": 116.35,
+  "wti": 94.62,
+  "urals": 106.45,
+  "source": "OilPriceAPI market overview (live feed); Oman not available - Dubai is used as its proxy in the Indian-basket formula",
+  "confidence": "medium"
+ },
+ "propylene_2026_09": "NOT AVAILABLE - Polymerupdate 'Propylene CFR India' (daily) is login-only"
+}

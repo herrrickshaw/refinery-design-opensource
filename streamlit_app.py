@@ -16,7 +16,7 @@ from refinery_design.assay import INF, Slate, available_crudes, load_crude
 from refinery_design.coker import delayed_coker
 from refinery_design.distillation import distill
 from refinery_design.fcc import FccFeed, FccKinetics, FccOperation, cooler_duty_for_regen_temperature, fcc_operate, riser_kinetics, rot_sweep
-from refinery_design import india
+from refinery_design import india, petchem_prices as pcp, rundown as rd
 from refinery_design.flowsheet import RefineryConfig, refine
 from refinery_design.grm import PriceDeck, calibrate_deck, gross_refining_margin
 from refinery_design.petrochemical import PetchemAssumptions, affordable_fcc_capex_usd, build_option, evaluate
@@ -162,6 +162,16 @@ with tab_fcc:
         st.subheader("Regenerator")
         st.dataframe(pd.DataFrame({"": {k: round(float(v), 2) for k, v in r.regenerator.items()}}))
         st.write(f"Flue gas: O2 {r.flue_gas['O2_vol_pct_dry']:.1f} vol% dry, CO {r.flue_gas['CO_ppmv_dry']:.0f} ppmv, SO2 {r.flue_gas['SO2_ppmv_dry']:.0f} ppmv dry")
+    st.subheader("Rundown streams")
+    st.dataframe(pd.DataFrame([{"Stream": x.name, "wt%": round(x.wt_pct_of_feed, 1),
+                                "vol%": None if x.vol_pct_of_feed is None else round(x.vol_pct_of_feed, 1),
+                                "S ppm": None if x.sulfur_ppm is None else round(x.sulfur_ppm), "Note": x.note} for x in rd.rundown(r)]),
+                 hide_index=True)
+    shift_F = st.slider("Lower the gasoline end point by (degF)", 0, 60, 0)
+    if shift_F:
+        g = rd.gasoline_end_point_shift(r, shift_F / 1.8)
+        st.write(f"Moves {g['moved_vol_pct_of_feed']:.1f} vol% of feed from gasoline to LCO: gasoline "
+                 f"{g['yields_wt_pct']['gasoline']:.1f} wt%, LCO {g['yields_wt_pct']['lco']:.1f} wt%.")
     st.subheader("Riser outlet temperature sweep")
     try:
         sweep = rot_sweep(feed, op, [500.0, 515.0, 530.0, 545.0, 560.0])
@@ -251,7 +261,8 @@ with tab_grm:
     bpd = g1.number_input("Crude charge (bpd)  ", 50_000, 600_000, 290_000, step=10_000)
     crude_px = g2.number_input("Crude price ($/bbl)", 40.0, 150.0, 79.18)
     target = g3.number_input("Target GRM to calibrate ($/bbl)", 1.0, 40.0, 11.25)
-    pp_px = g4.number_input("PP price ($/t)", 700.0, 2000.0, 1100.0, step=50.0)
+    pp_px = g4.number_input("PP price ($/t)", 700.0, 2500.0, float(round(pcp.iocl_deck().pp_usd_t / 50) * 50), step=50.0,
+                            help="Default: IOCL homopolymer-injection list price, 11 Sep 2026, at Rs 95.82/$. Propylene has no observed price.")
     try:
         res = refine(slate, bpd, RefineryConfig(vgo_hydrotreat=True))
         deck = calibrate_deck(res, PriceDeck(crude_px), target)

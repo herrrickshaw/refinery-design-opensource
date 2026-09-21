@@ -96,3 +96,47 @@ def test_capital_recovery_factor():
 def test_grid_covers_all_modes():
     g = pc.breakeven_grid(R, DECK, [900.0, 1100.0])
     assert set(g) == set(pc.PROPYLENE_WT) and all(len(v["evals"]) == 2 for v in g.values())
+
+
+# ---- verdicts against an observed price deck ----------------------------------------
+from refinery_design import india as _india
+from refinery_design import petchem_prices as _pp
+
+
+def _sept_2026_deck(cracks_grm=11.25):
+    base = calibrate_deck(R, PriceDeck(79.18), cracks_grm)
+    return replace(base, crude_usd_bbl=_pp.indian_basket_snapshot_usd_bbl())
+
+
+def test_all_routes_clear_break_even_at_the_iocl_list_price():
+    prices = _pp.iocl_deck()
+    for grm in (11.25, 19.52):
+        deck = _sept_2026_deck(grm)
+        for mode in pc.PROPYLENE_WT:
+            v = pc.verdict(pc.build_option(R, deck, mode), prices)
+            assert v.pays and v.headroom_usd_t == pytest.approx(v.pp_realised_usd_t - v.breakeven_pp_usd_t)
+
+
+def test_headroom_shrinks_with_realisation_and_propylene_mode_is_the_first_to_fail():
+    deck = _sept_2026_deck(19.52)
+    hr = lambda real, mode: pc.verdict(pc.build_option(R, deck, mode), replace(_pp.iocl_deck(), realisation=real)).headroom_usd_t
+    for mode in pc.PROPYLENE_WT:
+        assert hr(0.8, mode) < hr(0.9, mode) < hr(1.0, mode)
+    assert hr(0.8, "propylene_mode") < 0 < hr(0.8, "conventional")
+
+
+def test_break_even_pp_price_rises_with_the_crude_level():
+    cool = calibrate_deck(R, PriceDeck(79.18), 11.25)
+    hot = replace(cool, crude_usd_bbl=113.0)
+    be = lambda d: pc.evaluate(pc.build_option(R, d, "conventional"), 1000.0).breakeven_pp_price_usd_t
+    assert be(hot) > be(cool) + 250       # LPG is priced off crude ($79 -> $113 lifts the break-even ~$275/t)
+
+
+def test_propylene_sale_break_even_is_below_the_pp_break_even():
+    deck = _sept_2026_deck(11.25)
+    for mode in pc.PROPYLENE_WT:
+        o = pc.build_option(R, deck, mode)
+        assert pc.breakeven_propylene_price_usd_t(o) < pc.evaluate(o, 1000.0).breakeven_pp_price_usd_t
+    # and it is ordered by how much fuel each route displaces
+    be = [pc.breakeven_propylene_price_usd_t(pc.build_option(R, deck, m)) for m in ("conventional", "zsm5", "propylene_mode")]
+    assert be[0] < be[1] < be[2]

@@ -29,11 +29,13 @@ was and was not verified.
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
-pytest -q                                          # 153 tests
+pytest -q                                          # 169 tests
 python examples/full_refinery_worked_example.py    # 8 crudes through one refinery
 python examples/fcc_worked_example.py              # FCC heat balance, riser, regenerator
 python examples/paradip_check.py                   # validation against a real refinery
 python examples/petrochemical_evaluation.py        # PPAC/CHT data + propylene/PP break-evens
+python examples/petchem_price_deck.py              # IOCL PP price deck (2026) and per-route verdicts
+python examples/fcc_rundown.py                     # FCC rundown streams, cut points, pool shares
 streamlit run streamlit_app.py                     # interactive app
 ```
 
@@ -72,6 +74,8 @@ and volume close exactly), and crudes blend by volume into a `Slate`.
 | `refinery_design/india.py` | CHT complexity (NCI) + PPAC GRM, distillate yield, fuel & loss, Indian basket formula | Indian refinery reference data, GRM-vs-NCI fit |
 | `refinery_design/grm.py` | PPAC/EIA GRM definition; price deck of cracks; calibration to a reported GRM | GRM ($/bbl), calibrated decks |
 | `refinery_design/petrochemical.py` | FCC propylene -> polypropylene: three routes, six-tenths capex scaling, capital charge | Break-even PP price, GRM uplift, affordable FCC capex |
+| `refinery_design/petchem_prices.py` | Dated PP (IOCL ex-works, 2026) and propylene price observations with sources and confidence; `PetchemPriceDeck` | PP price deck; propylene left unobserved |
+| `refinery_design/rundown.py` | FCC rundown streams, gasoline/LCO cut-point shift, distillate mode, pool shares (Digital Refining figures) | Rundown table, LCO gain, pool shares |
 | `refinery_design/benchmarks.py` | Paradip published data | Validation |
 
 ## What crude type does to an FCC (real assays, same unit)
@@ -126,6 +130,13 @@ refinery, OGJ 2025 survey) and [PPAC](https://ppac.gov.in)'s Ready Reckoner
   repo, so it reports the **break-even PP price** ($906-1,164/t across routes and
   two PPAC-calibrated margin regimes) and the FCC capex the option can afford. The
   Nelson index does not change - it has no polymer factor.
+* **PP price deck:** IOCL's own ex-works lists put homopolymer injection PP at Rs 154,452/MT
+  on 11 Sep 2026 (~$1,612/t; +71% since January). Against it every route clears its break-even
+  (~$1,180-1,320/t at today's crude) with $290-430/t of headroom - thin at 80% realisation.
+  **No 2026 propylene price is accessible**; it is left unobserved, not guessed.
+* **Rundowns** (Digital Refining): FCC rundown streams, LCO gain from lowering the gasoline end
+  point (~5 vol% per 50 degF), distillate mode and pool shares - cross-checked against the
+  published propylene (3-5% / 15-28%) and gasoline-sulfur (1,000-2,000 ppm) ranges.
 
 ## Not covered (roadmap)
 

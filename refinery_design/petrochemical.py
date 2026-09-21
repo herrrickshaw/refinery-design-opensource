@@ -170,3 +170,31 @@ def affordable_fcc_capex_usd(option: PetchemOption, pp_price_usd_t: float, a: Pe
     crf = capital_recovery_factor(a.hurdle_rate, a.life_years)
     margin = option.pp_t_y * pp_price_usd_t - option.forgone_value_usd_y - option.opex_usd_y
     return max(0.0, (margin - option.capex_pp_usd * crf) / crf)
+
+
+# --------------------------------------------------------------------
+# Verdicts against an observed price deck, and the "just sell propylene" alternative
+# --------------------------------------------------------------------
+@dataclass(frozen=True)
+class Verdict:
+    mode: str
+    breakeven_pp_usd_t: float
+    pp_realised_usd_t: float
+    headroom_usd_t: float          # realised PP price minus break-even (positive = pays)
+    net_usd_y: float
+    grm_uplift_usd_bbl: float
+    pays: bool
+
+
+def verdict(option: PetchemOption, prices, a: PetchemAssumptions = PetchemAssumptions()) -> Verdict:
+    """Judge an option against a :class:`refinery_design.petchem_prices.PetchemPriceDeck`."""
+    e = evaluate(option, prices.pp_realised_usd_t, a)
+    return Verdict(option.name, e.breakeven_pp_price_usd_t, prices.pp_realised_usd_t,
+                   prices.pp_realised_usd_t - e.breakeven_pp_price_usd_t, e.net_usd_y, e.grm_uplift_usd_bbl, e.net_usd_y > 0)
+
+
+def breakeven_propylene_price_usd_t(option: PetchemOption, a: PetchemAssumptions = PetchemAssumptions()) -> float:
+    """Price refinery-grade propylene must fetch for the option to cover the fuel it displaces
+    and its extra FCC opex - selling propylene outright, no PP plant.  The recovery/purification
+    unit's own capex is not included (unknown); the propylene price it can afford is at least this."""
+    return (option.forgone_value_usd_y + option.incremental_propylene_t_y * a.fcc_extra_opex_usd_t_propylene) / option.propylene_t_y

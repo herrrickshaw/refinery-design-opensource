@@ -161,3 +161,19 @@ propylene-mode). PP-plant capex = Paradip's $451 M scaled by the six-tenths rule
 `affordable_fcc_capex_usd` returns the most a propylene-mode revamp can cost.
 No propylene or PP price is used anywhere. The Nelson index is unchanged by
 construction (no polymer factor).
+
+
+## Price deck and rundowns (`petchem_prices.py`, `rundown.py`)
+
+`petchem_prices.py` stores dated observations (IOCL PP ex-works list in Rs/MT at three 2026 dates, the
+USD/INR rate, a live crude snapshot, aggregator and propylene snippets with confidence tags) and builds a
+`PetchemPriceDeck`. Only the PP level is observed; `propylene_usd_t` defaults to `None`. `realisation`
+haircuts the list price. `petrochemical.verdict` returns break-even, headroom (realised price minus
+break-even) and net margin; `breakeven_propylene_price_usd_t` is the price refinery-grade propylene must
+fetch for a route to cover the fuel it displaces (no PP plant; recovery-unit capex excluded).
+
+`rundown.py` lists the FCC rundown streams (dry gas, LPG with its propylene content, gasoline, LCO,
+slurry, coke) with volumes, densities and sulfur; shifts heavy naphtha into LCO at the Digital Refining
+slope (~0.18 vol% of feed per degC of gasoline end-point reduction); runs the FCC in distillate mode
+(cooler riser plus end-point cut); and computes the FCC's share of the gasoline and diesel pools.
+LCO/slurry sulfur split (slurry 2x LCO) and the heavy-naphtha density (780 kg/m3) are assumptions.

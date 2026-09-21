@@ -202,3 +202,25 @@ calibration is exact by construction - it is not a validation of the deck.
   (`UNMODELLED_FUEL_LOSS_PCT`).
 * LPG priced with a $/bbl crack came out richer per tonne than diesel (11.4 vs
   7.4 bbl/t); LPG and residue are now priced as fractions of crude value.
+
+
+## 8. Rundown cross-checks (Digital Refining)
+
+`rundown.py` and `tests/test_rundown.py` compare the model with published rundown figures:
+
+| Quantity | Model | Digital Refining |
+|---|---|---|
+| Conventional FCC propylene | 4.0 wt% of feed (Paradip basket) | 3-5% |
+| Propylene-mode yield | 16.2 wt% (Paradip-implied) | high-severity 15-28% |
+| FCC gasoline sulfur | ~970-1,940 ppm for a 0.6-1.2 wt% S feed (2,100 ppm at 1.3) | typical 1,000-2,000 ppm |
+| LCO gain, gasoline end point 430 -> 380 degF | +5 vol% (the slope is set from this) | +4-6 vol% |
+| FCC gasoline share of gasoline pool, light-sweet (Bakken) | 26.8 vol% | ~20 vol% (US-style) |
+| LCO share of diesel pool, light-sweet (Bakken) | 5.6 vol% | ~5% (US-style) |
+
+The propylene and sulfur rows were not fitted to these figures: the propylene routes come from Paradip's
+published capacities and the 6 wt% literature value, and the sulfur split (8% of feed sulfur to
+gasoline) came from FCC literature. The LCO slope is *taken from* the article, so it is an input, not a
+check. Heavier baskets sit far above the US-style pool shares (Paradip basket 49% and 13%) because a heavy
+crude makes little straight-run naphtha and diesel - expected, not a discrepancy. The one modelled
+distillate-mode result (riser 11 &deg;C cooler plus the end-point cut) gives +6.3 wt% LCO and -3.6 wt%
+gasoline; no published figure was found for that combination.
