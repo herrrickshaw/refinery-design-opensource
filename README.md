@@ -1,5 +1,9 @@
 # refinery-design-opensource
 
+<!-- how-to-use-with-ai -->
+> **New here?** See [How to use this repo with AI (Claude, Gemini, ChatGPT)](HOW_TO_USE_WITH_AI.md) — clone it, paste it into an AI tool, and ask in plain English.
+
+
 Open-source, literature-grounded conceptual sizing tools for an oil
 refinery, with the emphasis on **what the crude does to the plant**: crude
 oil types and assays &rarr; crude/vacuum distillation &rarr; **FCC
