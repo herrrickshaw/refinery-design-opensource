@@ -50,3 +50,28 @@ def test_custom_service_and_extra_saturation_hydrogen():
     base = hydrotreat(1e5, 850.0, 0.5, 50.0, service=svc)
     more = hydrotreat(1e5, 850.0, 0.5, 50.0, service=svc, extra_h2_Nm3_m3=20.0)
     assert more.h2_chemical_kg_h > base.h2_chemical_kg_h
+
+
+def test_order_1p5_lhsv_hand_value():
+    # diesel reference 1.0 wt% -> 10 ppm at LHSV 1.5, n = 1.5
+    # f(a,b) = (b^-0.5 - a^-0.5)/0.5: f_ref = (316.228 - 10)/0.5 = 612.456
+    # 0.5 wt% -> 50 ppm: f = (141.421 - 14.142)/0.5 = 254.558 -> LHSV = 1.5 x 612.456/254.558 = 3.6089
+    assert required_lhsv(SERVICES["diesel"], 0.5, 50.0) == pytest.approx(3.60893, rel=1e-5)
+
+
+def test_first_order_lhsv_hand_value():
+    # naphtha: n = 1, ref ln(500/0.5) x 5 = 34.539; 0.02 wt% (200 ppm) -> 1 ppm: ln(200) = 5.2983 -> 6.51882
+    assert required_lhsv(SERVICES["naphtha"], 0.02, 1.0) == pytest.approx(6.51882, rel=1e-5)
+
+
+def test_hydrogen_demand_hand_values():
+    # 100 t/h diesel, 850 kg/m3, 1 wt% S -> 10 ppm: S removed 1000 - 1 = 999 kg/h
+    # H2 chem = 3 x 999/32.06 = 93.481 kmol/h x 2.016 = 188.458 kg/h; makeup /0.75 = 251.277 kg/h
+    # q = 117.647 m3/h -> 251.277/2.016 x 22.414 / 117.647 = 23.746 Nm3/m3; V = 117.647/1.5 = 78.431 m3
+    r = hydrotreat(100_000.0, 850.0, 1.0, 10.0, "diesel")
+    assert r.sulfur_removed_kg_h == pytest.approx(999.0)
+    assert r.h2_chemical_kg_h == pytest.approx(188.458, rel=1e-5)
+    assert r.h2_makeup_kg_h == pytest.approx(251.277, rel=1e-5)
+    assert r.h2_makeup_Nm3_m3 == pytest.approx(23.746, rel=1e-4)
+    assert r.reactor_volume_m3 == pytest.approx(78.4314, rel=1e-5)
+    assert r.h2s_kg_h == pytest.approx(999.0 * 34.08 / 32.06, rel=1e-9)

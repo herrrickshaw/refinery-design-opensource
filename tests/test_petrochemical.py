@@ -140,3 +140,11 @@ def test_propylene_sale_break_even_is_below_the_pp_break_even():
     # and it is ordered by how much fuel each route displaces
     be = [pc.breakeven_propylene_price_usd_t(pc.build_option(R, deck, m)) for m in ("conventional", "zsm5", "propylene_mode")]
     assert be[0] < be[1] < be[2]
+
+
+def test_six_tenths_rule_hand_values():
+    # anchor 3150 cr / 69.89 INR/USD = 450.708 M$ at 680 kt/y; half size x 0.5^0.6 = 0.659754 -> 297.3566 M$
+    assert pc.PARADIP_PP_CAPEX_USD == pytest.approx(450.708e6, rel=1e-6)
+    assert pc.pp_capex_usd(340_000) == pytest.approx(297.3566e6, rel=1e-6)
+    assert pc.pp_capex_usd(1_360_000) / pc.pp_capex_usd(680_000) == pytest.approx(2 ** 0.6)
+    assert pc.capital_recovery_factor(0.12, 20) == pytest.approx(0.133879, rel=1e-5)

@@ -61,3 +61,30 @@ def test_classification_breakpoints():
     assert P.acid_class(0.5) == "high-TAN" and P.acid_class(0.49) == "low-TAN"
     assert P.k_class(12.1) == "paraffinic" and P.k_class(11.6) == "intermediate"
     assert P.k_class(11.2) == "naphthenic/aromatic"
+
+
+def test_api_30_hand_value():
+    # SG = 141.5 / (30 + 131.5) = 0.876161; density = SG x 999.0 = 875.285 kg/m3
+    assert P.sg_from_api(30.0) == pytest.approx(0.876161, rel=1e-6)
+    assert P.density_from_api(30.0) == pytest.approx(875.285, rel=1e-6)
+    assert P.api_from_density(P.density_from_api(30.0)) == pytest.approx(30.0)
+
+
+def test_watson_nelson_liquid_cp_hand_value():
+    # SG 0.85, K 12, 100 C = 212 F:
+    # (0.6811 - 0.2618 + (0.000815 - 0.0002601) x 212) x (0.66 + 0.35) = 0.542285 Btu/lb-F
+    # x 4.1868 = 2.27054 kJ/kg-K
+    assert P.liquid_cp_kJ_kgK(0.85, 12.0, 100.0) == pytest.approx(2.27054, rel=1e-5)
+
+
+def test_refutas_hand_values():
+    # VBI(10 cSt) = 14.534 ln(ln 10.8) + 10.975 = 23.5747
+    assert P.refutas_vbi(10.0) == pytest.approx(23.5747, rel=1e-5)
+    assert P.refutas_nu(P.refutas_vbi(10.0)) == pytest.approx(10.0)
+    # 50/50 of 1 and 100 cSt: VBI 3.2518 and 33.1962 -> mean 18.2240 -> 4.3897 cSt
+    assert P.blend_viscosity_cSt([1.0, 100.0], [0.5, 0.5]) == pytest.approx(4.3897, rel=1e-4)
+
+
+def test_kistiakowsky_hand_value_for_hexane():
+    # Tb 341.9 K: 341.9 x (8.75 + 1.987 ln 341.9) = 6953.5 cal/mol = 29.093 kJ/mol / 86.18 = 337.6 kJ/kg
+    assert P.latent_heat_kJ_kg(341.9, 86.18) == pytest.approx(337.58, rel=1e-3)
