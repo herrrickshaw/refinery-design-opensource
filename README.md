@@ -165,7 +165,7 @@ gasoline-lean FCC mode (ZSM-5, higher severity, propylene mode) removes 134-496 
 figures show the gas plant is the constraint (+5.1% wet-gas flow per wt% propylene; the propylene mode is beyond the paper's range).
 **Selling the extra LPG/LCO as fuel loses money; only the PP routes pay** (`docs/PETROL_DISPLACEMENT.md`).
 
-* **Observed prices reproduce reported GRM without calibration** in three of five years (FY22-23: $19.37 vs IOCL $19.52); it misses
+* **Observed prices reproduce reported GRM without calibration** in three of five years (FY22-23: $19.48 vs IOCL $19.52); it misses
   FY2024-25 - reported, not hidden. **NRL's GRM is not comparable** (excise benefit + domestic Assam crude) and is excluded from fits.
 * **Steam cracker (naphtha -> ethylene) does not pay** on these assumptions at September 2026 or January 2026 prices, at 3-4 Mt/y of
   naphtha, in every stress case after capital (`docs/PETROCHEMICAL_EVALUATION.md`).

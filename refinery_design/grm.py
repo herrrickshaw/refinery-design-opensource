@@ -91,7 +91,9 @@ def gross_refining_margin(result: RefineryResult, deck: PriceDeck,
         kg_per_bbl = pools[pool] / 100.0 * crude_kg_bbl
         worth[pool] = kg_per_bbl / 1000.0 * deck.product_usd_t(pool)
     product_worth = sum(worth.values())
-    fuel_cost = unmodelled_fuel_loss_pct / 100.0 * crude_kg_bbl / 1000.0 * deck.crude_usd_t()
+    # A mass share of the crude is lost: worth that share of a barrel of THIS crude. (Valuing it
+    # via deck.crude_usd_t() would use the deck's fixed density, not the crude refined.)
+    fuel_cost = unmodelled_fuel_loss_pct / 100.0 * deck.crude_usd_bbl
     return GrmResult(grm_usd_bbl=product_worth - deck.crude_usd_bbl - fuel_cost, product_worth_usd_bbl=product_worth,
                      crude_cost_usd_bbl=deck.crude_usd_bbl, modelled_fuel_loss_pct=modelled,
                      extra_fuel_loss_pct=unmodelled_fuel_loss_pct, fuel_loss_cost_usd_bbl=fuel_cost,
