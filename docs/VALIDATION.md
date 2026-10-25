@@ -248,13 +248,13 @@ values. Run on the Paradip-basket flowsheet with **no calibration**:
 
 | FY | Indian-basket-like crude | Model GRM | PPAC-reported GRM |
 |---|---|---|---|
-| 2021-22 | $78.6/bbl | 6.46 | IOCL 11.25, BPCL 9.09, HPCL 7.19 |
-| 2022-23 | $93.6 | **19.37** | IOCL **19.52**, BPCL 20.24, HPCL 12.09 |
-| 2023-24 | $78.8 | 10.34 | IOCL 12.05, BPCL 14.14, HPCL 9.08 |
-| 2024-25 | $78.0 | **0.62** | IOCL 4.80, BPCL 6.82, HPCL 5.74 |
-| 2025-26 | $69.4 | 8.48 | BPCL 11.74, HPCL 8.79 |
+| 2021-22 | $78.6/bbl | 6.55 | IOCL 11.25, BPCL 9.09, HPCL 7.19 |
+| 2022-23 | $93.6 | **19.48** | IOCL **19.52**, BPCL 20.24, HPCL 12.09 |
+| 2023-24 | $78.8 | 10.43 | IOCL 12.05, BPCL 14.14, HPCL 9.08 |
+| 2024-25 | $78.0 | **0.70** | IOCL 4.80, BPCL 6.82, HPCL 5.74 |
+| 2025-26 | $69.4 | 8.56 | BPCL 11.74, HPCL 8.79 |
 
-It lands inside the reported PSU range in three of five years (FY2022-23 within $0.15 of IOCL) and **misses in
+It lands inside the reported PSU range in three of five years (FY2022-23 within $0.04 of IOCL) and **misses in
 FY2024-25** ($4-6 low) and to a lesser degree FY2021-22. The flowsheet omits products with premiums (bitumen,
 lubes, petchem), uses one export/import unit value per product for a mix of grades, and PPAC's unit values are
 rounded and timing-lagged; treat it as a plausibility check, not a fit.
