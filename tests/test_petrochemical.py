@@ -99,7 +99,6 @@ def test_grid_covers_all_modes():
 
 
 # ---- verdicts against an observed price deck ----------------------------------------
-from refinery_design import india as _india
 from refinery_design import petchem_prices as _pp
 
 

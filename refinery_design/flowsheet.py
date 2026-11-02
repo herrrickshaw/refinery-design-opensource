@@ -25,9 +25,8 @@ from .assay import Crude, Slate
 from .coker import CokerResult, delayed_coker
 from .complexity import nelson_complexity
 from .distillation import DistillationResult, distill
-from .fcc import FccFeed, FccKinetics, FccOperation, FccResult, fcc_operate, pretreated
+from .fcc import FccFeed, FccOperation, FccResult, fcc_operate, pretreated
 from .hydrotreater import HydrotreaterResult, hydrotreat
-from .properties import BBL_M3
 
 
 @dataclass(frozen=True)

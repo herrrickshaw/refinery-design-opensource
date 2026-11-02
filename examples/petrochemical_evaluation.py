@@ -82,6 +82,6 @@ for label, d in decks.items():
           f"${affordable_fcc_capex_usd(o, 1300.0, a)/1e6:,.0f} M before the option stops paying its capital charge "
           f"(${affordable_fcc_capex_usd(o, 1100.0, a)/1e6:,.0f} M at $1,100/t).")
     o1 = build_option(r, d, "conventional", a)
-    print(f"  GRM uplift at PP $1,100/t: " + ", ".join(
+    print("  GRM uplift at PP $1,100/t: " + ", ".join(
         f"{m} {evaluate(build_option(r, d, m, a), 1100.0, a).grm_uplift_usd_bbl:+.2f}" for m in ("conventional", "zsm5", "propylene_mode")) + " $/bbl of crude\n")
 print("Nelson index change from any of these: 0.0 (the factor table has no polymer/PP entry).")

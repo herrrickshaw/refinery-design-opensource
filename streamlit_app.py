@@ -7,7 +7,6 @@ correlations.  See README.md, docs/METHODOLOGY.md and the disclaimer at the bott
 """
 from __future__ import annotations
 
-from dataclasses import replace
 
 import pandas as pd
 import streamlit as st
@@ -15,7 +14,7 @@ import streamlit as st
 from refinery_design.assay import INF, Slate, available_crudes, load_crude
 from refinery_design.coker import delayed_coker
 from refinery_design.distillation import distill
-from refinery_design.fcc import FccFeed, FccKinetics, FccOperation, cooler_duty_for_regen_temperature, fcc_operate, riser_kinetics, rot_sweep
+from refinery_design.fcc import FccFeed, FccOperation, cooler_duty_for_regen_temperature, fcc_operate, rot_sweep
 from refinery_design import companies as cos, crude_sourcing as csrc, dual_feed_cracker as dfc, steam_cracker as scr, ethanol as eth, india, petchem_prices as pcp, rundown as rd, safety as sfty, trade as ptrade
 from refinery_design.fcc_modes import modes as fcc_modes_fn
 from refinery_design.routes import petrol_switch_options

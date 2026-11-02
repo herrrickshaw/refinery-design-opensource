@@ -45,7 +45,7 @@ from .assay import Cut
 from .properties import (
     GAS_MW, R_UNIVERSAL, WATER_DENSITY_15C, gas_sensible_enthalpy_kJ_kmol, latent_heat_kJ_kg,
     liquid_cp_kJ_kgK, riazi_daubert_mw, steam_enthalpy_kJ_kg, vapour_cp_kJ_kgK, watson_k,
-    api_from_density, BBL_M3,
+    api_from_density,
 )
 
 # Standard enthalpies of formation (NIST-JANAF), kJ/mol

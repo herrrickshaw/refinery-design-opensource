@@ -25,7 +25,7 @@ import numpy as np
 
 from .properties import (
     BBL_M3, api_from_density, acid_class, gravity_class, k_class, sulfur_class,
-    sg_from_api, watson_k, WATER_DENSITY_15C,
+    watson_k, WATER_DENSITY_15C,
 )
 
 DATA_FILE = Path(__file__).parent / "data" / "assays.json"
