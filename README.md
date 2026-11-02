@@ -1,40 +1,36 @@
-# refinery-design-opensource
+# Refinery conceptual design tools (open source)
 
-<!-- how-to-use-with-ai -->
-> **New here?** See [How to use this repo with AI (Claude, Gemini, ChatGPT)](HOW_TO_USE_WITH_AI.md) — clone it, paste it into an AI tool, and ask in plain English.
+Literature-grounded conceptual sizing of an oil refinery, with the emphasis on what the crude does to the plant:
+crude assays and types, crude/vacuum distillation, FCC reactor-regenerator, hydrotreating, delayed coking,
+whole-refinery balance and Nelson complexity, plus Indian refinery reference data (PPAC/CHT), GRM, petrochemical
+add-on screens and a Streamlit app. Output: Python results objects, worked-example console reports and an interactive app.
 
+> Status: active, research-only. Public-domain/textbook correlations only; crude data are real published assays
+> (ExxonMobil's public downloads, values extracted, files not redistributed). Nothing derives from proprietary licensor,
+> vendor or client data. Not a substitute for a process simulator or licensor design; not investment advice.
+> **Two caveats to keep in view:** (1) the Paradip NCI reference is CHT's **10.6**, not 12.2 (12.2 was IndianOil's
+> commissioning-time figure and an earlier benchmark used it in error); (2) **FCC kinetics are calibrated to typical
+> published yield ranges, not fitted to plant data.**
 
-Open-source, literature-grounded conceptual sizing tools for an oil
-refinery, with the emphasis on **what the crude does to the plant**: crude
-oil types and assays &rarr; crude/vacuum distillation &rarr; **FCC
-reactor-regenerator** &rarr; hydrotreating &rarr; delayed coking &rarr;
-whole-refinery balance and Nelson complexity. Sibling project to
-[lng-design-opensource](https://github.com/herrrickshaw/lng-design-opensource),
-[coal-to-urea-design-opensource](https://github.com/herrrickshaw/coal-to-urea-design-opensource),
-[ethanol-design-opensource](https://github.com/herrrickshaw/ethanol-design-opensource),
-[cbg-design-opensource](https://github.com/herrrickshaw/cbg-design-opensource),
-[lignocellulosic-ethanol-opensource](https://github.com/herrrickshaw/lignocellulosic-ethanol-opensource) and
-[biomass-to-syngas-opensource](https://github.com/herrrickshaw/biomass-to-syngas-opensource):
-same discipline - public-domain/textbook correlations only, CoolProp for
-real thermodynamic properties, every method cited, every module tested,
-every worked example actually run, and honest reporting of what is
-validated versus merely calibrated.
+New to this? See [How to use this repo with AI (Claude, Gemini, ChatGPT)](HOW_TO_USE_WITH_AI.md).
 
-**Scope**: fully generic and literature-only. Crude data are real
-published assays (ExxonMobil's public downloads, values extracted, files
-not redistributed). Nothing here derives from any proprietary licensor,
-vendor or client engineering data. See `docs/METHODOLOGY.md` for
-citations, `docs/VALIDATION.md` for cross-checks (including a real
-refinery, IndianOil Paradip) and `docs/DATA_SOURCES.md` for exactly what
-was and was not verified.
+## What it does
+- Loads eight real crude assays and cuts them at any pair of boiling-range limits (yields from the TBP curve, so mass and volume close exactly); crudes blend by volume into a `Slate`.
+- Sizes CDU/VDU product streams and furnace duty, an FCC (4-lump riser kinetics coupled to the regenerator heat balance, with riser/regenerator sizing), a hydrotreater, and a delayed coker.
+- Chains everything into a whole-refinery mass balance and Nelson complexity index (`refinery_design/flowsheet.py`).
+- Compares against Indian refinery reference data (CHT complexity, PPAC GRM, distillate yield) and a Paradip validation case.
+- Screens petrochemical add-ons (FCC propylene to PP, naphtha and dual-feed steam crackers), petrol displacement by ethanol, crude sourcing and OISD safety flags.
 
 ## Quick start
-
 ```bash
+git clone https://github.com/herrrickshaw/refinery-design-opensource.git
+cd refinery-design-opensource
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
-pytest -q                                          # 263 tests
-python examples/full_refinery_worked_example.py    # 8 crudes through one refinery
+python examples/full_refinery_worked_example.py    # headline output: 8 crudes through one refinery
+```
+Other entry points:
+```bash
 python examples/fcc_worked_example.py              # FCC heat balance, riser, regenerator
 python examples/paradip_check.py                   # validation against a real refinery
 python examples/petrochemical_evaluation.py        # PPAC/CHT data + propylene/PP break-evens
@@ -48,28 +44,24 @@ python examples/india_companies.py                 # Indian refiners then vs now
 streamlit run streamlit_app.py                     # interactive app
 ```
 
-## Crude oil types
+## How it works
+Stage to module, in order of the flowsheet:
 
-Eight real assays from light-sweet to heavy-sour and high-TAN, each with
-whole-crude properties, per-cut density / sulfur / nitrogen / TAN / carbon
-residue / metals, and a TBP curve.
+| Stage | Module | Output |
+|---|---|---|
+| Crude assays, cuts, slates | `assay.py` (+ `properties.py` for Watson K, API, classification) | Cut yields/quality, crude class |
+| CDU / VDU | `distillation.py` | Product streams, furnace duty |
+| FCC | `fcc.py` | Conversion, regenerator T, coke, yields, sizing, flags |
+| Hydrotreating, coking | `hydrotreater.py`, `coker.py` | Reactor volume/H2, coke/gas/liquid yields |
+| Whole refinery | `flowsheet.py`, `complexity.py` | Product pools, mass closure, NCI |
+| Economics and screens | `grm.py`, `petrochemical.py`, `steam_cracker.py`, `dual_feed_cracker.py`, `routes.py`, ... | GRM, break-even prices, route margins |
 
-| Crude | API | S wt% | TAN | Class (gravity / sulfur / acidity) | Vac. resid wt% |
-|---|---|---|---|---|---|
-| Bakken | 44.0 | 0.08 | 0.07 | light / sweet / low-TAN | 5.7 |
-| Azeri BTC | 39.0 | 0.16 | 0.43 | light / sweet / low-TAN | 9.5 |
-| Qua Iboe | 37.3 | 0.12 | 0.27 | light / sweet / low-TAN | 5.7 |
-| Upper Zakum | 33.4 | 2.09 | 0.07 | light / sour / low-TAN | 19.9 |
-| Alaska North Slope | 32.3 | 1.04 | 0.41 | light / sour / low-TAN | 18.2 |
-| Dalia | 22.6 | 0.52 | 1.50 | medium / sour / high-TAN | 25.2 |
-| Kearl | 19.8 | 3.83 | 2.08 | heavy / sour / high-TAN | 35.8 |
-| Cold Lake Blend | 19.5 | 3.87 | 1.12 | heavy / sour / high-TAN | 36.2 |
+Design notes: pure functions and frozen dataclasses take assay data in and return results out; the FCC solver brackets the
+regenerator temperature with Brent's method on the heat-balance residual; `fcc._assemble` delegates to small helpers
+(riser hydrodynamics, regenerator sizing, flue gas, sulfur split, heat table). The cracker modules share capex scaling
+(six-tenths rule), naphtha-price fallback and revenue accounting from `steam_cracker.py`.
 
-Any pair of cut points can be requested (yields from the TBP curve, so mass
-and volume close exactly), and crudes blend by volume into a `Slate`.
-
-## Modules
-
+### Modules
 | Module | Method | Key outputs |
 |---|---|---|
 | `refinery_design/assay.py` | TBP-curve cuts + assay-cut property weighting; volumetric slate blending (Refutas for viscosity) | Cut yields/quality for any cut points, crude classification, blends |
@@ -96,8 +88,26 @@ and volume close exactly), and crudes blend by volume into a `Slate`.
 | `refinery_design/safety.py` | OISD standards map (105-entry official list) + screening flags | Which standards apply; model flags |
 | `refinery_design/benchmarks.py` | Paradip published data | Validation |
 
-## What crude type does to an FCC (real assays, same unit)
+### Crude oil types
+Eight real assays from light-sweet to heavy-sour and high-TAN, each with
+whole-crude properties, per-cut density / sulfur / nitrogen / TAN / carbon
+residue / metals, and a TBP curve.
 
+| Crude | API | S wt% | TAN | Class (gravity / sulfur / acidity) | Vac. resid wt% |
+|---|---|---|---|---|---|
+| Bakken | 44.0 | 0.08 | 0.07 | light / sweet / low-TAN | 5.7 |
+| Azeri BTC | 39.0 | 0.16 | 0.43 | light / sweet / low-TAN | 9.5 |
+| Qua Iboe | 37.3 | 0.12 | 0.27 | light / sweet / low-TAN | 5.7 |
+| Upper Zakum | 33.4 | 2.09 | 0.07 | light / sour / low-TAN | 19.9 |
+| Alaska North Slope | 32.3 | 1.04 | 0.41 | light / sour / low-TAN | 18.2 |
+| Dalia | 22.6 | 0.52 | 1.50 | medium / sour / high-TAN | 25.2 |
+| Kearl | 19.8 | 3.83 | 2.08 | heavy / sour / high-TAN | 35.8 |
+| Cold Lake Blend | 19.5 | 3.87 | 1.12 | heavy / sour / high-TAN | 36.2 |
+
+Any pair of cut points can be requested (yields from the TBP curve, so mass
+and volume close exactly), and crudes blend by volume into a `Slate`.
+
+### What crude type does to an FCC (real assays, same unit)
 The FCC is fed the crude's own VGO (370-550 &deg;C cut). Same unit, same
 conditions, three crudes (`examples/full_refinery_worked_example.py`):
 
@@ -112,8 +122,7 @@ residue at CCR 20 wt%) are refused with an actionable message, and
 `cooler_duty_for_regen_temperature()` sizes the catalyst cooler that would
 be needed.
 
-## Validation, honestly
-
+### Validation, honestly
 * **Real assays** - TBP-derived cut densities agree with each assay's own
   reported cut densities to a max of 0.9% over 72 cuts; sulfur balances
   close exactly.
@@ -125,14 +134,8 @@ be needed.
   predicts* its FCC/CDU ratio (28.1% vs published 28.0%). That heavy-sour basket's
   VGO cannot run raw in an FCC (regenerator 816 &deg;C) - and Paradip's unit list
   includes the VGO hydrotreater that fixes it.
-* **FCC kinetics are calibrated, not fitted to plant data** - constants
-  reproduce typical published yield ranges at a reference feed; the
-  structure (over-cracking maximum, ROT trade-off, heat-balance-driven coke)
-  is the literature-grounded part. Feed-quality effects are directional
-  heuristics with illustrative magnitudes. See `docs/VALIDATION.md`.
 
-## Complexity, margins and petrochemicals (PPAC + CHT)
-
+### Complexity, margins and petrochemicals (PPAC + CHT)
 The repo links the two Government of India sources for refinery complexity and
 margins: the Centre for High Technology's
 [refinery complexity index](https://cht.gov.in/refinery-complexity-index) (NCI per
@@ -156,8 +159,7 @@ refinery, OGJ 2025 survey) and [PPAC](https://ppac.gov.in)'s Ready Reckoner
   point (~5 vol% per 50 degF), distillate mode and pool shares - cross-checked against the
   published propylene (3-5% / 15-28%) and gasoline-sulfur (1,000-2,000 ppm) ranges.
 
-## Petrol displaced by ethanol, the FCC secondary mode, and the routes (PPAC, latest edition)
-
+### Petrol displaced by ethanol, the FCC secondary mode, and the routes (PPAC, latest edition)
 PPAC's FY2025-26 Ready Reckoner shows refineries producing more petrol (42.8 -> 49.8 Mt, FY22-23 to FY25-26) as the blend rose to E20,
 with the surplus exported (13.1 -> 16.7 Mt); the gap between blended consumption and production + imports - exports is the ethanol
 (implied 12% -> 22% of MS mass). For the Paradip-basket refinery, E12 -> E20 displaces ~367 kt/y of a 3,861 kt/y gasoline pool. A
@@ -181,19 +183,58 @@ figures show the gas plant is the constraint (+5.1% wet-gas flow per wt% propyle
 * **Safety** (`docs/SAFETY.md`): the official OISD list (105 standards) mapped to each design element, with model-driven flags (high-TAN crudes,
   hot regenerator, gas-plant load, LPG/propylene). The standards were not read; this is a pointer, not a safety case.
 
-## Not covered (roadmap)
+## Repository layout
+| Path | Purpose |
+|---|---|
+| `refinery_design/` | Library: assays, distillation, FCC, coker, flowsheet, India data, petrochemical and economics modules |
+| `refinery_design/data/` | Bundled assay JSON and reference data (tracked, not regenerated at runtime) |
+| `examples/` | Runnable worked examples (outputs are what the docs quote) |
+| `scripts/` | Data-build scripts that produced the bundled JSON |
+| `docs/` | `METHODOLOGY.md`, `VALIDATION.md`, `DATA_SOURCES.md`, topic reports |
+| `tests/` | pytest suite, including `test_characterisation.py` (bit-exact golden values from `tests/golden/`) |
+| `streamlit_app.py` | Interactive app |
+| `research/` | Background research material |
 
-Catalytic reforming, hydrocracking, alkylation, sulfur recovery, hydrogen
+## Data sources
+| Source | What is taken | Access route | Licence / caveat |
+|---|---|---|---|
+| ExxonMobil crude assays | Eight published assays (values only) | Public downloads; files not redistributed | Provided without warranty; check current assays before commercial use |
+| PPAC Ready Reckoner, CHT refinery complexity index | GRM, distillate yield, trade, NCI | Government of India sites (ppac.gov.in, cht.gov.in) | Public data; see `docs/DATA_SOURCES.md` for what was and was not verified |
+| IOCL price lists, Digital Refining, patents (US 5,990,370) | PP/PE prices, rundown figures, propane yields | Published documents | Cited per module; butane yields are assumed |
+
+## Configuration
+No environment variables, credentials or network access are needed; all data ships in `refinery_design/data/`.
+Operating assumptions are dataclass fields (`FccOperation`, `FccKinetics`, `CrackerAssumptions`, ...) that can be overridden per call.
+
+## Testing
+```bash
+pytest -q          # 316 tests (263 pre-existing + 53 characterisation checks)
+ruff check .
+```
+
+## Limitations and known issues
+- Paradip NCI reference is CHT 10.6 (model brackets it at 10.5-11.9); do not use 12.2.
+- FCC kinetics are calibrated, not plant-fitted; feed-quality effects are directional heuristics with illustrative magnitudes.
+- Roadmap (not covered): Catalytic reforming, hydrocracking, alkylation, sulfur recovery, hydrogen
 plant, aromatics/PDH/ethane-LPG dual-feed cracker routes, a reformer, market propylene/PP price data, crude-column tray hydraulics, preheat-train pinch design, ZSM-5 /
 propylene maximisation, equilibrium-catalyst metals (Ecat) model, crude
 compatibility/asphaltene stability, price-driven crude selection.
 
-## Disclaimer
-
-This tool implements textbook/public-domain conceptual sizing methods for
+Disclaimer: This tool implements textbook/public-domain conceptual sizing methods for
 early-stage screening only. It is not a substitute for a rigorous process
 simulator, an FCC kinetic model fitted to plant data, or licensor/vendor
 design. Crude assays are ExxonMobil's public downloads, provided by them
 without warranty - check current assays before any commercial use. Always
 validate against a licensed simulator and vendor data before committing to
 equipment specifications.
+
+## Related repositories
+Sibling projects with the same discipline: [lng-design-opensource](https://github.com/herrrickshaw/lng-design-opensource),
+[coal-to-urea-design-opensource](https://github.com/herrrickshaw/coal-to-urea-design-opensource),
+[ethanol-design-opensource](https://github.com/herrrickshaw/ethanol-design-opensource),
+[cbg-design-opensource](https://github.com/herrrickshaw/cbg-design-opensource),
+[lignocellulosic-ethanol-opensource](https://github.com/herrrickshaw/lignocellulosic-ethanol-opensource),
+[biomass-to-syngas-opensource](https://github.com/herrrickshaw/biomass-to-syngas-opensource).
+
+## Licence
+MIT (see `LICENSE`).
