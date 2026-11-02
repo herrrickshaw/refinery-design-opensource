@@ -70,14 +70,37 @@ class Cut:
 _INTENSIVE = ("sulfur_wt", "basic_n_ppm", "total_n_ppm", "tan", "mcr_wt", "ni_ppm", "v_ppm", "uop_k")
 
 
+def _weighted_mean(pairs) -> float | None:
+    """Weighted mean of ``(weight, value)`` pairs, skipping missing values and non-positive weights.
+
+    Returns ``None`` when nothing contributes (the assay reports no value for that range).
+    """
+    num = den = 0.0
+    for w, v in pairs:
+        if w > 0 and v is not None:
+            num += w * v
+            den += w
+    return num / den if den > 0 else None
+
+
 class _TbpMixin:
-    """Shared TBP-curve maths; subclasses provide ``_curve()``."""
+    """Shared TBP-curve maths and classification; subclasses provide ``_curve()`` and
+    ``api`` / ``sulfur_wt`` / ``tan`` / ``uop_k``."""
+
+    def classification(self) -> dict[str, str]:
+        return {
+            "gravity": gravity_class(self.api),
+            "sulfur": sulfur_class(self.sulfur_wt),
+            "acidity": acid_class(self.tan),
+            "character": k_class(self.uop_k),
+        }
 
     def cum_wt(self, T_C: float) -> float:
         """Cumulative wt fraction (0-1) distilled at TBP temperature T_C."""
         return self._interp(T_C, 1)
 
     def cum_vol(self, T_C: float) -> float:
+        """Cumulative volume fraction (0-1) distilled at TBP temperature T_C."""
         return self._interp(T_C, 2)
 
     def _interp(self, T_C: float, col: int) -> float:
@@ -155,14 +178,6 @@ class Crude(_TbpMixin):
         """Whole-crude Watson K from the volume-average boiling point."""
         return watson_k(self.whole["vabp_C"] + 273.15, self.density_kg_m3 / WATER_DENSITY_15C)
 
-    def classification(self) -> dict[str, str]:
-        return {
-            "gravity": gravity_class(self.api),
-            "sulfur": sulfur_class(self.sulfur_wt),
-            "acidity": acid_class(self.tan),
-            "character": k_class(self.uop_k),
-        }
-
     # ---- TBP / cuts ---------------------------------------------
     def _curve(self) -> np.ndarray:
         return self.tbp
@@ -190,15 +205,8 @@ class Crude(_TbpMixin):
         for c in self._narrow_cuts():
             a, b = max(lo_C, c["lo"]), min(hi_C, c["hi"])
             weights.append(max(0.0, self.cum_wt(b) - self.cum_wt(a)) if b > a else 0.0)
-        props = {}
-        for key in _INTENSIVE:
-            num = den = 0.0
-            for c, w in zip(self._narrow_cuts(), weights):
-                v = c.get(key)
-                if w > 0 and v is not None:
-                    num += w * v
-                    den += w
-            props[key] = num / den if den > 0 else None
+        narrow = self._narrow_cuts()
+        props = {key: _weighted_mean((w, c.get(key)) for c, w in zip(narrow, weights)) for key in _INTENSIVE}
         return Cut(name=name or f"{lo_C:g}-{hi_C:g}C", lo_C=lo_C, hi_C=hi_C, wt_frac=wt,
                    vol_frac=vol, density_kg_m3=density,
                    tb_mean_C=self.mean_tb_C(lo_C, hi_C) if wt > 1e-12 else None, **props)
@@ -282,14 +290,6 @@ class Slate(_TbpMixin):
     def uop_k(self) -> float:
         return sum(x * c.uop_k for c, x in self.components)
 
-    def classification(self) -> dict[str, str]:
-        return {
-            "gravity": gravity_class(self.api),
-            "sulfur": sulfur_class(self.sulfur_wt),
-            "acidity": acid_class(self.tan),
-            "character": k_class(self.uop_k),
-        }
-
     def cut(self, lo_C: float, hi_C: float, name: str = "") -> Cut:
         cuts = [c.cut(lo_C, hi_C) for c, _ in self.components]
         mass = [w * ct.wt_frac for w, ct in zip(self._mass_frac, cuts)]          # per unit slate mass
@@ -299,15 +299,7 @@ class Slate(_TbpMixin):
         wt_frac = m_tot
         vol_frac = sum(vol)
         density = slate_rho * wt_frac / vol_frac if vol_frac > 1e-12 else None
-        props = {}
-        for key in _INTENSIVE:
-            num = den = 0.0
-            for m, ct in zip(mass, cuts):
-                v = getattr(ct, key)
-                if v is not None and m > 0:
-                    num += m * v
-                    den += m
-            props[key] = num / den if den > 0 else None
+        props = {key: _weighted_mean((m, getattr(ct, key)) for m, ct in zip(mass, cuts)) for key in _INTENSIVE}
         return Cut(name=name or f"{lo_C:g}-{hi_C:g}C", lo_C=lo_C, hi_C=hi_C, wt_frac=wt_frac,
                    vol_frac=vol_frac, density_kg_m3=density,
                    tb_mean_C=self.mean_tb_C(lo_C, hi_C) if wt_frac > 1e-12 else None, **props)
@@ -323,6 +315,7 @@ def _raw() -> dict:
 
 
 def available_crudes() -> list[str]:
+    """Keys of the bundled assays, in file order."""
     return list(_raw()["crudes"])
 
 
@@ -337,4 +330,5 @@ def load_crude(key: str) -> Crude:
 
 
 def barrels_to_kg(bbl: float, density_kg_m3: float) -> float:
+    """Mass (kg) of ``bbl`` barrels of liquid at ``density_kg_m3``."""
     return bbl * BBL_M3 * density_kg_m3
