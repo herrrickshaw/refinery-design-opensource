@@ -4,7 +4,6 @@ Run: python examples/fcc_worked_example.py
 """
 from __future__ import annotations
 
-from dataclasses import replace
 
 from refinery_design.assay import load_crude
 from refinery_design.fcc import FccFeed, FccOperation, fcc_operate, riser_kinetics, rot_sweep

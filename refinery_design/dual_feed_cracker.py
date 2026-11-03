@@ -135,7 +135,7 @@ def build_dual_feed(naphtha_t_y: float, lpg_t_y: float, naphtha_coil_C: float = 
     eth = t(naphtha_t_y, ny.ethylene) + t(lpg_t_y, ly.ethylene)
     prop = t(naphtha_t_y, ny.propylene) + t(lpg_t_y, ly.propylene)
     total = naphtha_t_y + lpg_t_y
-    capex = a.capex_usd_per_tpa_at_ref * a.ref_feed_t * (total / a.ref_feed_t) ** a.scale_exponent
+    capex = sc.scaled_capex_usd(total, a)
     warnings = []
     if eth < 500_000:
         warnings.append(f"ethylene {eth/1e6:.2f} Mt/y is sub-scale (new Indian crackers are 1.2-1.5 Mt/y)")
@@ -169,16 +169,9 @@ class DualFeedEvaluation:
 def evaluate_dual_feed(opt: DualFeedOption, deck, pe_usd_t: float, pp_usd_t: float, naphtha_usd_t: float | None = None,
                        lpg_usd_t: float | None = None, a: sc.CrackerAssumptions = sc.CrackerAssumptions()) -> DualFeedEvaluation:
     """Economics on ``deck``: naphtha at its trade/naphtha price (else gasoline-range), LPG at the deck's LPG (import-parity) price."""
-    if naphtha_usd_t is None:
-        try:
-            naphtha_usd_t = deck.product_usd_t("naphtha")
-        except (KeyError, AttributeError):
-            naphtha_usd_t = deck.product_usd_t("gasoline_range")
+    naphtha_usd_t = sc.resolve_naphtha_usd_t(deck, naphtha_usd_t)
     lpg_usd_t = deck.product_usd_t("lpg") if lpg_usd_t is None else lpg_usd_t
-    rev = {"polyethylene": opt.pe_t_y * pe_usd_t, "polypropylene": opt.pp_t_y * pp_usd_t,
-           "C4 incl. butadiene (at LPG value)": opt.c4_t_y * deck.product_usd_t("lpg"),
-           "pygas (at gasoline-range value)": opt.pygas_t_y * deck.product_usd_t("gasoline_range"),
-           "pyrolysis fuel oil (at fuel-oil value)": opt.pfo_t_y * deck.product_usd_t("slurry")}
+    rev = sc.product_revenue_usd_y(deck, opt.pe_t_y, opt.pp_t_y, opt.c4_t_y, opt.pygas_t_y, opt.pfo_t_y, pe_usd_t, pp_usd_t)
     revenue = sum(rev.values())
     feed_cost = opt.naphtha_t_y * naphtha_usd_t + opt.lpg_t_y * lpg_usd_t
     total = opt.naphtha_t_y + opt.lpg_t_y

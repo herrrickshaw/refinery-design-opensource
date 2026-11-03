@@ -19,7 +19,7 @@ for y in ("2022-23", "2023-24", "2024-25", "2025-26"):
     b = trade.petrol_balance(y)
     print(f"{y:8s} {b['consumption']:8.1f} {b['production']:8.1f} {b['imports']:8.1f} {b['exports']:8.1f} {b['domestic_refinery_petrol']:21.1f} "
           f"{b['implied_ethanol_mmt']:9.1f} ({b['implied_ethanol_share_pct']:.0f}% of MS mass)")
-print(f"PPAC Jan-2026: MS 3.51 MMT (+6.1% y/y), Apr-Jan +6.4%; PPAC EBP: ESY 2024-25 19.24%, ESY 2025-26 (Nov-Mar) 19.99%")
+print("PPAC Jan-2026: MS 3.51 MMT (+6.1% y/y), Apr-Jan +6.4%; PPAC EBP: ESY 2024-25 19.24%, ESY 2025-26 (Nov-Mar) 19.99%")
 t = ethanol.tender()["esy_2025_26_cycle1"]
 print(f"OMC tender ESY 2025-26 cycle 1: need {t['requirement_crore_litres']} crore L, offers {t['offers_crore_litres']} (grain {t['grain_offers']}, sugarcane {t['sugarcane_offers']}); "
       f"ESY 2026-27 expected demand {ethanol.tender()['esy_2026_27_expected']['demand_crore_litres_low']}-{ethanol.tender()['esy_2026_27_expected']['demand_crore_litres_high']} crore L (news; no tender found)")
