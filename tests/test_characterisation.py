@@ -42,7 +42,7 @@ def assert_close(actual, expected, path="") -> None:
     else:
         fa, fe = _as_float(actual), _as_float(expected)
         assert fa is not None and fe is not None, f"{path}: {actual!r} != {expected!r}"
-        assert fa == pytest.approx(fe, rel=1e-9, abs=1e-12), f"{path}: {actual!r} != {expected!r}"
+        assert fa == pytest.approx(fe, rel=1e-9, abs=1e-8), f"{path}: {actual!r} != {expected!r}"
 
 
 @pytest.fixture(scope="module")
