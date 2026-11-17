@@ -96,6 +96,30 @@ class CrackerOption:
     warnings: list[str] = field(default_factory=list)
 
 
+def scaled_capex_usd(feed_t_y: float, a: "CrackerAssumptions") -> float:
+    """Cracker + derivatives capex (USD) for ``feed_t_y`` t/y of feed: six-tenths-rule scaling from the reference scale."""
+    return a.capex_usd_per_tpa_at_ref * a.ref_feed_t * (feed_t_y / a.ref_feed_t) ** a.scale_exponent
+
+
+def resolve_naphtha_usd_t(deck, naphtha_usd_t: float | None) -> float:
+    """Naphtha price: the explicit value, else the deck's naphtha price, else its gasoline-range price."""
+    if naphtha_usd_t is not None:
+        return naphtha_usd_t
+    try:
+        return deck.product_usd_t("naphtha")
+    except (KeyError, AttributeError):
+        return deck.product_usd_t("gasoline_range")
+
+
+def product_revenue_usd_y(deck, pe_t_y: float, pp_t_y: float, c4_t_y: float, pygas_t_y: float, pfo_t_y: float,
+                          pe_usd_t: float, pp_usd_t: float) -> dict:
+    """Revenue by product: PE / PP at observed prices, co-products at the deck's LPG / gasoline-range / fuel-oil values."""
+    return {"polyethylene": pe_t_y * pe_usd_t, "polypropylene": pp_t_y * pp_usd_t,
+            "C4 incl. butadiene (at LPG value)": c4_t_y * deck.product_usd_t("lpg"),
+            "pygas (at gasoline-range value)": pygas_t_y * deck.product_usd_t("gasoline_range"),
+            "pyrolysis fuel oil (at fuel-oil value)": pfo_t_y * deck.product_usd_t("slurry")}
+
+
 def build_cracker(naphtha_t_y: float, coil_outlet_C: float = 850.0, a: CrackerAssumptions = CrackerAssumptions(),
                   crude_t_y: float | None = None) -> CrackerOption:
     """Size a naphtha cracker + PE (from ethylene) + PP (from propylene) on ``naphtha_t_y``."""
@@ -106,7 +130,7 @@ def build_cracker(naphtha_t_y: float, coil_outlet_C: float = 850.0, a: CrackerAs
         raise ValueError("yield slate over-fills the mass balance")
     t = lambda w: naphtha_t_y * w / 100.0
     eth, prop = t(y.ethylene), t(y.propylene)
-    capex = a.capex_usd_per_tpa_at_ref * a.ref_feed_t * (naphtha_t_y / a.ref_feed_t) ** a.scale_exponent
+    capex = scaled_capex_usd(naphtha_t_y, a)
     warnings = []
     if eth < 500_000:
         warnings.append(f"ethylene {eth/1e6:.2f} Mt/y is sub-scale (new Indian crackers are 1.2-1.5 Mt/y): the six-tenths "
@@ -139,15 +163,8 @@ def evaluate_cracker(opt: CrackerOption, deck, pe_usd_t: float, pp_usd_t: float,
     ``naphtha_usd_t`` defaults to the deck's naphtha price if it has one, else its gasoline-range price (what the naphtha
     would otherwise earn in the petrol/reformer pool).
     """
-    if naphtha_usd_t is None:
-        try:
-            naphtha_usd_t = deck.product_usd_t("naphtha")
-        except (KeyError, AttributeError):
-            naphtha_usd_t = deck.product_usd_t("gasoline_range")
-    rev = {"polyethylene": opt.pe_t_y * pe_usd_t, "polypropylene": opt.pp_t_y * pp_usd_t,
-           "C4 incl. butadiene (at LPG value)": opt.c4_t_y * deck.product_usd_t("lpg"),
-           "pygas (at gasoline-range value)": opt.pygas_t_y * deck.product_usd_t("gasoline_range"),
-           "pyrolysis fuel oil (at fuel-oil value)": opt.pfo_t_y * deck.product_usd_t("slurry")}
+    naphtha_usd_t = resolve_naphtha_usd_t(deck, naphtha_usd_t)
+    rev = product_revenue_usd_y(deck, opt.pe_t_y, opt.pp_t_y, opt.c4_t_y, opt.pygas_t_y, opt.pfo_t_y, pe_usd_t, pp_usd_t)
     revenue = sum(rev.values())
     feed_cost = opt.naphtha_t_y * naphtha_usd_t
     opex = opt.naphtha_t_y * a.cracker_opex_usd_t_naphtha + opt.pe_t_y * a.pe_opex_usd_t + opt.pp_t_y * a.pp_opex_usd_t
@@ -162,7 +179,7 @@ def evaluate_cracker(opt: CrackerOption, deck, pe_usd_t: float, pp_usd_t: float,
 def bina_check(a: CrackerAssumptions = CrackerAssumptions()) -> dict:
     """Compare the model's capex with BPCL Bina's disclosed total (upper bound: it also includes a refinery expansion)."""
     feed_low, feed_high = BINA_ETHYLENE_MT * 1e6 / 0.33, BINA_ETHYLENE_MT * 1e6 / 0.27      # naphtha/LPG feed for 1.2 Mt ethylene
-    model = lambda f: a.capex_usd_per_tpa_at_ref * a.ref_feed_t * (f / a.ref_feed_t) ** a.scale_exponent
+    model = lambda f: scaled_capex_usd(f, a)
     return {"feed_low_t": feed_low, "feed_high_t": feed_high, "model_capex_usd_bn": (model(feed_low) / 1e9, model(feed_high) / 1e9),
             "bina_total_usd_bn": BINA_TOTAL_USD_BN, "bina_usd_per_tpa_of_feed": (BINA_TOTAL_USD_BN * 1e9 / feed_high, BINA_TOTAL_USD_BN * 1e9 / feed_low),
             "thunder_said_cracker_only_usd_bn": (THUNDER_SAID_USD_PER_TPA * feed_low / 1e9, THUNDER_SAID_USD_PER_TPA * feed_high / 1e9)}

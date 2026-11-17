@@ -1,4 +1,3 @@
-import pytest
 
 from refinery_design import safety as sf
 from refinery_design.assay import Slate, load_crude

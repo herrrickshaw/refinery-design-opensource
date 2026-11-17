@@ -45,7 +45,7 @@ from .assay import Cut
 from .properties import (
     GAS_MW, R_UNIVERSAL, WATER_DENSITY_15C, gas_sensible_enthalpy_kJ_kmol, latent_heat_kJ_kg,
     liquid_cp_kJ_kgK, riazi_daubert_mw, steam_enthalpy_kJ_kg, vapour_cp_kJ_kgK, watson_k,
-    api_from_density, BBL_M3,
+    api_from_density,
 )
 
 # Standard enthalpies of formation (NIST-JANAF), kJ/mol
@@ -57,6 +57,8 @@ PRODUCT_DENSITY_KG_M3 = {"lpg": 550.0, "gasoline": 745.0, "lco": 940.0, "slurry"
 
 # Molecular weights used in the riser vapour-expansion calculation
 MW_GASOLINE, MW_GAS_LUMP = 105.0, 38.0
+# Unconverted-feed lump mean molecular weight, as a fraction of the feed MW (riser vapour expansion)
+UNCONVERTED_MW_FRAC_OF_FEED = 0.85
 
 
 _trapz = getattr(np, "trapezoid", None) or np.trapz
@@ -403,28 +405,16 @@ def cooler_duty_for_regen_temperature(
     can absorb; a cooler removes the surplus.  With no cooler in ``op`` the
     balance residual at the target temperature is exactly that surplus.
     """
-    from dataclasses import replace
     return _balance(feed, replace(op, catalyst_cooler_kJ_kg_feed=0.0), kin, target_regen_C)["residual"]
 
 
 # --------------------------------------------------------------------
-def _assemble(feed: FccFeed, op: FccOperation, kin: FccKinetics, t_regen: float, s: dict) -> FccResult:
-    y, co, conv = s["y"], s["co"], s["conv"]
-    wt = {k: 100.0 * y[k] for k in ("dry_gas", "lpg", "gasoline", "lco", "slurry", "coke")}
-    wt_total = sum(wt.values())
-    # closure check on the lumped balance (should be ~100)
-    vol = {}
-    feed_vol_per_kg = 1.0 / feed.density_kg_m3
-    for k, rho in PRODUCT_DENSITY_KG_M3.items():
-        vol[k] = 100.0 * y[k] / rho / feed_vol_per_kg
-    delta_coke = wt["coke"] / co
-
-    # --- riser hydrodynamics along the reaction coordinate ---
-    prof = y["profile"]
+def _riser_hydrodynamics(feed: FccFeed, op: FccOperation, co: float, prof: dict) -> dict:
+    """Riser diameter/height/velocities from vapour molar expansion along the reaction coordinate."""
     T_K = op.riser_outlet_C + 273.15
     P_Pa = (op.riser_outlet_P_kPa_g + 101.325) * 1000.0
     steam_kmol = op.dispersion_steam_wt / GAS_MW["H2O"]
-    unconv_mw = feed.mw * 0.85
+    unconv_mw = feed.mw * UNCONVERTED_MW_FRAC_OF_FEED
     kmol = (prof["unconverted"] / unconv_mw + prof["gasoline"] / MW_GASOLINE
             + prof["gas"] / MW_GAS_LUMP + steam_kmol)  # kmol per kg feed along the riser
     # coke is solid; CCR coke carbon is removed from the vapour (small)
@@ -435,14 +425,15 @@ def _assemble(feed: FccFeed, op: FccOperation, kin: FccKinetics, t_regen: float,
     v_profile = q_m3_s_per_kg_s * op.feed_rate_kg_s / area
     height = float(_trapz(v_profile, prof["t"]))
     cat_circ = co * op.feed_rate_kg_s
-    riser = {"diameter_m": diameter, "height_m": height, "inlet_velocity_m_s": float(v_profile[0]),
-             "exit_velocity_m_s": float(v_profile[-1]), "catalyst_circulation_kg_s": cat_circ,
-             "solids_flux_kg_m2_s": cat_circ / area, "vapour_residence_s": op.riser_residence_s}
+    return {"diameter_m": diameter, "height_m": height, "inlet_velocity_m_s": float(v_profile[0]),
+            "exit_velocity_m_s": float(v_profile[-1]), "catalyst_circulation_kg_s": cat_circ,
+            "solids_flux_kg_m2_s": cat_circ / area, "vapour_residence_s": op.riser_residence_s}
 
-    # --- regenerator ---
-    burn = s["burn"]
-    flue_kmol = burn["flue_kmol"]
-    n_flue = sum(flue_kmol.values()) * op.feed_rate_kg_s  # kmol/s
+
+def _regenerator_sizing(op: FccOperation, y: dict, co: float, burn: dict, t_regen: float) -> dict:
+    """Regenerator diameter, dense-bed height, inventory and air/flue-gas rates."""
+    cat_circ = co * op.feed_rate_kg_s
+    n_flue = sum(burn["flue_kmol"].values()) * op.feed_rate_kg_s  # kmol/s
     P_reg = (op.regen_P_kPa_g + 101.325) * 1000.0
     q_flue_m3_s = n_flue * 1000.0 * R_UNIVERSAL * (t_regen + 273.15) / P_reg
     a_reg = q_flue_m3_s / op.regen_superficial_velocity_m_s
@@ -450,42 +441,68 @@ def _assemble(feed: FccFeed, op: FccOperation, kin: FccKinetics, t_regen: float,
     inventory_kg = cat_circ * op.regen_catalyst_residence_min * 60.0
     bed_h = inventory_kg / (op.regen_bed_density_kg_m3 * a_reg)
     coke_burn_kg_h = y["coke"] * op.feed_rate_kg_s * 3600.0
-    regen = {"diameter_m": d_reg, "dense_bed_height_m": bed_h, "catalyst_inventory_t": inventory_kg / 1000.0,
-             "air_rate_kg_s": burn["air_kg"] * op.feed_rate_kg_s, "coke_burn_kg_h": coke_burn_kg_h,
-             "flue_gas_m3_s": q_flue_m3_s, "excess_air_frac": burn["excess"], "co2_co_ratio": burn["co2_co"]}
+    return {"diameter_m": d_reg, "dense_bed_height_m": bed_h, "catalyst_inventory_t": inventory_kg / 1000.0,
+            "air_rate_kg_s": burn["air_kg"] * op.feed_rate_kg_s, "coke_burn_kg_h": coke_burn_kg_h,
+            "flue_gas_m3_s": q_flue_m3_s, "excess_air_frac": burn["excess"], "co2_co_ratio": burn["co2_co"]}
+
+
+def _flue_gas_summary(flue_kmol: dict) -> dict:
+    """Wet mole fractions and dry-basis O2 / CO / SO2 of the regenerator flue gas."""
     tot = sum(flue_kmol.values())
     dry = tot - flue_kmol["H2O"]
-    flue = {
+    return {
         "mol_frac_wet": {k: v / tot for k, v in flue_kmol.items() if v > 0},
         "O2_vol_pct_dry": 100.0 * flue_kmol["O2"] / dry,
         "CO_ppmv_dry": 1e6 * flue_kmol["CO"] / dry,
         "SO2_ppmv_dry": 1e6 * flue_kmol["SO2"] / dry,
     }
 
-    # --- sulfur distribution (feed S in kg S per kg feed) ---
+
+def _sulfur_distribution(feed: FccFeed, op: FccOperation, gasoline_yield: float) -> tuple[dict, float]:
+    """Feed sulfur split (kg S per kg feed) and the resulting gasoline sulfur (ppm wt)."""
     s_feed = feed.sulfur_wt / 100.0
     s_gasoline = op.sulfur_to_gasoline * s_feed
     sdist = {
         "H2S": op.sulfur_to_h2s * s_feed, "coke_SO2": op.sulfur_to_coke * s_feed, "gasoline": s_gasoline,
         "LCO_slurry": max(0.0, s_feed * (1 - op.sulfur_to_h2s - op.sulfur_to_coke - op.sulfur_to_gasoline)),
     }
-    gasoline_s_ppm = 1e6 * s_gasoline / y["gasoline"] if y["gasoline"] > 0 else 0.0
+    gasoline_s_ppm = 1e6 * s_gasoline / gasoline_yield if gasoline_yield > 0 else 0.0
+    return sdist, gasoline_s_ppm
 
-    # --- heat balance table ---
-    d = s["demand"]
-    hb = {**{f"riser: {k.replace('_', ' ')}": v for k, v in d.items()},
-          "riser: total demand": s["q_riser"],
-          "regen: coke combustion": burn["q_burn"], "regen: air sensible in": burn["q_air"],
-          "regen: flue-gas sensible out": burn["q_flue"], "regen: coke desorption": s["q_desorb"],
-          "regen: losses": s["q_loss"], "regen: catalyst cooler": op.catalyst_cooler_kJ_kg_feed,
-          "residual (closure)": s["residual"]}
+
+def _heat_balance_table(op: FccOperation, s: dict) -> dict:
+    """Riser demand items and regenerator sources/sinks, kJ per kg feed."""
+    burn = s["burn"]
+    return {**{f"riser: {k.replace('_', ' ')}": v for k, v in s["demand"].items()},
+            "riser: total demand": s["q_riser"],
+            "regen: coke combustion": burn["q_burn"], "regen: air sensible in": burn["q_air"],
+            "regen: flue-gas sensible out": burn["q_flue"], "regen: coke desorption": s["q_desorb"],
+            "regen: losses": s["q_loss"], "regen: catalyst cooler": op.catalyst_cooler_kJ_kg_feed,
+            "residual (closure)": s["residual"]}
+
+
+def _assemble(feed: FccFeed, op: FccOperation, kin: FccKinetics, t_regen: float, s: dict) -> FccResult:
+    """Turn the converged balance ``s`` into an :class:`FccResult` (yields, sizing, flue gas, flags)."""
+    y, co, conv = s["y"], s["co"], s["conv"]
+    wt = {k: 100.0 * y[k] for k in ("dry_gas", "lpg", "gasoline", "lco", "slurry", "coke")}
+    wt_total = sum(wt.values())  # closure check on the lumped balance (should be ~100)
+    feed_vol_per_kg = 1.0 / feed.density_kg_m3
+    vol = {k: 100.0 * y[k] / rho / feed_vol_per_kg for k, rho in PRODUCT_DENSITY_KG_M3.items()}
+    delta_coke = wt["coke"] / co
+
+    riser = _riser_hydrodynamics(feed, op, co, y["profile"])
+    regen = _regenerator_sizing(op, y, co, s["burn"], t_regen)
+    flue = _flue_gas_summary(s["burn"]["flue_kmol"])
+    sdist, gasoline_s_ppm = _sulfur_distribution(feed, op, y["gasoline"])
+    hb = _heat_balance_table(op, s)
 
     warnings = _checks(feed, op, t_regen, co, conv, wt["coke"], riser, regen, delta_coke)
     return FccResult(feed, op, t_regen, co, conv, wt | {"total": wt_total}, vol, wt["coke"], delta_coke,
                      hb, riser, regen, flue, sdist, gasoline_s_ppm, warnings)
 
 
-def _checks(feed, op, t_regen, co, conv, coke, riser, regen, dcoke) -> list[str]:
+def _checks(feed: FccFeed, op: FccOperation, t_regen: float, co: float, conv: float, coke: float,
+            riser: dict, regen: dict, dcoke: float) -> list[str]:
     """Screening flags against commonly cited FCC operating envelopes (illustrative thresholds)."""
     w = []
     if t_regen > 760:
@@ -511,5 +528,4 @@ def _checks(feed, op, t_regen, co, conv, coke, riser, regen, dcoke) -> list[str]
 
 def rot_sweep(feed: FccFeed, op: FccOperation, rots_C: list[float], kin: FccKinetics = FccKinetics()) -> list[FccResult]:
     """Operate the unit across riser outlet temperatures (gasoline-vs-gas trade-off)."""
-    from dataclasses import replace
     return [fcc_operate(feed, replace(op, riser_outlet_C=r), kin) for r in rots_C]

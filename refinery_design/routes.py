@@ -84,7 +84,7 @@ def petrol_switch_options(result: RefineryResult, deck, prices: PetchemPriceDeck
                              e.capital_charge_usd_y / 1e6, e.net_usd_y / 1e6, None,
                              f"{o.ethylene_t_y/1e6:.2f} Mt/y ethylene" + (" (sub-scale)" if o.warnings else "")))
         r = dfc.refinery_dual_feed(result, deck, prices, pe_usd_t, hours=hours, a=cracker)
-        o2, e2, sup = r["option"], r["evaluation"], r["supply"]
+        o2, e2 = r["option"], r["evaluation"]
         rows.append(RouteRow("dual-feed cracker (refinery naphtha + LPG) -> PE + PP", naphtha_t_y / 1e3, 0.0, e2.margin_before_capital_usd_y / 1e6,
                              e2.capital_charge_usd_y / 1e6, e2.net_usd_y / 1e6, None,
                              f"{o2.ethylene_t_y/1e6:.2f} Mt/y ethylene; diverts {o2.lpg_t_y/1e3:,.0f} kt/y LPG (India imports 64% of its LPG)"
