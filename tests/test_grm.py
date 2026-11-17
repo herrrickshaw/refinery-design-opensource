@@ -71,3 +71,13 @@ def test_a_coker_only_pays_when_the_residue_discount_and_distillate_cracks_are_w
     wide = DECK
     assert g(full, wide) > g(no_coker, wide)
     assert g(full, thin) < g(no_coker, thin)
+
+
+@pytest.mark.parametrize("key", ["bakken", "upper_zakum"])
+def test_unmodelled_fuel_loss_costs_its_share_of_a_crude_barrel(key):
+    """4.4 wt% of the crude burned/lost is worth 4.4% of a barrel of THAT crude at the crude
+    price: 0.044 x 80 = 3.52 $/bbl, whatever the crude's density (mass share x crude $/t x
+    crude t/bbl = share x crude $/bbl)."""
+    r = refine(load_crude(key), 200_000)
+    g = gross_refining_margin(r, DECK)
+    assert g.fuel_loss_cost_usd_bbl == pytest.approx(0.044 * 80.0, rel=1e-9)
