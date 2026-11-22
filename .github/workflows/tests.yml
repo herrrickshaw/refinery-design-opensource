@@ -20,4 +20,11 @@ jobs:
       - name: Lint
         run: pip install ruff && ruff check .
       - name: Run tests
-        run: pytest -v
+        run: pip install pytest-cov && pytest -v --cov=refinery_design --cov-report=xml
+      - name: Upload coverage
+        if: matrix.python-version == '3.12'
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage.xml
+          fail_ci_if_error: false
