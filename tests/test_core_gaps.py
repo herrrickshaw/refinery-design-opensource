@@ -279,6 +279,22 @@ def test_propylene_mode_that_overdraws_gasoline_and_lco_is_rejected(monkeypatch)
         fcc_modes.modes(REF, OP)
 
 
+@pytest.mark.parametrize("target", [35.0])
+def test_propylene_mode_is_rejected_as_soon_as_either_gasoline_or_lco_runs_out(monkeypatch, target):
+    # at 35 wt% only one of the two pools has gone negative (LCO is the smaller and takes 30% of the offset);
+    # the guard is an OR, so this must still raise
+    monkeypatch.setitem(petrochemical.PROPYLENE_WT, "propylene_mode", target)
+    with pytest.raises(ValueError, match="exceeds the gasoline/LCO available"):
+        fcc_modes.modes(REF, OP)
+
+
+def test_propylene_mode_just_inside_the_available_pools_is_accepted(monkeypatch):
+    monkeypatch.setitem(petrochemical.PROPYLENE_WT, "propylene_mode", 30.0)
+    out = fcc_modes.modes(REF, OP)
+    assert out[-1].name == "propylene"
+    assert out[-1].yields_wt_pct["gasoline"] >= 0 and out[-1].yields_wt_pct["lco"] >= 0
+
+
 # ----------------------------------------------------------------- flowsheet
 def test_middle_distillate_yield_property_matches_the_pool():
     r = refine(load_crude("upper_zakum"), 200_000)
@@ -385,6 +401,20 @@ def test_overfilled_yield_slate_is_rejected(monkeypatch):
     monkeypatch.setattr(steam_cracker, "yields_at", lambda coil: bad)
     with pytest.raises(ValueError, match="over-fills the mass balance"):
         steam_cracker.build_cracker(1_000_000.0)
+
+
+def test_a_slate_that_exactly_fills_the_mass_balance_is_accepted(monkeypatch):
+    real = steam_cracker.yields_at(850.0)
+
+    class Exact:
+        fuel_gas_and_other = 0.0
+
+        def __getattr__(self, name):
+            return getattr(real, name)
+
+    monkeypatch.setattr(steam_cracker, "yields_at", lambda coil: Exact())
+    opt = steam_cracker.build_cracker(1_000_000.0)
+    assert opt.naphtha_t_y == 1_000_000.0
 
 
 def test_nonpositive_naphtha_feed_is_rejected():
